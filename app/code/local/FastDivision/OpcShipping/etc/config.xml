@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<config>
+    <modules>
+        <FastDivision_OpcShipping>
+            <version>1.3.0</version>
+        </FastDivision_OpcShipping>
+    </modules>
+	<global>
+		<blocks>
+			<opcshipping>
+                <class>FastDivision_OpcShipping_Block</class>
+            </opcshipping>
+		</blocks>
+	</global>
+    <frontend>
+        <layout>
+            <updates>
+                <opcshipping>
+                    <file>opcshipping.xml</file>
+                </opcshipping>
+            </updates>
+        </layout>
+		<routers>
+            <opcshipping>
+                <use>standard</use>
+                <args>
+                    <module>FastDivision_OpcShipping</module>
+                    <frontName>opcshipping</frontName>
+                </args>
+            </opcshipping>
+        </routers>
+    </frontend>
+</config>

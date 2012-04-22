@@ -1,0 +1,58 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php if ($this->getIsNeedToDisplaySideBar()):?>
+<?php $count = $this->getSummaryCount(); ?>
+<?php 
+    if ($count == 1) {
+        $text = $this->__('My Cart (%s item)', $count);
+    } elseif($count > 1) {
+        $text = $this->__('My Cart (%s items)', $count);
+    } else {
+    	$text = $this->__('My Cart (0 items)');
+    }
+?>
+<li class="cart">
+   	<a href="<?php echo $this->getUrl('checkout/cart') ?>" class="cart-link"><?php echo $text; ?></a>
+	<div class="quickcart">
+		<div class="quickcart-container">
+	        <?php 
+				$_items = $this->getRecentItems($count);
+				if(count($_items)): 
+			?>
+				<table>
+	                <?php 
+	                	foreach($_items as $_item) {
+	                		if(isset($currentUrl)) {
+	                			$_item->setData('currentUrl', $currentUrl);
+	                		}
+
+	                    	echo $this->getItemHtml($_item);
+	                	}
+	                ?>
+				</table>
+				<div class="quickcart-checkout">
+					<a href="<?php echo $this->getCheckoutUrl() ?>" class="action-button"><span><?php echo $this->__('Proceed to Checkout') ?></span></a>
+				</div>
+	         <?php else: ?>
+	         	<p class="no-items-in-cart"><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+	         <?php endif ?>
+		</div>
+	</div>
+</li>
+<?php endif ?>

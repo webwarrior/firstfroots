@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<config>
+    <modules>
+        <FastDivision_ReviewPhotos>
+            <version>1.3.0</version>
+        </FastDivision_ReviewPhotos>
+    </modules>
+    
+    <frontend>
+        <routers>
+            <reviewphotos>
+                <use>standard</use>
+                <args>
+                    <module>FastDivision_ReviewPhotos</module>
+                    <frontName>reviewphotos</frontName>
+                </args>
+            </reviewphotos>
+        </routers>
+        <layout>
+            <updates>
+                <reviewphotos>
+                    <file>reviewphotos.xml</file>
+                </reviewphotos>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <FastDivision_ReviewPhotos>
+                    <files>
+                        <default>FastDivision_ReviewPhotos.csv</default>
+                    </files>
+                </FastDivision_ReviewPhotos>
+            </modules>
+        </translate>
+    </frontend>
+    
+    <adminhtml>
+        <layout>
+            <updates>
+                <reviewphotos>
+                    <file>reviewphotos.xml</file>
+                </reviewphotos>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <FastDivision_ReviewPhotos>
+                    <files>
+                        <default>FastDivision_ReviewPhotos.csv</default>
+                    </files>
+                </FastDivision_ReviewPhotos>
+            </modules>
+        </translate>
+    </adminhtml>
+    
+    <global>
+        <!-- Override add + edit forms in Magento admin -->
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <review_add_form>FastDivision_ReviewPhotos_Block_AdminHtml_Review_Add_Form</review_add_form>
+                    <review_edit_form>FastDivision_ReviewPhotos_Block_AdminHtml_Review_Edit_Form</review_edit_form>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <!-- Override review saving for file upload -->
+        <rewrite>
+            <FastDivision_ReviewPhotos_Review>
+                <from><![CDATA[#^/admin/catalog_product_review/#]]></from>
+                <to>/reviewphotos/review/</to>
+            </FastDivision_ReviewPhotos_Review>
+            <FastDivision_ReviewPhotos_Product>
+                <from><![CDATA[#^/review/product/post#]]></from>
+                <to>/reviewphotos/product/post</to>
+            </FastDivision_ReviewPhotos_Product>
+        </rewrite>
+        <helpers>
+            <reviewphotos>
+                <class>FastDivision_ReviewPhotos_Helper</class>
+            </reviewphotos>
+        </helpers>
+        <models>
+            <review_resource>
+                <rewrite>
+                    <review>FastDivision_ReviewPhotos_Model_Resource_Review</review>
+                    <review_collection>FastDivision_ReviewPhotos_Model_Resource_Review_Collection</review_collection>
+                </rewrite>
+            </review_resource>
+            <ReviewPhotos>
+                <class>Mage_Review_Model</class>
+                <resourceModel>ReviewPhotos_resource</resourceModel>
+            </ReviewPhotos>
+            <ReviewPhotos_resource>
+                <class>FastDivision_ReviewPhotos_Model_Resource</class>
+                <entities>
+                    <review_detail>
+                        <table>review_detail</table>
+                    </review_detail>
+                </entities>
+            </ReviewPhotos_resource>
+        </models>
+        <resources>
+            <reviewphotos_setup>
+                <setup>
+                    <module>FastDivision_ReviewPhotos</module>
+                    <class>FastDivision_ReviewPhotos_Model_Resource_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </reviewphotos_setup>
+        </resources>
+	</global>    
+	
+	<default>
+	    <avalanche_wall>
+	        <reviewphotos_general>
+				<reviewphotos_enabled>1</reviewphotos_enabled>
+				<reviewphotos_show_title>1</reviewphotos_show_title>
+				<reviewphotos_show_description>1</reviewphotos_show_description>
+				<reviewphotos_thumbnail_x>120</reviewphotos_thumbnail_x>
+				<reviewphotos_thumbnail_y>120</reviewphotos_thumbnail_y>
+				<reviewphotos_terms><![CDATA[I own the rights to this image and confirm that it meets {My Store Name} standards. I have read and accept the <a href="/terms">Terms and Conditions.</a>]]></reviewphotos_terms>
+			</reviewphotos_general>
+	    </avalanche_wall>
+	</default>
+</config>

@@ -1,0 +1,59 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div class="white-box">
+  <div class="page-messages">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+  </div>
+  <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form" class="site-form">
+      <div class="checkout-method">
+        <h3><?php echo $this->__("I'm a Returning Customer") ?></h3>
+        <div class="white-box-inner">
+           <ul class="form-list">
+               <li class="field">
+                   <label for="email" class="required"><?php echo $this->__('Email') ?><em>*</em></label>
+                   <div class="input-box">
+                       <input type="text" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+                   </div>
+               </li>
+               <li class="field">
+                   <label for="pass" class="required"><?php echo $this->__('Password') ?><em>*</em></label>
+                   <div class="input-box">
+                       <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+                   </div>
+               </li>
+           </ul>
+
+           <button type="submit" class="action-button action-button-no-arrow" title="<?php echo $this->__('Login') ?>" name="send" id="send2"><span><?php echo $this->__('Login') ?></span></button>
+           <div id="forgot-password-link"><a href="<?php echo $this->getForgotPasswordUrl() ?>" class="small"><?php echo $this->__('Forgot Your Password?') ?></a></div>
+        </div>
+      </div>
+      <div class="checkout-method">
+        <h3><?php echo $this->__("I'm a New Customer") ?></h3>
+        <div class="white-box-inner">
+           <p><?php echo $this->__('Move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more!') ?></p>
+           <button type="button" title="<?php echo $this->__('Create an Account') ?>" class="button" onclick="window.location='<?php echo $this->getCreateAccountUrl() ?>';"><span><span><?php echo $this->__('Register') ?></span></span></button>
+        </div>
+      </div>
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('login-form', true);
+    //]]>
+    </script>
+</div>

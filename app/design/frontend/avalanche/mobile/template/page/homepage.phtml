@@ -1,0 +1,20 @@
+<div id="banners">
+	<div class="slider-container" data-interval="<?php echo Mage::getStoreConfig('avalanche_mobile/homepage_slider/autoplay_interval') ?>">
+		<div class="slider">
+			<ul class="clearfix">
+				<li><a href="<?php echo Mage::getStoreConfig('avalanche_mobile/homepage_slider/banner1_link') ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>media/mobile_banners/<?php echo Mage::getStoreConfig('avalanche_mobile/homepage_slider/banner1') ?>" alt="" /></a></li>
+				<li><a href="<?php echo Mage::getStoreConfig('avalanche_mobile/homepage_slider/banner2_link') ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>media/mobile_banners/<?php echo Mage::getStoreConfig('avalanche_mobile/homepage_slider/banner2') ?>" alt="" /></a></li>
+				<li><a href="<?php echo Mage::getStoreConfig('avalanche_mobile/homepage_slider/banner3_link') ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>media/mobile_banners/<?php echo Mage::getStoreConfig('avalanche_mobile/homepage_slider/banner3') ?>" alt="" /></a></li>
+				<li><a href="<?php echo Mage::getStoreConfig('avalanche_mobile/homepage_slider/banner4_link') ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>media/mobile_banners/<?php echo Mage::getStoreConfig('avalanche_mobile/homepage_slider/banner4') ?>" alt="" /></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="tagline">
+	<h2><?php echo Mage::getStoreConfig('avalanche_mobile/homepage_slider/tagline') ?></h2>
+</div>
+<div class="homepage-button">
+	<a href="#" class="action-button"><?php echo $this->__('Browse Store') ?></a>
+</div>
+<?php echo $this->getChildHtml('bestsellers') ?>
+<?php echo $this->getChildHtml('latestproducts') ?>

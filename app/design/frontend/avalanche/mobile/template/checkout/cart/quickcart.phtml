@@ -1,0 +1,40 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php 
+	$count = $this->getSummaryCount();
+	$_items = $this->getRecentItems($count);
+	if(count($_items)): 
+?>
+<table>
+    <?php 
+    	foreach($_items as $_item) {
+    		if(isset($currentUrl)) {
+    			$_item->setData('currentUrl', $currentUrl);
+    		}
+
+        	echo $this->getItemHtml($_item);
+    	}
+    ?>
+</table>
+<div class="quickcart-checkout">
+	<a href="<?php echo $this->getCheckoutUrl() ?>" class="action-button"><span><?php echo $this->__('Proceed to Checkout') ?></span></a>
+</div>
+<?php else: ?>
+	<p class="no-items-in-cart"><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+<?php endif ?>

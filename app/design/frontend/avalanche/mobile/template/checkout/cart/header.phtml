@@ -1,0 +1,22 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php if($this->getIsNeedToDisplaySideBar()):?>
+<?php $count = $this->getSummaryCount(); ?>
+<li class="cart"><a href="<?php echo Mage::getUrl('checkout/cart') ?>" id="menu-cart"><?php echo $this->__('Cart') ?> <?php if($count > 0) { ?><span class="count"><?php echo $count ?></span><?php } ?></a></li>
+<?php endif ?>

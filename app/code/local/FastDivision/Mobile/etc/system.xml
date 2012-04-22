@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<config>
+	<sections>
+		<avalanche_mobile translate="label">
+			<label><![CDATA[<span id="mobile-section" class="setting-icon"></span><div style="padding-left:22px">Mobile</div>]]></label>
+			<tab>avalanche_tab</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>41</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<general translate="label">
+					<label>General</label>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<sort_order>1</sort_order>
+					<fields>
+                        <mobile_cms_home_page translate="label" module="cms">
+                            <label>CMS Home Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_cms_page</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mobile_cms_home_page>
+                        <mobile_cms_no_route translate="label"  module="cms">
+                            <label>CMS 404 Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_cms_page</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mobile_cms_no_route>
+					</fields>			
+				</general>
+				<design translate="label">
+					<label>Design</label>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<sort_order>2</sort_order>
+						<!-- Retina Logo -->
+						<!-- Touch Icon 114x114px Resize automatically for 72x72 as well -->
+						<!-- Splash Screen Retina 640x960px Resize for 320x480px for older -->
+					<fields>
+						<logo translate="label">
+						    <label>Logo</label>
+							<comment>Your logo should be 146x44px for the best results. Use a transparent background and save as PNG.</comment>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">logos</upload_dir>
+                            <base_url type="media" scope_info="1">logos</base_url>           
+						    <sort_order>1</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</logo>
+						<logo_retina translate="label">
+						    <label>Logo (Retina)</label>
+							<comment>Your logo should be 292x88px (2x dimensions) for the best results. Use a transparent background and save as PNG.</comment>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">logos</upload_dir>
+                            <base_url type="media" scope_info="1">logos</base_url>           
+						    <sort_order>2</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</logo_retina>
+						<touch_icon translate="label">
+						    <label>Touch Icon</label>
+							<comment>Your touch icon should be 114x114px (supports retina) for the best results.</comment>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">touch_icons</upload_dir>
+                            <base_url type="media" scope_info="1">touch_icons</base_url>           
+						    <sort_order>3</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</touch_icon>
+						<splash_screen translate="label">
+						    <label>Splash Screen</label>
+							<comment>Your splash screen should be 640x920px (supports retina) for the best results (optional).</comment>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">splash_screens</upload_dir>
+                            <base_url type="media" scope_info="1">splash_screens</base_url>           
+						    <sort_order>4</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</splash_screen>					
+						<primarycolor translate="label">
+						    <label>Primary Color</label>
+							<comment>This color will enhance your borders, main menu links and call to action buttons.</comment>
+						    <frontend_type>colorpicker</frontend_type>       
+						    <sort_order>5</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>                    
+						</primarycolor>
+						<secondarycolor translate="label">
+						    <label>Secondary Color</label>
+							<comment>This color will enhance your default links and product ratings.</comment>
+						    <frontend_type>colorpicker</frontend_type>                        
+						    <sort_order>6</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>                    
+						</secondarycolor>
+						<!--<fullwidth translate="label">
+							<label>Full Width Content</label>
+							<comment>Maximize screen real estate by removing the white content box margins.</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+						    <sort_order>6</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+						</fullwidth>-->
+						<jpeg_compression translate="label">
+							<label>Photo Compression</label>
+							<comment>Optimize your product photo quality for mobile. The quality parameter can range from 1 (lowest) to 100 (highest). Lower quality will speed up your catalog pages on 3G or slower connections.</comment>
+							<frontend_type>text</frontend_type>
+						    <sort_order>7</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+						</jpeg_compression>
+						<customcss translate="label">
+						    <label>Custom CSS</label>
+							<comment><![CDATA[Enable the custom.css file and append the "custom" class to &lt;body&gt;]]></comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>                    
+						    <sort_order>8</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+						</customcss>
+					</fields>
+				</design>
+				<homepage_slider translate="label">
+					<label>Homepage</label>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<sort_order>3</sort_order>
+					<fields>
+						<tagline translate="label">
+						    <label>Tagline</label>
+						    <comment>Set the tagline below the banner.</comment>
+						    <frontend_type>text</frontend_type>
+						    <sort_order>1</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+						</tagline>
+                    	<autoplay_interval translate="label">
+						    <label>Autoplay Interval</label>
+						    <comment>Set the time between slide animation in seconds. 0 seconds will turn off autoplay.</comment>
+						    <frontend_type>text</frontend_type>
+						    <sort_order>2</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+                    	</autoplay_interval>
+ 						<banner1 translate="label">
+						    <label>Banner #1</label>
+							<comment>Your banners should be 320x230px for the best results.</comment>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">mobile_banners</upload_dir>
+                            <base_url type="media" scope_info="1">mobile_banners</base_url>                    
+						    <sort_order>3</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</banner1>
+						<banner1_link translate="label">
+						    <label>Banner #1 Link</label>
+						    <frontend_type>text</frontend_type>       
+						    <sort_order>4</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</banner1_link>
+						<banner2 translate="label">
+						    <label>Banner #2</label>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">mobile_banners</upload_dir>
+                            <base_url type="media" scope_info="1">mobile_banners</base_url>                    
+						    <sort_order>5</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</banner2>
+						<banner2_link translate="label">
+						    <label>Banner #2 Link</label>
+						    <frontend_type>text</frontend_type>       
+						    <sort_order>6</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</banner2_link>
+						<banner3 translate="label">
+						    <label>Banner #3</label>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">mobile_banners</upload_dir>
+                            <base_url type="media" scope_info="1">mobile_banners</base_url>                    
+						    <sort_order>7</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</banner3>
+						<banner3_link translate="label">
+						    <label>Banner #3 Link</label>
+						    <frontend_type>text</frontend_type>       
+						    <sort_order>8</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</banner3_link>
+						<banner4 translate="label">
+						    <label>Banner #4</label>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">mobile_banners</upload_dir>
+                            <base_url type="media" scope_info="1">mobile_banners</base_url>                    
+						    <sort_order>9</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</banner4>
+						<banner4_link>
+						    <label>Banner #4 Link</label>
+						    <frontend_type>text</frontend_type>       
+						    <sort_order>10</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</banner4_link>
+					</fields>
+				</homepage_slider>
+				<catalog translate="label">
+					<label>Catalog</label>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<sort_order>4</sort_order>
+					<fields>
+						<show_quantity>
+							<label>Show Quantity Field</label>
+							<comment>You can choose to hide the quantity field if your products are ordered one at a time.</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+						    <sort_order>1</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+						</show_quantity>
+						<max_quantity>
+							<label>Max Quantity</label>
+							<comment>Set the range for the quantity dropdowns on the product and cart pages. Defaults to 9.</comment>
+							<frontend_type>text</frontend_type>
+						    <sort_order>2</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</max_quantity>
+						<show_sku>
+							<label>Show SKU</label>
+							<comment>Display the SKU on the product page header.</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+						    <sort_order>3</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</show_sku>
+						<floaty_header>
+							<label>Floatable Header</label>
+							<comment>Float the product page header or price tag for products with many options (bundled, configurable).</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>avalanche_mobile/system_floatyheaders</source_model>
+							<sort_order>4</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+						</floaty_header>
+					</fields>
+				</catalog>
+                <footer translate="label">
+					<label>Footer</label>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<sort_order>5</sort_order>
+					<fields>
+						<switcher>
+							<label>Show Desktop/Mobile Switcher</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</switcher>
+						<store_switcher>
+							<label><![CDATA[Show Store/Language &amp; Currency Switcher]]></label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+						</store_switcher>
+                    </fields>
+                </footer>
+            </groups>
+        </avalanche_mobile>
+    </sections>
+</config>

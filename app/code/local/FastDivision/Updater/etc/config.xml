@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<config>
+    <modules>
+        <FastDivision_Updater>
+            <version>1.3.0</version>
+        </FastDivision_Updater>
+    </modules>
+	<global>
+		<helpers>
+			  <updater>
+				  <class>FastDivision_Updater_Helper</class>
+			  </updater>
+	  	</helpers>
+		<resources>
+			  <updater_setup>
+				  <setup>
+					  <module>FastDivision_Updater</module>
+				  </setup>
+				  <connection>
+					  <use>core_setup</use>
+				  </connection>
+			  </updater_setup>
+			  <updater_write>
+				  <connection>
+					  <use>core_write</use>
+				  </connection>
+			  </updater_write>
+			  <updater_read>
+				  <connection>
+					  <use>core_read</use>
+				  </connection>
+			  </updater_read>
+		</resources>
+		<models>
+			  <updater>
+				  <class>FastDivision_Updater_Model</class>
+			  </updater>
+		</models>
+    </global>
+    <adminhtml>
+		<events>
+            <controller_action_predispatch>
+                <observers>
+                    <updater_update>
+                        <type>singleton</type>
+                        <class>updater/updates</class>
+                        <method>check</method>
+                    </updater_update>				
+                </observers>
+            </controller_action_predispatch>
+        </events>
+    </adminhtml>
+	<default>
+
+    </default>
+</config>

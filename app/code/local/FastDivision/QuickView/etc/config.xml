@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<config>
+    <modules>
+        <FastDivision_QuickView>
+            <version>1.3.0</version>
+        </FastDivision_QuickView>
+    </modules>
+    <global>
+        <rewrite>
+            <FastDivision_QuickView_Catalog>
+                <from><![CDATA[#^/catalog/ajax_product/#]]></from>
+                <to>/quickview/catalog_product/ajax/</to>
+            </FastDivision_QuickView_Catalog>
+        </rewrite>
+    </global>
+    <frontend>
+        <routers>
+            <quickview>
+                <use>standard</use>
+                <args>
+                    <module>FastDivision_QuickView</module>
+                    <frontName>quickview</frontName>
+                </args>
+            </quickview>
+        </routers>
+    </frontend>
+</config>

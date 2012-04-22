@@ -1,0 +1,306 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php
+	ob_start();
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getProduct();
+	$cloudZoom = (Mage::getStoreConfig('avalanche_config/avalanche_product_details/avalanche_cloud_zoom') == 1) ? 'cloud-zoom' : '';
+?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div class="quick-view">
+	<div class="quick-view-inner">
+		<div id="product-content" class="quick-view-left">
+			<?php echo $this->getChildHtml('media') ?>
+		</div>
+		<div id="product-info" class="quick-view-right">
+			<div id="product-info-inner" class="black-box">
+				<?php if(Mage::getStoreConfig('avalanche_social/general/button_location') == 'above-reviews-full' || Mage::getStoreConfig('avalanche_social/general/button_location') == 'beside-reviews'): ?>
+				    <?php echo $this->getChildHtml('social-buttons') ?>
+				<?php endif; ?>
+
+				<div id="product-rating" class="clearfix">
+					<?php echo $this->getReviewsSummaryHtml($_product) ?>
+				</div>
+
+				<h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+
+				<div id="product-description">
+					<?php if ($_product->getShortDescription()):?>
+						<p><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></p>
+			        <?php endif;?>
+				</div>
+
+				<div id="product-price">
+			        <?php if($_product->getTypeId() != "grouped") { ?>
+					  <?php echo $this->getPriceHtml($_product) ?>
+			        <?php } ?>
+
+					<?php if(!$_product->isSaleable()): ?>
+					    <div id="availability"><?php echo $this->__('Out Of Stock') ?></div>
+					<?php endif; ?>
+				</div>
+
+				<?php if(Mage::getStoreConfig('avalanche_social/general/button_location') == 'below-price'): ?>
+			        <?php echo $this->getChildHtml('social-buttons') ?>
+			    <?php endif; ?>
+				
+			    <?php echo $this->getChildHtml('other') ?>
+
+				<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?> onsubmit="return false">
+					<div class="no-display">
+			            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+			            <input type="hidden" name="related_product" id="related-products-field" value="" />
+			            <input type="hidden" name="current_url" id="current-url" value="" />
+			        </div>
+
+				    <?php echo $this->getChildHtml('alert_urls') ?>
+				    <?php echo $this->getChildHtml('product_type_data') ?>
+				    <?php echo $this->getTierPriceHtml() ?>
+				    <?php echo $this->getChildHtml('extrahint') ?>
+
+					<?php if($_product->isSaleable()): ?>
+						<?php if($this->hasOptions()): ?>
+							<?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+							<?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+						<?php endif; ?>
+						<?php echo $this->getChildHtml('addtocart') ?>
+					<?php endif; ?>
+				</form>
+
+				<?php if(Mage::getStoreConfig('avalanche_social/general/button_location') == 'below-cart'): ?>
+			        <?php echo $this->getChildHtml('social-buttons') ?>
+			    <?php endif; ?>
+			</div>
+		</div>
+		<div class="quick-view-full-details">
+			<a href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Full Details') ?></a>
+		</div>
+	</div>
+	<a id="close_x" class="close" href="#"><?php echo $this->__('Close') ?></a>
+</div>
+<script type="text/javascript">
+    var productAddToCartForm = new VarienForm('product_addtocart_form');
+    productAddToCartForm.submit = function(button, url) {
+        if (this.validator.validate()) {
+            var form = this.form;
+            var oldUrl = form.action;
+
+            if (url) {
+               form.action = url;
+            }
+            var e = null;
+
+            try {
+				$jQ('body').append('<div id="ajax-load"></div>');
+				$jQ('#ajax-load').center();
+
+				$jQ.post('<?php echo $this->helper('checkout/cart')->getAddUrl($_product, array()) ?>', $jQ('#product_addtocart_form').serialize(), function(data) {
+					$jQ('#ajax-load').remove();
+
+					// If no exceptions, reload quick cart
+					if(!data.exceptions) {
+						// Close quick view
+						$jQ('.quick-view').trigger('close');
+						$jQ('.page-messages').remove(); // If errors, remove them
+
+						// Update quick cart
+						$jQ('#cart-menu .cart').remove();
+						$jQ('#cart-menu').append(data.quickcart);
+
+						// Show quick cart temporarily to customer signifying cart addition
+						$jQ('html, body').animate({ 'scrollTop': $jQ('#cart-menu').scrollTop() }, 500);
+						$jQ('#cart-menu .cart').addClass('cart-active');
+						var showCartToUser = setTimeout(function() {
+							$jQ('#cart-menu .cart').removeClass('cart-active');
+							initQuickCart();
+						}, 5000);
+					} else {
+						// Report exceptions via message popup
+						$jQ('.page-messages').remove();
+						$jQ('<ul class="messages"><li class="error-msg"><ul></ul></li></ul>').appendTo('body');
+
+						for(var i = 0; i < data.exceptions.length; i++) {
+							$jQ('.messages .error-msg ul').append('<li><span>' + data.exceptions[i] + '</span></li');
+						}
+
+						displayMessages();
+
+						// Make "Add to Cart" button active again
+						button.disabled = false;
+					}
+				}, 'json');
+            } catch (e) {
+            }
+            this.form.action = oldUrl;
+            if (e) {
+                throw e;
+            }
+
+            if (button && button != 'undefined') {
+                button.disabled = true;
+            }
+
+			return false;
+        }
+    }.bind(productAddToCartForm);
+
+    productAddToCartForm.submitLight = function(button, url){
+        if(this.validator) {
+            var nv = Validation.methods;
+            delete Validation.methods['required-entry'];
+            delete Validation.methods['validate-one-required'];
+            delete Validation.methods['validate-one-required-by-name'];
+            if (this.validator.validate()) {
+                if (url) {
+                    this.form.action = url;
+                }
+                this.form.submit();
+            }
+            Object.extend(Validation.methods, nv);
+        }
+    }.bind(productAddToCartForm);
+
+    function initQuickCart() {
+		if($jQ('.quickcart').length && !$jQ('.no-items-in-cart').length) {
+			$jQ('.cart').unbind().hoverIntent({
+				interval: 20,
+				over: function() { $jQ(this).addClass('cart-active').find('.quickcart').show(); }, 
+				out: function() { $jQ(this).removeClass('cart-active').find('.quickcart').hide(); }			
+			});
+		}
+	}
+
+    function displayMessages() {
+    	if($jQ('.messages').length) {
+			if(!$jQ('.messages').parent().is('.global-messages, .page-messages').length) {
+				$jQ('.messages').wrap('<div class="page-messages" />');
+
+				// Append close button to messages
+				if(!$jQ('.messages').parent().find('.messages-close').length)
+					$jQ('.messages').parent().append('<div class="messages-close"><a href="#" class="ir">Close</a></div>');
+
+				$jQ('.messages-close').appendTo('.page-messages');
+			}
+			$jQ('.messages').parent().addClass('messages-active').css('zIndex', '1000002');
+			
+			// IE6-7 Z-Index & Zoom Fix
+			if($jQ('.ie7 .messages, .ie6 .messages').length) {
+				$jQ('.ie7 .messages, .ie6 .messages').closest('div[class*="grid_"]').css({
+					position: 'relative',
+					'zIndex': 9999
+				});
+			}
+			
+			var open = setTimeout(function() {
+				$jQ('.messages-close a').css('display', 'block').click(function(e) {
+					$jQ('.messages').parent().removeClass('messages-active');
+					$jQ('.messages-close').remove();
+					e.preventDefault();
+				});
+			}, 400);
+		}
+    }
+</script>
+<script type="text/javascript">
+	jQuery.fn.mousehold = function(timeout, f) {
+		if (timeout && typeof timeout == 'function') {
+			f = timeout;
+			timeout = 100;
+		}
+		if (f && typeof f == 'function') {
+			var timer = 0;
+			var fireStep = 0;
+			return this.each(function() {
+				jQuery(this).mousedown(function() {
+					fireStep = 1;
+					var ctr = 0;
+					var t = this;
+					timer = setInterval(function() {
+						ctr++;
+						f.call(t, ctr);
+						fireStep = 2;
+					}, timeout);
+				})
+
+				clearMousehold = function() {
+					clearInterval(timer);
+					if (fireStep == 1) f.call(this, 1);
+					fireStep = 0;
+				}
+				
+				jQuery(this).mouseout(clearMousehold);
+				jQuery(this).mouseup(clearMousehold);
+			})
+		}
+	}
+</script>
+<script type="text/javascript">
+(function($) {
+	if($('.product-image-thumbnail').length) {
+		$('.product-image-thumbnail').click(function(e) {
+			var imgContainer = $('#product-image');
+			var imgUrl = $(this).metadata({ name: 'data-img', type: 'attr' }).img;
+			var img = new Image();
+			$(img).attr({ 'width': '300' });
+			
+			$(img).load(function() {
+				imgContainer.hide().html($(this));
+				imgContainer.find('img').attr('width', '300');
+				imgContainer.fadeIn('fast');
+			}).attr('src', imgUrl);
+				
+			e.preventDefault();
+		});
+	}
+
+	// Set current URL of page for remove link if added to cart
+	$('#current-url').val(document.location.href);
+
+	// Quantity Spinner
+	if($('#quantity-spinner').length) {
+		$('#quantity-spinner #q-more, #quantity-spinner #q-less').click(function(e) { 
+			e.preventDefault();
+		});
+		$('#quantity-spinner #q-more').mousehold(200, function(i) {
+			$('#quantity').val(parseInt($('#quantity').val(),0) + 1);
+		});
+		$('#quantity-spinner #q-less').mousehold(200, function(i) {
+			if(parseInt($('#quantity').val(),0) > 1)
+				$('#quantity').val(parseInt($('#quantity').val(),0) - 1);
+		});
+	}
+})(jQuery);
+</script>
+<?php
+	$data = ob_get_contents();
+	ob_end_clean();
+
+	$data = str_replace('//<![CDATA[', '', $data);
+	$data = str_replace('//]]>', '', $data);
+	
+	$scripts = array();
+	if(preg_match_all('/(<script(.*?)>(.*?)<\/script>)/ism', $data, $matches) && !empty($matches[3])) {
+	    $scripts = $matches[3];
+	}
+	
+	$data = preg_replace('/(<script(.*?)>(.*?)<\/script>)/ism', '', $data);
+	
+	echo json_encode(array('html' => $data, 'scripts' => $scripts));

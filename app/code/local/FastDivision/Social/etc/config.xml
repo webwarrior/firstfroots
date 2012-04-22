@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<config>
+    <modules>
+        <FastDivision_Social>
+            <version>1.3.0</version>
+        </FastDivision_Social>
+    </modules>
+	<global>
+		<helpers>
+	        <social>
+	            <class>FastDivision_Social_Helper</class>
+	        </social>
+	    </helpers>
+	    <models>
+            <social>
+                <class>FastDivision_Social_Model</class>
+            </social>   
+        </models>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <social>
+                    <file>social.xml</file>
+                </social>
+            </updates>
+        </layout>
+    </frontend>
+	<default>
+		<avalanche_social>
+			<general>
+				<button_location>beside-reviews</button_location>
+			</general>
+			<facebook>
+				<facebook_enabled>1</facebook_enabled>
+				<facebook_count>standard</facebook_count>
+			</facebook>
+			<twitter>
+				<twitter_enabled>1</twitter_enabled>
+				<twitter_count>none</twitter_count>
+			</twitter>
+			<google>
+				<google_enabled>1</google_enabled>
+				<google_size>medium</google_size>
+				<google_showcount>0</google_showcount>
+			</google>
+			<pinterest>
+				<pinterest_count>none</pinterest_count>
+			</pinterest>
+		</avalanche_social>
+    </default>
+</config>

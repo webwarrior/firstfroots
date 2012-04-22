@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<config>
+    <sections>
+        <avalanche_social translate="label">
+            <label><![CDATA[<span id="social-section" class="setting-icon"></span><div style="padding-left:22px">Social Media</div>]]></label>
+            <tab>avalanche_tab</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>44</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>1</sort_order>
+                    <fields>
+                        <button_location>
+                            <label>Button Location</label>
+                            <comment>Select the location of your social media buttons. Note: Place near review summary or short description for the buttons to appear on Quick View.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>social/buttonlocation</source_model>                    
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </button_location>
+                    </fields>
+                </general>
+                <facebook translate="label">
+                    <label>Facebook</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>2</sort_order>
+                    <fields>
+                        <facebook_enabled translate="label">
+                            <label>Like Button</label>
+                            <comment>Displays the "Like" button on your product page and Quick View.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>                    
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebook_enabled>
+                        <facebook_count translate="label">
+                            <label>Like Count</label>
+                            <comment>Select the "Like" button style. Works best with "Standard" or "Box Count".</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>social/likecount</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebook_count>
+                        <facebook_page translate="label">
+                            <label>Facebook Page</label>
+                            <comment>Populates the footer link to your Facebook page.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebook_page>
+                        <facebook_og_sitename translate="label">
+                            <label>Open Graph Site Name</label>
+                            <comment><![CDATA[Improves sharing for the Facebook Like button. Refer to the <a href="http://developers.facebook.com/docs/opengraph/" target="_blank">Open Graph Protocol documentation.</a>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebook_og_sitename>
+                        <facebook_og_admins translate="label">
+                            <label>Open Graph Admins</label>
+                            <comment><![CDATA[Associates your page with a Facebook account or Facebook platform application. Refer to the <a href="http://developers.facebook.com/docs/opengraph/" target="_blank">Open Graph Protocol documentation.</a>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebook_og_admins>
+                    </fields>                
+                </facebook>
+                <twitter translate="label">
+                    <label>Twitter</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>3</sort_order>
+                    <fields>
+                        <twitter_enabled translate="label">
+                            <label>Tweet Button</label>
+                            <comment>Displays the "Tweet" button on your product page and Quick View.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>                    
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitter_enabled>
+                        <twitter_count translate="label">
+                            <label>Tweet Count</label>
+                            <comment>Select the "Tweet" button style. Works best with "Horizontal" or "No Count".</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>social/tweetcount</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitter_count>
+                        <twitter_hashtag translate="label">
+                            <label>Hashtag</label>
+                            <comment>Set a default hashtag when customers tweet about your products.</comment>
+                            <frontend_type>text</frontend_type>                  
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitter_hashtag>
+                        <twitter_username translate="label">
+                            <label>Twitter Username</label>
+                            <comment>Populates the footer link to your Twitter page and sets the "via" field for your tweet buttons.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </twitter_username>
+                    </fields>              
+                </twitter>
+                <google translate="label">
+                    <label>Google+</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>4</sort_order>                
+                    <fields>
+                        <google_enabled translate="label">
+                            <label>+1 Button</label>
+                            <comment>Displays the "+1" button on your product page and Quick View.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>                    
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </google_enabled>
+                        <google_showcount translate="label">
+                            <label>+1 Count</label>
+                            <comment>Show or hide the +1 count.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>               
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </google_showcount>
+                        <google_size translate="label">
+                            <label>Button Size</label>
+                            <comment>Change the size of the Google +1 button.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>social/googlesize</source_model>                    
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </google_size>
+                        <google_username translate="label">
+                            <label>Google+ Username</label>
+                            <comment>Populates the footer link to your Google+ page.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </google_username>
+                    </fields>    
+                </google>
+                <pinterest translate="label">
+                    <label>Pinterest</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>5</sort_order>
+                    <fields>
+                        <pinterest_enabled translate="label">
+                            <label>Pin It Button</label>
+                            <comment>Displays the "Pin It" button on your product page and Quick View.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>                    
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pinterest_enabled>
+                        <pinterest_count translate="label">
+                            <label>Pin Count</label>
+                            <comment>Select the "Pin It" button style. Works best with "Horizontal" or "No Count".</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>social/pincount</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pinterest_count>
+                    </fields>               
+                </pinterest>
+                <youtube translate="label">
+                    <label>YouTube</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>6</sort_order>
+                    <fields>
+                        <youtube_username translate="label">
+                            <label>YouTube Username</label>
+                            <comment>Populates the footer link to your YouTube page.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </youtube_username>
+                    </fields>
+                </youtube>
+            </groups>
+        </avalanche_social>
+    </sections>
+</config>

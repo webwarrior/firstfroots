@@ -1,0 +1,62 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div class="grid_12 white-box">
+    <h1><?php echo $this->__('Order Confirmation') ?></h1>
+
+	<div class="white-box-inner">
+		<div class="page-messages">
+			<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+		</div>
+		
+		<h4><strong><?php echo $this->__('Thank you for your purchase!') ?></strong></h4>
+
+		<?php if ($this->getOrderId()):?>
+		<?php if ($this->getCanViewOrder()) :?>
+		    <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+		<?php  else :?>
+		    <p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
+		<?php endif;?>
+		    <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+		<?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+		    <p>
+		        <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+		        <?php echo $this->getChildHtml() ?>
+		    </p>
+		<?php endif;?>
+		<?php endif;?>
+
+		<?php if ($this->getAgreementRefId()): ?>
+		    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+		<?php endif;?>
+
+		<?php if ($profiles = $this->getRecurringProfiles()):?>
+		<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+		<ul class="disc">
+		<?php foreach($profiles as $profile):?>
+		<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+		    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+		<?php endforeach;?>
+		</ul>
+		<?php endif;?>
+
+		<div class="buttons-set">
+		    <button type="button" class="action-button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><?php echo $this->__('Continue Shopping') ?></span></button>
+		</div>
+	</div>
+</div>

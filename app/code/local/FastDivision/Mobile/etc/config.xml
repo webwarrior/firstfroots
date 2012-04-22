@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<config>
+    <modules>
+        <FastDivision_Mobile>
+            <version>1.3.0</version>
+        </FastDivision_Mobile>
+    </modules>
+    <global>
+        <blocks>
+            <avalanche_mobile>
+                <class>FastDivision_Mobile_Block</class>
+            </avalanche_mobile>
+        </blocks>
+        <helpers>
+            <avalanche_mobile>
+                <class>FastDivision_Mobile_Helper</class>
+            </avalanche_mobile>
+        </helpers>  
+        <models>
+            <avalanche_mobile>
+                <class>FastDivision_Mobile_Model</class>
+            </avalanche_mobile>
+            <catalog>
+                <rewrite>
+                    <design>FastDivision_Mobile_Model_Catalog_Design</design>
+                </rewrite>
+            </catalog>
+        </models>
+        <resources>
+			<mobile_setup>
+				<setup>
+					<module>FastDivision_Mobile</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</mobile_setup>
+			<avalanche_mobile_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</avalanche_mobile_write>
+			<avalanche_mobile_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</avalanche_mobile_read>
+        </resources>
+    </global>
+    <frontend>
+		<translate>
+			<modules>
+                <FastDivision_Mobile>
+                    <files>
+                        <default>FastDivision_Mobile.csv</default>
+                    </files>
+                </FastDivision_Mobile>
+			</modules>
+		</translate>
+		<layout>
+			<updates>
+				<onsale>
+					<file>fastdivision_mobile.xml</file>
+				</onsale>
+			</updates>
+		</layout>
+		<events>
+            <controller_action_predispatch>
+                <observers>
+                    <avalanche_mobile_predispatch>
+                        <type>singleton</type>
+                        <class>avalanche_mobile/observer_mobile</class>
+                        <method>predispatch</method>
+                    </avalanche_mobile_predispatch>
+                </observers>
+            </controller_action_predispatch>
+            <controller_front_init_before>
+                <observers>
+                    <avalanche_mobile_frontend_init>
+                        <type>singleton</type>
+                        <class>avalanche_mobile/observer_mobile</class>
+                        <method>beforeFrontendInit</method>
+                    </avalanche_mobile_frontend_init>
+                </observers>
+            </controller_front_init_before>
+        </events>
+        <routers>
+            <avalanche_mobile>
+                <use>standard</use>
+                <args>
+                    <module>FastDivision_Mobile</module>
+                    <frontName>mobile</frontName>
+                </args>
+            </avalanche_mobile>
+            <cms>
+                <args>
+                    <modules>
+                        <FastDivision_Mobile before="Mage_Cms">FastDivision_Mobile_Cms</FastDivision_Mobile>
+                    </modules>
+                </args>
+            </cms>
+        </routers>
+		<layout>
+			<updates>
+				<avalanche_mobile>
+					<file>avalanche_mobile.xml</file>
+				</avalanche_mobile>
+			</updates>
+		</layout>
+    </frontend>
+    <adminhtml>
+		<translate>
+			<modules>
+                <FastDivision_Mobile>
+                    <files>
+                        <default>FastDivision_Mobile.csv</default>
+                    </files>
+                </FastDivision_Mobile>
+			</modules>
+		</translate>
+        <events>
+            <admin_system_config_changed_section_avalanche_mobile>
+                <observers>
+                    <mobile>
+                        <type>singleton</type>
+                        <class>avalanche_mobile/observer_style</class>
+                        <method>saveConfig</method>
+                    </mobile>
+                </observers>
+            </admin_system_config_changed_section_avalanche_mobile>
+        </events>
+    </adminhtml>
+    <default>
+        <avalanche_mobile>
+            <general>
+                <mobile_cms_home_page>mobile-home</mobile_cms_home_page>
+            </general>
+            <design>
+                <logo>"../images/mobile-logo.png"</logo>
+                <logo_retina>"../images/mobile-logo-r.png"</logo_retina>
+                <touch_icon></touch_icon>
+                <primarycolor>#db391c</primarycolor>
+                <secondarycolor>#3da8ff</secondarycolor>
+                <jpeg_compression>80</jpeg_compression> 
+            </design>
+            <homepage_slider>
+                <tagline>Call Us at 1-800-GO-MAGE</tagline>
+            </homepage_slider>
+            <catalog>
+                <show_quantity>1</show_quantity>
+                <max_quantity>9</max_quantity>
+                <floaty_header>#product-header</floaty_header>
+            </catalog>
+            <footer>
+                <switcher>1</switcher>
+                <store_switcher>1</store_switcher>
+            </footer>
+        </avalanche_mobile>
+    </default>
+</config>

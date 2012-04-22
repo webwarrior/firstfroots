@@ -1,0 +1,67 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php
+	$_main_categories = $this->getStoreCategories();
+?>
+<ul class="menu">
+	<?php
+	if($_main_categories) {
+	    /* This bit cycles through the categories - setting the next one to current */
+	    foreach ($_main_categories as $_main_category) {
+	      if($_main_category->getIsActive()) {                  
+	           $cur_category=Mage::getModel('catalog/category')->load($_main_category->getId());
+	           $layer = Mage::getSingleton('catalog/layer');
+	           $layer->setCurrentCategory($cur_category);
+	
+		 if($this->getCurrentCategory()->getImageUrl()) {
+			$catImage = $this->getCurrentCategory()->getImageUrl();
+		 } else {
+	     	$catImage = $this->getSkinUrl('images/catalog/product/placeholder/small_image.jpg');
+		 }
+	?>                
+	<li>
+		<a href="<?php echo $this->getCurrentCategory()->getUrl(); ?>"><img src="<?php echo $catImage ?>" alt="<?php echo $this->getCurrentCategory()->getName(); ?>" width="118"></a>
+		<h2><a href="<?php echo $this->getCurrentCategory()->getUrl(); ?>"><?php echo $this->getCurrentCategory()->getName(); ?></a></h2>
+		
+		<?php                
+			$_categories = $this->getCurrentChildCategories();
+			if($_categories->count()):
+		?>
+
+		<ul class="subcategories">
+		<?php foreach ($_categories as $_category): ?>                    
+		    <?php 
+			if($_category->getIsActive()):                    
+		       $cur_subcategory = Mage::getModel('catalog/category')->load($_category->getId());
+		       $layer = Mage::getSingleton('catalog/layer');
+		       $layer->setCurrentCategory($cur_subcategory);
+			?>                          
+			<li><a href="<?php echo $this->getCategoryUrl($_category)?>"><?php echo $_category->getName()?></a></li>
+		    <?php endif; ?>
+		<?php endforeach; ?>
+		</ul>
+	
+		<?php endif; ?>
+	</li>
+	<?php 
+			}
+		}
+	} 
+	?>
+</ul>

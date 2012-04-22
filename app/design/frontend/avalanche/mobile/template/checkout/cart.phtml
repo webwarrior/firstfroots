@@ -1,0 +1,81 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div id="cart">
+	<div class="page-messages">
+    	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+	</div>
+
+	<div class="white-box">		
+	    <?php echo $this->getChildHtml('form_before') ?>
+		<div id="shopping-cart">
+			<?php $cartCount = $this->helper('checkout/cart')->getSummaryCount(); ?>
+			<?php if($cartCount > 1) { ?>
+				<h3><?php echo $this->__('%s Items in Cart', $cartCount); ?></h3>
+			<?php } else { ?>
+				<h3><?php echo $this->__('%s Item in Cart', $cartCount); ?></h3>
+			<?php } ?>
+			<div id="remove-text" class="hidden"><?php echo $this->__('Are you sure you want to remove') ?></div>
+			<div class="white-box-inner">
+				<form id="shopping-cart-form" action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+					<table style="width: 100%">
+						<tr>
+							<td>
+								<table id="items-in-cart">
+					                <tbody>
+						                <?php foreach($this->getItems() as $_item): ?>
+						                    <?php echo $this->getItemHtml($_item); ?>
+						                <?php endforeach ?>
+					                </tbody>
+									<?php /*<tfoot>
+										<td colspan="5">
+											<div id="discount-footer">
+												<button id="update-quantity-button" type="submit" class="light-button button-small"><?php echo $this->__('Update Qty.') ?></button>
+												<?php echo $this->getChildHtml('coupon') ?>
+											</div>
+										</td>
+									</tfoot>*/ ?>
+					            </table>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div id="order-total">
+		<?php echo $this->getChildHtml('totals'); ?>
+
+		<?php if(!$this->hasError()): ?>
+	        <ul class="checkout-types">
+	        <?php foreach ($this->getMethods('methods') as $method): ?>
+	            <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+	            <li><?php echo $methodHtml; ?></li>
+	            <?php endif; ?>
+	        <?php endforeach; ?>
+	        </ul>
+        <?php endif; ?>					
+	</div>
+
+	<div id="shipping-estimate">
+		<div id="discount-and-shipping" class="clearfix">
+			<?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+		</div>
+	</div>
+</div>

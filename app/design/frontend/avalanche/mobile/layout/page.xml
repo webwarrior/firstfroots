@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<layout version="0.1.0">
+    <default translate="label" module="page">
+        <label>All Pages</label>
+        <block type="page/html" name="root" output="toHtml" template="page/1column.phtml">
+
+            <block type="page/html_head" name="head" as="head">
+                <action method="addCss" ifconfig="avalanche_mobile/design/customcss"><stylesheet>css/custom.css</stylesheet></action>
+                <action method="addJs"><script>lib/ccard.js</script></action>
+                <action method="addJs"><script>prototype/validation.js</script></action>
+                <action method="addJs"><script>scriptaculous/effects.js</script></action>
+                <action method="addJs"><script>varien/js.js</script></action>
+                <action method="addJs"><script>varien/form.js</script></action>
+                <action method="addJs"><script>mage/cookies.js</script></action>
+            </block>
+
+            <!-- Add body classes for specific configuration values -->
+            <action method="addBodyClass" ifconfig="avalanche_mobile/design/customcss"><className>custom</className></action>
+            <!--<action method="addBodyClass" ifconfig="avalanche_mobile/design/fullwidth"><className>fullwidth</className></action>-->
+
+            <block type="core/text_list" name="after_body_start" as="after_body_start" translate="label">
+                <label>Page Top</label>
+            </block>
+
+            <block type="page/html_notices" name="global_notices" as="global_notices" template="page/html/notices.phtml" />
+
+            <block type="page/html_header" name="header" as="header">
+                <block type="page/template_links" name="top.links" as="topLinks"/>
+				<block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+
+                <block type="page/html_wrapper" name="top.container" as="topContainer" translate="label">
+                    <label>Page Header</label>
+                    <action method="setElementClass"><value>top-container</value></action>
+                </block>
+            </block>
+
+            <block type="page/html" name="catalog_menu" as="catalog_menu" template="page/html/catalog_menu.phtml">
+                <block type="core/text_list" name="top.menu" as="topMenu" translate="label">
+                    <label>Navigation Bar</label>
+                </block>
+            </block>
+
+            <block type="page/html" name="cart_preview" as="cart_preview" template="checkout/cart/cart_preview.phtml">
+                <block type="checkout/cart_sidebar" name="quickcart" template="checkout/cart/quickcart.phtml"/>
+            </block>
+            
+            <block type="core/text_list" name="left" as="left" translate="label">
+                <label>Left Column</label>
+            </block>
+
+            <block type="core/messages" name="global_messages" as="global_messages"/>
+            <block type="core/messages" name="messages" as="messages"/>
+
+            <block type="core/text_list" name="content" as="content" translate="label">
+                <label>Main Content Area</label>
+            </block>
+
+            <block type="core/text_list" name="right" as="right" translate="label">
+                <label>Right Column</label>
+            </block>
+
+            <block type="page/html_footer" name="footer" as="footer" template="page/html/footer.phtml">
+                <block type="page/html_wrapper" name="bottom.container" as="bottomContainer" translate="label">
+                    <label>Page Footer</label>
+                    <action method="setElementClass"><value>bottom-container</value></action>
+                </block>
+                <!--<block type="page/switch" name="store_switcher" as="store_switcher" template="page/switch/stores.phtml"/>-->
+                <block type="page/switch" name="store_language" as="store_language" template="page/switch/languages.phtml"/>
+                <block type="directory/currency" name="store_currency" as="store_currency" template="directory/currency.phtml"/>
+            </block>
+
+            <block type="core/text_list" name="before_body_end" as="before_body_end" translate="label">
+				<block type="page/html_head" name="footer_js" as="footer_js" template="page/html/footer_js.phtml">
+					<action method="addJs"><script>avalanche/mobile/zepto-0.8.js</script></action>
+					<action method="addJs"><script>avalanche/mobile/helper.js</script></action>
+                    <!--<action method="addJs"><script>avalanche/mobile/plugins/spin.js</script></action>-->
+                    <action method="addJs"><script>avalanche/mobile/modules/browser.js</script></action>
+                    <action method="addJs"><script>avalanche/mobile/modules/main.js</script></action>
+				</block>
+                <label>Page Bottom</label>
+            </block>
+        </block>
+
+        <block type="core/profiler" output="toHtml" name="core_profiler"/>
+    </default>
+
+    <page_empty translate="label">
+        <label>All Empty Layout Pages</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/empty.phtml</template></action>
+            <!-- Mark root page block that template is applied -->
+            <action method="setIsHandle"><applied>1</applied></action>
+            <action method="setLayoutCode"><name>empty</name></action>
+        </reference>
+		<reference name="head">
+			<action method="removeItem"><type>js</type><name>prototype/validation.js</name></action>
+			<action method="removeItem"><type>js</type><name>varien/js.js</name></action>
+			<action method="removeItem"><type>js</type><name>varien/form.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/cookies.js</name></action>
+		</reference>
+    </page_empty>
+
+    <page_one_column translate="label">
+        <label>All One-Column Layout Pages</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+            <action method="setIsHandle"><applied>1</applied></action>
+            <action method="setLayoutCode"><name>one_column</name></action>
+        </reference>
+    </page_one_column>
+
+    <page_two_columns_left translate="label">
+        <label>All Two-Column Layout Pages (Left Column)</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+            <action method="setIsHandle"><applied>1</applied></action>
+            <action method="setLayoutCode"><name>two_columns_left</name></action>
+        </reference>
+    </page_two_columns_left>
+
+    <page_two_columns_right translate="label">
+        <label>All Two-Column Layout Pages (Right Column)</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+            <action method="setIsHandle"><applied>1</applied></action>
+            <action method="setLayoutCode"><name>two_columns_right</name></action>
+        </reference>
+    </page_two_columns_right>
+
+    <page_three_columns translate="label">
+        <label>All Three-Column Layout Pages</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/3columns.phtml</template></action>
+            <action method="setIsHandle"><applied>1</applied></action>
+            <action method="setLayoutCode"><name>three_columns</name></action>
+        </reference>
+    </page_three_columns>
+
+	<page_fd_catalog_list translate="label">
+		<label>Catalog List Layout Page</label>
+		<reference name="root">
+			<action method="setTemplate"><template>page/fd_catalog-list.phtml</template></action>
+			<action method="setIsHandle"><applied>1</applied></action>
+			<action method="setLayoutCode"><name>fd_catalog_list</name></action>
+		</reference>
+	</page_fd_catalog_list>
+
+	<page_fd_catalog_product translate="label">
+		<label>Catalog Product Layout Page</label>
+		<reference name="root">
+			<action method="setTemplate"><template>page/fd_catalog-product.phtml</template></action>
+			<action method="setIsHandle"><applied>1</applied></action>
+			<action method="setLayoutCode"><name>fd_catalog_product</name></action>
+		</reference>
+	</page_fd_catalog_product>
+</layout>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<layout version="0.1.0">
+    <sales_billing_agreement_index>
+        <update handle="customer_account"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/fd_account-page.phtml</template></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="sales/billing_agreements" name="customer.account.billing.agreement" template="sales/billing/agreements.phtml"/>
+        </reference>
+    </sales_billing_agreement_index>
+
+    <sales_billing_agreement_view>
+        <update handle="customer_account"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/fd_account-page.phtml</template></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="sales/billing_agreement_view" name="customer.account.billing.agreement" template="sales/billing/agreement/view.phtml"/>
+        </reference>
+    </sales_billing_agreement_view>
+
+    <customer_account>
+        <reference name="customer_account_navigation">
+			<!-- Custom -->
+            <!--<action method="addLink" translate="label"><name>billing_agreements</name><path>sales/billing_agreement/</path><label>Billing Agreements</label></action>-->
+        </reference>
+    </customer_account>
+</layout>

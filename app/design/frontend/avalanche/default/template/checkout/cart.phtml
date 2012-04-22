@@ -1,0 +1,88 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div id="cart" class="clearfix">
+	<div class="grid_12 white-box">
+		<h1><?php echo $this->__('Shopping Cart') ?></h1>
+		
+		<div class="page-messages">
+	    	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+		</div>
+		
+	    <?php echo $this->getChildHtml('form_before') ?>
+		<div id="shopping-cart" class="grid_8 omega">
+			<h3><?php echo $this->__('Items In Your Cart'); ?></h3>
+			<form id="shopping-cart-form" action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+				<table style="width: 100%">
+					<tr>
+						<td>
+							<table id="items-in-cart">
+				                <thead>
+				                    <tr>
+										<th style="width: 81px">
+				                            <?php echo $this->__('Qty.') ?>
+				                        </th>
+				                        <th colspan="2">
+				                            <?php echo $this->__('Description') ?>
+				                        </th>
+				                        <th style="width: 104px">
+				                            <?php echo $this->__('Each') ?>
+				                        </th>
+										<th style="width: 104px">
+											<?php echo $this->__('Total') ?>
+										</th>
+				                    </tr>
+				                </thead>
+				                <tbody>
+					                <?php foreach($this->getItems() as $_item): ?>
+					                    <?php echo $this->getItemHtml($_item); ?>
+					                <?php endforeach ?>
+				                </tbody>
+								<tfoot>
+									<td colspan="5">
+										<div id="discount-footer">
+											<button id="update-quantity-button" type="submit" class="light-button button-small"><?php echo $this->__('Update Qty.') ?></button>
+											<?php echo $this->getChildHtml('coupon') ?>
+										</div>
+									</td>
+								</tfoot>
+				            </table>
+						</td>
+					</tr>
+				</table>
+			</form>
+			<div id="discount-and-shipping" class="clearfix">
+				<?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+			</div>
+		</div>
+		<div id="order-total" class="grid_4 omega" style="width: 286px">
+			<h3><?php echo $this->__('Order Total'); ?></h3>
+			<?php echo $this->getChildHtml('totals'); ?>
+
+			<?php if(!$this->hasError()): ?>
+		        <ul class="checkout-types">
+		        <?php foreach ($this->getMethods('methods') as $method): ?>
+		            <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+		            <li><?php echo $methodHtml; ?></li>
+		            <?php endif; ?>
+		        <?php endforeach; ?>
+		        </ul>
+	        <?php endif; ?>					
+		</div>
+	</div>
+</div>

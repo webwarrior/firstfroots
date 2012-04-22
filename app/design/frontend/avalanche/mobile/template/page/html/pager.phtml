@@ -1,0 +1,39 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php if($this->getCollection()->getSize()): ?>
+    <?php if($this->getLastPageNum()>1): ?>
+    <div class="pager top-pager">
+        <div class="pages clearfix">
+            <a href="#pager" id="pager-button" class="button dropdown-button">Page <?php echo $this->getCurrentPage() ?>
+                <select id="page-selector" onchange="setLocation(this.value)">
+                    <?php if ($this->canShowFirst()): ?>
+                        <option value="<?php echo $this->getFirstPageUrl() ?>">Page 1</option>
+                    <?php endif;?>
+                    <?php foreach ($this->getFramePages() as $_page): ?>
+                        <option<?php if ($this->isPageCurrent($_page)): ?> selected="selected"<?php endif;?> value="<?php echo $this->getPageUrl($_page) ?>">Page <?php echo $_page ?></option>
+                    <?php endforeach;?>
+                    <?php if ($this->canShowLast()): ?>
+                        <option value="<?php echo $this->getLastPageUrl() ?>"><?php echo $this->getLastPageNum() ?></option>
+                    <?php endif;?>
+                </select>
+            </a>
+        </div>
+    </div>
+    <?php endif; ?>
+<?php endif ?>

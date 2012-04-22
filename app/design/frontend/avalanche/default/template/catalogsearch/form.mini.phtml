@@ -1,0 +1,34 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<form id="search_mini_form" action="<?php echo $this->helper('catalogsearch')->getResultUrl() ?>" method="get">
+	<input id="search-box" type="text" name="<?php echo $this->helper('catalogsearch')->getQueryParamName() ?>" placeholder="<?php echo $this->__('Find It Fast...'); ?>" value="<?php echo $this->helper('catalogsearch')->getEscapedQueryText(); ?>">
+	<button id="go-button" type="submit" title="<?php echo $this->__('Go') ?>"><?php echo $this->__('Go') ?></button>
+	<?php if(Mage::getStoreConfig('avalanche_config/avalanche_header/avalanche_searchautocomplete') == 1) { ?>
+		<div id="search_autocomplete" class="search-autocomplete"></div>
+	<?php } ?>
+    <script type="text/javascript">
+    //<![CDATA[
+        var searchForm = new Varien.searchForm('search_mini_form', 'search-box', '<?php echo $this->__('Find It Fast...') ?>');
+
+		<?php if(Mage::getStoreConfig('avalanche_config/avalanche_header/avalanche_searchautocomplete') == 1) { ?>
+        searchForm.initAutocomplete('<?php echo $this->helper('catalogsearch')->getSuggestUrl() ?>', 'search_autocomplete');
+		<?php } ?>
+    //]]>
+    </script>
+</form>

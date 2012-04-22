@@ -1,0 +1,36 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div id="account-menu" class="white-box">
+	<h1><?php echo $this->__('My Account'); ?><a id="logout-button" href="<?php echo Mage::helper('customer')->getLogoutUrl() ?>" class="button small-button">Logout</a></h1>
+    <div class="white-box-inner">
+        <select id="account-menu-select">    
+            <?php $_links = $this->getLinks(); ?>
+            <?php $_index = 1; ?>
+            <?php $_count = count($_links); ?>
+            <?php foreach ($_links as $_link): ?>
+                <?php $_last = ($_index++ >= $_count); ?>
+                <?php if ($this->isActive($_link)): ?>
+                    <option selected="selected" value="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></option>
+                <?php else: ?>
+                    <option value="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></option>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </select>
+    </div>
+</div>

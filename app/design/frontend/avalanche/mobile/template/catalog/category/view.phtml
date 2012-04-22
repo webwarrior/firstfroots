@@ -1,0 +1,48 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php
+    $_helper = $this->helper('catalog/output');
+    $_category = $this->getCurrentCategory();
+	$_filters = Mage::getSingleton('Mage_Catalog_Block_Layer_State')->getActiveFilters();
+?>
+<div class="page-title category-title">
+    <h1><?php 
+			$title = $_helper->categoryAttribute($_category, $_category->getName(), 'name');
+			
+			foreach($_filters as $_filter) {
+				if($_filter->getName() == "Category") {
+					$title = $_filter->getLabel();
+				} else {
+					$title = $_filter->getLabel() . " " . $title;
+				}
+			}
+			
+			echo $title;
+		?></h1>
+</div>
+
+<div class="page-messages">
+	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+</div>
+
+<?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
+<div class="category-description"><?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?></div>
+<?php endif; ?>
+
+<?php echo $this->getProductListHtml() ?>

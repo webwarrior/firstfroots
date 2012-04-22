@@ -1,0 +1,29 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div class="ratings">
+	<?php if ($this->getReviewsCount()): ?>
+			<?php if ( $this->getReviewsCount()==1 ): ?>
+				<a href="<?php echo $this->getReviewsUrl() ?>"><?php if ($this->getRatingSummary()):?><span class="stars rating<?php echo round($this->getRatingSummary() / 20) ?>"></span><?php endif; ?><span class="review-count"><?php echo $this->__('%d Review', $this->getReviewsCount()) ?></span></a>
+			<?php else: ?>
+				<a href="<?php echo $this->getReviewsUrl() ?>"><?php if ($this->getRatingSummary()):?><span class="stars rating<?php echo round($this->getRatingSummary() / 20) ?>"></span><?php endif; ?><span class="review-count"><?php echo $this->__('%d Reviews', $this->getReviewsCount()) ?></span></a>
+			<?php endif; ?>
+	<?php else: ?>
+		<a href="<?php echo $this->getReviewsUrl() ?>"><span class="stars rating0"></span><span class="review-count"><?php echo $this->__('0 Reviews') ?></span></a>
+	<?php endif; ?>
+</div>

@@ -1,0 +1,51 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+		<footer>
+			<?php echo $this->getChildHtml('newsletter') ?>
+			<div id="footer-container" class="clearfix">
+				<div id="site-map" class="grid_6 alpha clearfix">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links')->toHtml() ?> 
+				</div>
+				<div class="grid_3">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_box')->toHtml() ?>
+				</div>
+				<div class="grid_3 omega">
+					<div id="social-media" class="feature clearfix">
+						<p>Have a question? Just want to say hello? <strong>Find us on <a href="http://facebook.com/<?php echo Mage::getStoreConfig('avalanche_social/facebook/facebook_page') ?>">Facebook</a>, <a href="http://twitter.com/<?php echo Mage::getStoreConfig('avalanche_social/twitter/twitter_username') ?>">Twitter</a>, and <a href="http://youtube.com/user/<?php echo Mage::getStoreConfig('avalanche_social/youtube/youtube_username') ?>">YouTube.</a></strong></p>
+						<ul class="menu">
+							<li><a href="http://facebook.com/<?php echo Mage::getStoreConfig('avalanche_social/facebook/facebook_page') ?>"><img src="<?php echo $this->getSkinUrl('images/social/facebook-large.png') ?>" alt="Facebook"></a></li>
+							<li><a href="http://twitter.com/<?php echo Mage::getStoreConfig('avalanche_social/twitter/twitter_username') ?>"><img src="<?php echo $this->getSkinUrl('images/social/twitter-large.png') ?>" alt="Twitter"></a></li>
+							<li><a href="http://youtube.com/user/<?php echo Mage::getStoreConfig('avalanche_social/youtube/youtube_username') ?>"><img src="<?php echo $this->getSkinUrl('images/social/youtube-large.png') ?>" alt="YouTube"></a></li>
+						</ul>
+					</div>
+				</div>
+				<div id="bottom">
+					<div id="copyright">
+						<span><?php echo str_replace('[[year]]', date('Y'), Mage::getStoreConfig('avalanche_config/avalanche_footer/avalanche_copyright')) ?></span><br>
+						<?php if(Mage::getStoreConfig('avalanche_config/avalanche_footer/avalanche_fd_credit') == 1): ?>
+						<span id="fast-division"><?php echo $this->__('Designed by') ?> <a href="http://fastdivision.com"><?php echo $this->__('Fast Division') ?></a></span>
+						<?php endif; ?>
+						<?php if(Mage::helper('avalanche_mobile')->checkForcedDesktop()): ?>
+							<br><span><a href="<?php echo Mage::getBaseUrl() ?>mobile/switch/mobile"><?php echo $this->__('Switch to Mobile Version') ?></a></span>
+						<?php endif; ?>						
+					</div>
+				</div>
+			</div>
+			<a class="top ir hideTop" href="#" title="Back to Top">Top</a>
+		</footer>

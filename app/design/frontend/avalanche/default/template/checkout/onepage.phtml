@@ -1,0 +1,70 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<script type="text/javascript" src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
+<script type="text/javascript">countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?></script>
+
+<div id="content">
+	<div id="checkout" class="clearfix">
+		<div id="checkout-form-area" class="grid_8 white-box">
+			<h1 style="margin: 0"><?php echo $this->__('Review and Place Your Order') ?></h1>
+		
+			<ol class="opc" id="checkoutSteps">
+			<?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
+			<?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
+			    <li id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
+			        <div class="step-title">
+			            <h3><?php echo $_stepInfo['label'] ?></h3>
+			            <?php /* <a href="#" class="edit-link"><?php echo $this->__('Edit') ?></a> */ ?>
+			        </div>
+			        <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display:none;">
+			            <?php echo $this->getChildHtml($_stepId) ?>
+			        </div>
+			    </li>
+			<?php endforeach ?>
+			</ol>
+		
+			<script type="text/javascript">
+			//<![CDATA[
+			    var accordion = new Accordion('checkoutSteps', '.step-title', true);
+			    <?php if($this->getActiveStep()): ?>
+			    accordion.openSection('opc-<?php echo $this->getActiveStep() ?>');
+			    <?php endif ?>
+			    var checkout = new Checkout(accordion,{
+			        progress: '<?php echo $this->getUrl('checkout/onepage/progress') ?>',
+			        review: '<?php echo $this->getUrl('checkout/onepage/review') ?>',
+			        saveMethod: '<?php echo $this->getUrl('checkout/onepage/saveMethod') ?>',
+			        failure: '<?php echo $this->getUrl('checkout/cart') ?>'}
+			    );
+			//]]>
+			</script>
+		</div>
+		<div id="mini-cart" class="grid_4 omega white-box">
+			<h3><?php echo $this->__('Cart Summary') ?></h3>
+			<div class="white-box-inner">
+				<?php echo $this->getChildHtml('checkout.onepage.summary') ?>
+			</div>
+		
+			<h3><?php echo $this->__('Customer Service') ?></h3>
+			<div class="white-box-inner">
+				<p>Need some help? <a href="#">Email us</a> or <a href="#">live chat</a> with our customer service team. Check out our <a href="#">customer service portal</a> for frequently asked questions.</p>
+			</div>
+		</div>
+	</div>
+</div>

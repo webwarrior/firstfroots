@@ -1,0 +1,43 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php if($this->getCollection()->getSize()): ?>
+	<div class="counter">
+		<p><?php echo $this->getTotalNum() ?> <?php echo $this->__('Item(s)') ?></p>
+	</div>
+	<div class="sort-and-page">
+		<?php if( $this->isExpanded() ): ?>
+		<div class="sorter">
+			<div class="results-sort sort-by">
+				<a href="#sort-menu" id="sort-button" class="button dropdown-button"><?php echo $this->__('Sort') ?>
+					<select id="sort-select" class="options_sort button" onchange="setLocation(this.value)">
+						<option selected="selected"><?php echo $this->__('Sort By') ?>:</option>
+						<?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
+							<option value="<?php echo $this->getOrderUrl($_key, 'desc') ?>">
+								<?php echo $_order ?>
+							</option>
+						<?php endforeach; ?>
+					</select>
+				</a>
+				<a href="#filter-menu" id="filter-button" class="button"><?php echo $this->__('Filter') ?></a>
+			</div>
+		</div>
+		<?php endif; ?>
+		<?php echo $this->getPagerHtml() ?>
+	</div>
+<?php endif ?>

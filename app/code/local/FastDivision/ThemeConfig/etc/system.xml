@@ -1,0 +1,682 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<config>
+	<tabs>
+        <avalanche_tab translate="label">
+            <label>Avalanche</label>
+            <sort_order>0</sort_order>
+        </avalanche_tab>
+    </tabs>
+    <sections>
+		<avalanche_config translate="label">
+			<label><![CDATA[<span id="desktop-section" class="setting-icon"></span><div style="padding-left:22px">Desktop</div>]]></label>
+		    <tab>avalanche_tab</tab>
+		    <frontend_type>text</frontend_type>
+		    <sort_order>40</sort_order>
+		    <show_in_default>1</show_in_default>
+		    <show_in_website>1</show_in_website>
+		    <show_in_store>1</show_in_store>
+            <groups>
+				<avalanche_design translate="label">
+					<label>Design Options</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>					
+					<fields>
+						<avalanche_logo translate="label">
+						    <label>Logo</label>
+							<comment>Your logo should be 240x98px for the best results.</comment>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">logos</upload_dir>
+                            <base_url type="media" scope_info="1">logos</base_url>           
+						    <sort_order>0</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_logo>
+						<avalanche_favicon translate="label">
+						    <label>Favicon</label>
+							<comment>Make sure you upload a 16x16px .ico or .png file!</comment>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image_favicon</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">favicon</upload_dir>
+                            <base_url type="media" scope_info="1">favicon</base_url>                
+						    <sort_order>1</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_favicon>
+						<avalanche_background translate="label">
+						    <label>Background</label>
+							<comment>Choose a background for your store.</comment>
+						    <frontend_type>backgroundpreview</frontend_type>
+						    <source_model>themeconfig/background</source_model>                           
+						    <sort_order>2</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>				
+						</avalanche_background>
+						<avalanche_primarycolor translate="label">
+						    <label>Primary Color</label>
+							<comment>This color will enhance your borders, main menu links and call to action buttons.</comment>
+						    <!--<frontend_type>select</frontend_type>
+						    <source_model>themeconfig/colorprimary</source_model>-->
+						    <frontend_type>colorpicker</frontend_type>       
+						    <sort_order>3</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>                    
+						</avalanche_primarycolor>
+						<avalanche_secondarycolor translate="label">
+						    <label>Secondary Color</label>
+							<comment>This color will enhance your default links and product ratings.</comment>
+						    <!--<frontend_type>select</frontend_type>
+						    <source_model>themeconfig/colorsecondary</source_model>-->
+						    <frontend_type>colorpicker</frontend_type>                        
+						    <sort_order>4</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>                    
+						</avalanche_secondarycolor>
+						<avalanche_headerfont translate="label">
+						    <label>Header Font</label>
+							<comment><![CDATA[Choose a font from the Google Web Font directory or select the Helvetica / Lucida Grande families. All fonts have an Arial, sans-serif fallback. This font will enhance your headers. To preview fonts, visit <a href="http://www.google.com/webfonts" target="_blank">http://www.google.com/webfonts</a>.]]></comment>
+						    <!--<frontend_type>select</frontend_type>-->
+						    <frontend_type>fontpreview</frontend_type>
+						    <source_model>themeconfig/fontheader</source_model>                           
+						    <sort_order>5</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>                    
+						</avalanche_headerfont>
+						<avalanche_bodyfont translate="label">
+						    <label>Body Font</label>
+							<comment><![CDATA[This font will enhance your paragraph text.]]></comment>
+						    <!--<frontend_type>select</frontend_type>-->
+						    <frontend_type>fontpreview</frontend_type>
+						    <source_model>themeconfig/fontbody</source_model>                           
+						    <sort_order>6</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_bodyfont>
+						<avalanche_starcolor translate="label">
+							<label>Star Color</label>
+							<comment><![CDATA[Set the color of the product review stars.]]></comment>
+						    <!--<frontend_type>select</frontend_type>-->
+						    <frontend_type>colorpicker</frontend_type>                       
+						    <sort_order>7</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>								
+						</avalanche_starcolor>
+						<avalanche_borderradius translate="label">
+							<label>Border Radius</label>
+							<comment>Want curved borders? Set the curved border radius of page elements and boxes throughout the store. Try using 4, 6, 8, 10, 12, 14.</comment>
+							<frontend_type>text</frontend_type>
+						    <sort_order>8</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+						</avalanche_borderradius>
+						<avalanche_boxshadows translate="label">
+							<label>Box Shadows</label>
+							<comment>Add a light box shadow to your layout boxes for extra depth and style.</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+						    <sort_order>9</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_boxshadows>
+						<avalanche_customcss translate="label">
+						    <label>Custom CSS</label>
+							<comment><![CDATA[Enable the custom.css file and append the "custom" class to &lt;body&gt;. To learn how to customize your store CSS, <a href="http://fastdivision.com/help/avalanche/how-do-i-customize-the-look-and-feel-of-avalanche-with-css/" target="_blank">click here.</a>]]></comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>                    
+						    <sort_order>10</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+						</avalanche_customcss>
+					</fields>
+				</avalanche_design>
+				<avalanche_header translate="label">
+					<label>Header Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1005</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<avalanche_dropdownstyle translate="label">
+						    <label>Menu Dropdown Style</label>
+							<comment>If you have nested subcategories stick with mega dropdowns. For simpler sites go with the alternatives.</comment>
+						    <frontend_type>select</frontend_type>
+						    <source_model>themeconfig/menustyle</source_model>                           
+						    <sort_order>1</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>                    
+						</avalanche_dropdownstyle>
+						<avalanche_multirow translate="label">
+						    <label>Multiple Menu Rows</label>
+							<comment>If you have lots of categories and need more than one row in your main menu, select this option.</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>	 
+						</avalanche_multirow>
+						<avalanche_searchautocomplete translate="label">
+							<label>Search Autocomplete</label>
+							<comment>Show or hide search autocomplete for Avalanche.</comment>
+							<frontend_type>select</frontend_type>
+							<sort_order>3</sort_order>
+						    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</avalanche_searchautocomplete>
+						<avalanche_toplinks translate="label">
+						    <label>Top Link HTML (1-4 Links)</label>
+							<comment>Ideally you should keep this around 3 links. This HTML is displayed before "Account" and "Wishlist". Only include list item tags.</comment>
+						    <frontend_type>textarea</frontend_type>                         
+						    <sort_order>4</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>                    
+						</avalanche_toplinks>
+					</fields>
+				</avalanche_header>
+				<avalanche_homepage_slider translate="label">
+                    <label>Homepage Banners</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1006</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<slider_effect translate="label">
+						    <label>Slider Effect</label>
+							<comment>Set the slide animation effect.</comment>
+						    <frontend_type>select</frontend_type>
+						    <source_model>themeconfig/slidereffect</source_model>                           
+						    <sort_order>1</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store> 
+                    	</slider_effect>
+                    	<autoplay_interval translate="label">
+						    <label>Autoplay Interval</label>
+						    <comment>Set the time between slide animation in seconds. 0 seconds will turn off autoplay.</comment>
+						    <frontend_type>text</frontend_type>
+						    <sort_order>2</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+                    	</autoplay_interval>
+ 						<avalanche_banner1 translate="label">
+						    <label>Banner #1</label>
+							<comment>Your banners should be 940x300px for the best results.</comment>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">banners</upload_dir>
+                            <base_url type="media" scope_info="1">banners</base_url>                    
+						    <sort_order>3</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_banner1>
+						<avalanche_banner1_link translate="label">
+						    <label>Banner #1 Link</label>
+						    <frontend_type>text</frontend_type>       
+						    <sort_order>4</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_banner1_link>
+						<avalanche_banner2 translate="label">
+						    <label>Banner #2</label>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">banners</upload_dir>
+                            <base_url type="media" scope_info="1">banners</base_url>                    
+						    <sort_order>5</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_banner2>
+						<avalanche_banner2_link translate="label">
+						    <label>Banner #2 Link</label>
+						    <frontend_type>text</frontend_type>       
+						    <sort_order>6</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_banner2_link>
+						<avalanche_banner3 translate="label">
+						    <label>Banner #3</label>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">banners</upload_dir>
+                            <base_url type="media" scope_info="1">banners</base_url>                    
+						    <sort_order>7</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_banner3>
+						<avalanche_banner3_link translate="label">
+						    <label>Banner #3 Link</label>
+						    <frontend_type>text</frontend_type>       
+						    <sort_order>8</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_banner3_link>
+						<avalanche_banner4 translate="label">
+						    <label>Banner #4</label>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">banners</upload_dir>
+                            <base_url type="media" scope_info="1">banners</base_url>                    
+						    <sort_order>9</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_banner4>
+						<avalanche_banner4_link>
+						    <label>Banner #4 Link</label>
+						    <frontend_type>text</frontend_type>       
+						    <sort_order>10</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_banner4_link>					
+                    </fields>					
+				</avalanche_homepage_slider>
+				<avalanche_featured_products translate="label">
+                    <label>Homepage Features</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1007</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<avalanche_feature1 translate="label">
+						    <label>Feature #1</label>
+							<comment>Your features should be 300x150px for the best results.</comment>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">features</upload_dir>
+                            <base_url type="media" scope_info="1">features</base_url>                    
+						    <sort_order>1</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_feature1>
+						<avalanche_feature1_text>
+						    <label>Feature #1 Text</label>
+						    <frontend_type>text</frontend_type>       
+						    <sort_order>2</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_feature1_text>
+						<avalanche_feature1_link>
+						    <label>Feature #1 Link</label>
+						    <frontend_type>text</frontend_type>       
+						    <sort_order>3</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_feature1_link>
+						<avalanche_feature2 translate="label">
+						    <label>Feature #2</label>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">features</upload_dir>
+                            <base_url type="media" scope_info="1">features</base_url>                    
+						    <sort_order>4</sort_order>
+						    <show_in_default>2</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_feature2>
+						<avalanche_feature2_text>
+						    <label>Feature #2 Text</label>
+						    <frontend_type>text</frontend_type>       
+						    <sort_order>5</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_feature2_text>
+						<avalanche_feature2_link>
+						    <label>Feature #2 Link</label>
+						    <frontend_type>text</frontend_type>       
+						    <sort_order>6</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_feature2_link>
+						<avalanche_feature3 translate="label">
+						    <label>Feature #3</label>
+						    <frontend_type>image</frontend_type>
+							<backend_model>adminhtml/system_config_backend_image</backend_model>
+						    <upload_dir config="system/filesystem/media" scope_info="1">features</upload_dir>
+                            <base_url type="media" scope_info="1">features</base_url>                    
+						    <sort_order>7</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_feature3>
+						<avalanche_feature3_text>
+						    <label>Feature #3 Text</label>
+						    <frontend_type>text</frontend_type>       
+						    <sort_order>8</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_feature3_text>
+						<avalanche_feature3_link>
+						    <label>Feature #3 Link</label>
+						    <frontend_type>text</frontend_type>       
+						    <sort_order>9</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_feature3_link>
+                    </fields>					
+				</avalanche_featured_products>
+				<avalanche_product_listings translate="label">
+                    <label>Product Listings Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1008</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<avalanche_quick_view translate="label">
+							<label>Quick View</label>
+							<comment>Allow customers to view product details without leaving the listing page.</comment>
+							<frontend_type>select</frontend_type>
+							<sort_order>1</sort_order>
+						    <source_model>themeconfig/quickview</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</avalanche_quick_view>
+						<avalanche_grid_hover translate="label">
+							<label>Grid Hover</label>
+							<comment>Activate grid hover in modern browsers that support CSS3.</comment>
+						    <frontend_type>select</frontend_type>                         
+						    <sort_order>2</sort_order>
+							<source_model>themeconfig/gridhover</source_model>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+						</avalanche_grid_hover>
+                    	<avalanche_ajax_catalog translte="label">
+							<label>AJAX Catalog</label>
+							<comment>Activate AJAX Catalog. Customers click the "Show More Products" button to load products on the fly without page reload. This speeds up browsing and creates a smoother user experience. Pager links stay in the markup for search engines to crawl.</comment>
+							<frontend_type>select</frontend_type>
+							<sort_order>3</sort_order>
+						    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>	                    		
+                    	</avalanche_ajax_catalog>
+                    	<avalanche_ajax_pager translte="label">
+							<label>Show Pager Links</label>
+							<comment>Turn this option on if you're worried about SEO but still want AJAX capabilities. Search engines should crawl your pages with links hidden via JavaScript. This setting provides additional reassurance.</comment>
+							<frontend_type>select</frontend_type>
+							<sort_order>4</sort_order>
+						    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                    	</avalanche_ajax_pager>			
+					</fields>
+				</avalanche_product_listings>
+				<avalanche_product_details translate="label">
+                    <label>Product Details Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1009</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<avalanche_detailsbreadcrumbs translate="label">
+							<label>Product Details Breadcrumbs</label>
+							<comment>Show breadcrumbs on the product details page.</comment>
+							<frontend_type>select</frontend_type>
+							<sort_order>0</sort_order>
+						    <source_model>themeconfig/detailsbreadcrumbs</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</avalanche_detailsbreadcrumbs>
+						<show_quantity>
+							<label>Show Quantity Field</label>
+							<comment>You can choose to hide the quantity field if your products are ordered one at a time.</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+						    <sort_order>1</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+						</show_quantity>
+						<avalanche_cloud_zoom translate="label">
+							<label>Cloud Zoom</label>
+							<comment>Activate cloud zooming on extra large product photos.</comment>
+							<frontend_type>select</frontend_type>
+							<sort_order>1</sort_order>
+						    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>							
+						</avalanche_cloud_zoom>
+						<avalanche_primaryphotowidth>
+							<label>Primary Photo Width</label>
+							<comment>Set the width of your primary photo in pixels. Height is proportioned automatically.</comment>
+						    <frontend_type>text</frontend_type>                         
+						    <sort_order>2</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+						</avalanche_primaryphotowidth>
+						<avalanche_thumbnailphotowidth>
+							<label>Thumbnail Photo Width</label>
+							<comment>Set the width of your thumbnails in pixels. Height is proportioned automatically.</comment>
+						    <frontend_type>text</frontend_type>                         
+						    <sort_order>3</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_thumbnailphotowidth>
+						<avalanche_duplicate_image translate="label">
+							<label>Primary Photo Thumbnail</label>
+							<comment>Leave this on "Show" unless you see your primary photo thumbnail duplicated.</comment> 
+							<frontend_type>select</frontend_type>
+							<sort_order>4</sort_order>
+						    <source_model>themeconfig/primaryphotothumbnail</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</avalanche_duplicate_image>
+						<avalanche_latestreviewcount translate="label">
+							<label>Latest Reviews Count</label>
+							<comment>Show X amount of reviews on the product details page.</comment>
+						    <frontend_type>text</frontend_type>                         
+						    <sort_order>5</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+						</avalanche_latestreviewcount>
+						<avalanche_showtags translate="label">
+							<label>Product Tags</label>
+							<comment>Show or hide the product tags feature on the product details page.</comment>
+							<frontend_type>select</frontend_type>
+							<sort_order>6</sort_order>
+						    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</avalanche_showtags>
+						<avalanche_shopwithconfidence translate="label">
+						    <label>Shop with Confidence Text</label>
+							<comment>This is shown on the product details page.</comment>
+						    <frontend_type>textarea</frontend_type>                         
+						    <sort_order>7</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>                    
+						</avalanche_shopwithconfidence>			
+					</fields>
+				</avalanche_product_details>
+				<avalanche_footer translate="label">
+                    <label>Footer Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1011</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<avalanche_subscriptionsignup translate="label">
+						    <label>Newsletter Signup Text</label>
+							<comment>This is shown near the footer.</comment>
+						    <frontend_type>text</frontend_type>                         
+						    <sort_order>0</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>                    
+						</avalanche_subscriptionsignup>
+						<avalanche_copyright translate="label">
+						    <label>Copyright Text</label>
+						    <frontend_type>text</frontend_type>                         
+						    <sort_order>2</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>							
+						</avalanche_copyright>
+                        <avalanche_fd_credit translate="label">
+                            <label>"Designed by Fast Division" Credit</label>
+							<frontend_type>select</frontend_type>
+						    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </avalanche_fd_credit>
+                    </fields>					
+				</avalanche_footer>
+            </groups>
+		</avalanche_config>
+		<avalanche_customer_service translate="label">
+            <label><![CDATA[<span id="help-section" class="setting-icon"></span><div style="padding-left:22px">Help &amp; Feedback</div>]]></label>
+    		<tab>avalanche_tab</tab>
+    		<sort_order>1000</sort_order>
+		    <show_in_default>1</show_in_default>
+		    <show_in_website>1</show_in_website>
+		    <show_in_store>1</show_in_store>
+            <groups>
+            	<avalanche_help translate="label">
+ 					<label>Dedicated Magento Support</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>					
+					<fields>
+						<avalanche_help_verbage translate="label">
+                            <label><![CDATA[<div style="width: 595px"><h3>Get the professional help you need fast.</h3><p>Support is our #1 priority for Avalanche members. Magento isn't easy and if you run into an issue installing Avalanche or just have a question don't hesitate to <a href="mailto:support@fastdivision.com">email us.</a> If you can't find your answer in the documentation or FAQ you can also <a href="http://fastdivision.com/themes/avalanche/support" target="_blank">use the contact form.</a></p></div>]]></label>
+                            <frontend_type>hidden</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </avalanche_help_verbage>
+					</fields>           		
+            	</avalanche_help>
+            	<avalanche_feedback translate="label">
+ 					<label>Share Your Feedback</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>				
+					<fields>
+						<avalanche_feedback_verbage translate="label">
+                            <label><![CDATA[<div style="width: 595px"><h3>We'd love to hear about your experience.</h3><p>If you want Avalanche to get even better, <strong>we need your testimonials and feedback!</strong> Just launch your store with Avalanche? Let us know about that too. Email your feedback to <a href="mailto:jake@fastdivision.com">jake@fastdivision.com</a> or use the <a href="http://fastdivision.com/themes/avalanche/support" target="_blank">support contact form.</a> Your ideas, suggestions and enthusiasm keep this theme growing!</p></div>]]></label>
+                            <frontend_type>hidden</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </avalanche_feedback_verbage>						
+					</fields>            		
+            	</avalanche_feedback>
+            	<avalanche_customization>
+            		<label>Get Customized</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>					
+					<fields>
+						<avalanche_customization_verbage translate="label">
+                            <label><![CDATA[<div style="width: 595px"><h3>Theme customization and extension support from Fast Division.</h3><p>Need to make some design changes or get an extension working with Avalanche? We have just the service for you. For more information, <a href="http://fastdivision.com/magento-customization" target="_blank">visit our Magento customization signup page.</a><ul><li>&#10003;&nbsp; Theme Customization</li><li>&#10003;&nbsp; Extension Support &amp; Installation</li><li>&#10003;&nbsp; Avalanche Installation</li><li>&#10003;&nbsp; Speed Optimization &amp; Tuning</li></ul></div>]]></label>
+                            <frontend_type>hidden</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </avalanche_customization_verbage>						
+					</fields>
+            	</avalanche_customization>
+            	<avalanche_marketing>
+            		<label>Spread the Word</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>				
+					<fields>
+						<avalanche_spread_word translate="label">
+                            <label><![CDATA[<div style="width: 595px"><h3>Help take Avalanche to the next level.</h3><p>There's many ways you can share Avalanche across the web. Our top supporters will be given exclusive info on upcoming updates and special discounts.</p><h4>&#10144; Write a Review on Magento Connect</h4><p>If you love Avalanche <strong>please</strong> write a review on our <a href="http://www.magentocommerce.com/magento-connect/avalanche-premium-theme.html" target="_blank">Magento Connect page!</a> It would be much appreciated.</p><h4>&#10144; Blog or Link</h4><p>If you'd like to write a review on Avalanche for your blog, <a href="http://fastdivision.com/contact-us" target="_blank">get in touch.</a> Any questions you have will be answered promptly. Additionally, just sharing a link to Fast Division or Avalanche would go a long way. You can also keep our credit link at the bottom of your store.</p><h4>&#10144; Share on Twitter &amp; Google Plus</h4><p>Let your Twitter and Google Plus followers know how savvy you are when it comes to Magento. +1 Avalanche and Fast Division links on Google to help your followers find a quality Magento theme.</p><h4>&#10144; Share in Forums &amp; Comments</h4><p>If you see someone asking for a quality theme or you find a relevant blog post about Magento you know what to do. Recommend Avalanche!</p><h4>&#10144; Join Our Affiliate Program</h4><p>If your website focuses on eCommerce or Magento, <a href="http://fastdivision.com/affiliate-program" target="_blank">sign up today.</a></p></div>]]></label>
+                            <frontend_type>hidden</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</avalanche_spread_word>
+					</fields>
+            	</avalanche_marketing>
+            </groups>    		
+    	</avalanche_customer_service>
+    </sections>
+</config>

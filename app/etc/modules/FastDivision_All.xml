@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<config>
+    <modules>
+        <!-- Core -->
+		<FastDivision_ThemeConfig>
+			<active>true</active>
+			<codePool>local</codePool>
+		</FastDivision_ThemeConfig>
+        <FastDivision_Mobile>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <FastDivision_ThemeConfig />
+            </depends>
+        </FastDivision_Mobile>
+        <!--<FastDivision_Updater>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <FastDivision_ThemeConfig />
+            </depends>
+        </FastDivision_Updater>-->
+
+        <!-- Extensions -->
+    	<FastDivision_OpcShipping>
+    		<active>true</active>
+    		<codePool>local</codePool>
+            <depends>
+                <FastDivision_ThemeConfig />
+            </depends>
+    	</FastDivision_OpcShipping>
+        <FastDivision_ProductWall>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <FastDivision_ThemeConfig />
+            </depends>
+        </FastDivision_ProductWall>
+        <FastDivision_QuickView>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <FastDivision_ThemeConfig />
+            </depends>
+        </FastDivision_QuickView>
+        <FastDivision_QuickCart>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <FastDivision_ThemeConfig />
+            </depends>
+        </FastDivision_QuickCart>
+        <FastDivision_SEO>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <FastDivision_ThemeConfig />
+            </depends>
+        </FastDivision_SEO>
+        <FastDivision_Social>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <FastDivision_ThemeConfig />
+            </depends>
+        </FastDivision_Social>
+        <FastDivision_Speed>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <FastDivision_ThemeConfig />
+            </depends>
+        </FastDivision_Speed>
+        <FastDivision_ReviewPhotos>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <FastDivision_ThemeConfig />
+            </depends>
+        </FastDivision_ReviewPhotos>
+
+        <!-- CMS Widgets -->
+        <FastDivision_Widgets>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Cms />
+            </depends>
+        </FastDivision_Widgets>
+    </modules>
+</config>

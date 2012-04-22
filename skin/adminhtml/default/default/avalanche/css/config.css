@@ -1,0 +1,26 @@
+
+/* Main Menu */
+.avalanche-main-menu { background: url('../images/menu-icon.png') 0 5px no-repeat; padding-left: 22px; }
+
+/* Previewer */
+.previewer { margin: 0 0 10px 0; width: 280px; color: #666; color: rgba(0,0,0,0.3); text-align: center; padding: 10px 0; background: #FAFAFA; }
+
+/* Color Picker */
+.input-text-colorpicker { padding: 2px; border-width:1px; border-style:solid; border-color:#aaa #c8c8c8 #c8c8c8 #aaa; background:#fff; font:12px arial, helvetica, sans-serif; }
+.miniColors-trigger { height: 22px; width: 22px; background: url(../images/trigger.png) center no-repeat; vertical-align: middle; margin: 0 .25em; display: inline-block; outline: none; }
+.miniColors-selector { position: absolute; width: 175px; height: 150px; background: #FFF; border: solid 1px #BBB; -moz-box-shadow: 0 0 6px rgba(0, 0, 0, .25); -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, .25); box-shadow: 0 0 6px rgba(0, 0, 0, .25); -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; padding: 5px; z-index: 999999; }
+.miniColors-selector.black { background: #000; border-color: #000; }
+.miniColors-colors { position: absolute; top: 5px; left: 5px; width: 150px; height: 150px; background: url(../images/gradient.png) center no-repeat; cursor: crosshair; }
+.miniColors-hues { position: absolute; top: 5px; left: 160px; width: 20px; height: 150px; background: url(../images/rainbow.png) center no-repeat; cursor: crosshair; }
+.miniColors-colorPicker { position: absolute; width: 11px; height: 11px; background: url(../images/circle.gif) center no-repeat; }
+.miniColors-huePicker { position: absolute; left: -3px; width: 26px; height: 3px; background: url(../images/line.gif) center no-repeat; }
+
+/* Setting Icons */
+.setting-icon { display: block !important; width: 16px; height: 16px; background-image: url('../images/setting-icons.png') !important; overflow: hidden; padding: 0 !important; position: absolute;margin-top: 1px; }
+	#desktop-section { background-position: 0 0; }
+	#mobile-section { background-position: -16px 0; }
+	#seo-section { background-position: -32px 0; }
+	#speed-section { background-position: -64px 0; }
+	#social-section { background-position: -16px -16px; }
+	#wall-section { background-position: -48px 0; }
+	#help-section { background-position: -32px -16px; }

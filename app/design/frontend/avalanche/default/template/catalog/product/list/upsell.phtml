@@ -1,0 +1,38 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php if(count($this->getItemCollection()->getItems())): ?>
+	<div id="customers-also-bought" class="white-box clearfix">
+		<h2 style="margin:0"><?php echo $this->__('Customers Also Bought') ?></h2>
+		<?php $this->resetItemsIterator() ?>
+	    <?php for($_i=0;$_i<$this->getRowCount();$_i++): ?>
+ 		  	<ul class="product-grid carousel clearfix">
+			<?php for($_j=0;$_j<$this->getColumnCount();$_j++): ?>
+	            <?php if($_link=$this->getIterableItem()): ?>
+				<li>
+					<div class="grid-image"><a href="<?php echo $_link->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_link, 'small_image')->resize(118) ?>" alt="<?php echo $this->htmlEscape($_link->getName()) ?>"></a></div>
+					<div class="grid-rating"><?php echo $this->getReviewsSummaryHtml($_link) ?></div>
+					<div class="grid-title"><a href="<?php echo $_link->getProductUrl() ?>"><?php echo $this->htmlEscape($_link->getName()) ?></a></div>
+					<div class="grid-price"><?php echo $this->getPriceHtml($_link, false, '-upsell') ?></div>
+				</li>
+				<?php endif; ?>
+			<?php endfor; ?>
+		</ul>
+		<?php endfor; ?>
+	</div>
+<?php endif ?>

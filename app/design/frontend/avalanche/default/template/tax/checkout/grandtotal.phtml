@@ -1,0 +1,49 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php if ($this->includeTax() && $this->getTotalExclTax()>=0):?>
+<tr><td colspan="2" style="height: 4px; overflow: hidden"></td></tr>
+<tr class="total">
+    <td style="<?php echo $this->getStyle() ?>" colspan="<?php echo $this->getColspan(); ?>">
+        <strong><?php echo $this->helper('tax')->__('Order Total Excl. Tax')?></strong>
+    </td>
+    <td id="cart-total-cost" class="right-align" style="<?php echo $this->getStyle() ?>">
+        <strong><?php echo $this->helper('checkout')->formatPrice($this->getTotalExclTax()) ?></strong>
+    </td>
+</tr>
+<?php echo $this->renderTotals('taxes', $this->getColspan()); ?>
+<tr><td colspan="2" style="height: 4px; overflow: hidden"></td></tr>
+<tr class="total">
+    <td style="<?php echo $this->getStyle() ?>" colspan="<?php echo $this->getColspan(); ?>">
+        <strong><?php echo $this->helper('tax')->__('Order Total Incl. Tax')?></strong>
+    </td>
+    <td id="cart-total-cost" class="right-align" style="<?php echo $this->getStyle() ?>">
+        <strong><?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?></strong>
+    </td>
+</tr>
+<?php else:?>
+<tr><td colspan="2" style="height: 4px; overflow: hidden"></td></tr>
+<tr class="total">
+    <td style="<?php echo $this->getStyle() ?>" colspan="<?php echo $this->getColspan(); ?>">
+        <strong><?php echo $this->__('Order Total') ?></strong>
+    </td>
+    <td id="cart-total-cost" class="right-align" style="<?php echo $this->getStyle() ?>">
+        <strong><?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?></strong>
+    </td>
+</tr>
+<?php endif;?>

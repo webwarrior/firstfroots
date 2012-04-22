@@ -1,0 +1,57 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php
+	$_product = $this->getProduct();
+	$_items = $this->getReviewsCollection()->getItems();
+	$_aggregateRating = 0;
+
+	if(count($_items)) {
+		foreach($_items as $_review) {
+			$_votes = $_review->getRatingVotes();
+			$_avgVote = 0;
+			if(count($_votes)) {
+				foreach($_review->getRatingVotes() as $_vote) {
+					$_avgVote += $_vote->getPercent();
+				}
+				$_avgVote = round($_avgVote / count($_votes));
+				$_aggregateRating += round($_avgVote / 20);
+			}
+		}
+
+		$_aggregateRating = round($_aggregateRating / count($_items));
+?>
+<span class="hreview-aggregate">
+	<span class="item">
+		<span class="fn">
+			<span class="value-title" title="<?php echo $this->helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name') ?>"></span>
+		</span>
+	</span>
+	<span class="rating">
+		<span class="value-title" title="<?php echo $_aggregateRating ?>"></span>
+	</span>
+	<span class="votes">
+		<span class="value-title" title="<?php echo count($_items) ?>"></span>
+	</span>
+	<span class="count">
+		<span class="value-title" title="<?php echo count($_items) ?>"></span>
+	</span>
+</span>
+<?php
+	}
+?>

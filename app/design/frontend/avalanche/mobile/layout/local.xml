@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<layout version="0.1.0">
+	<cms_index_index>
+		<reference name="content">
+			<block type="catalog/product_bestseller" name="homepage.bestsellers" as="bestsellers" template="catalog/product/homepage/bestsellers.phtml"/>
+			<block type="catalog/product_new" name="homepage.latestproducts" as="latestproducts" template="catalog/product/homepage/latest.phtml"/>
+		</reference>
+	</cms_index_index>
+	<checkout_cart_index>
+		<!-- Remove Multishipping from Mobile -->
+		<reference name="checkout.cart.methods">
+			<remove name="checkout.cart.methods.multishipping"/>
+		</reference>
+		<reference name="footer_js">
+			<action method="addJs"><script>avalanche/mobile/modules/cart.js</script></action>
+		</reference>
+	</checkout_cart_index>
+</layout>

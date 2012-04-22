@@ -1,0 +1,76 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div class="page-messages">
+	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+</div>
+
+<?php $_orders = $this->getOrders(); ?>
+
+<h1><?php echo $this->__('My Orders') ?></h1>
+
+<?php if(strlen(trim($this->getPagerHtml()))): ?>
+	<div class="toolbar clearfix">
+    	<?php echo $this->getPagerHtml() ?>
+	</div>
+<?php endif; ?>
+
+<?php if($_orders->getSize()): ?>
+<table class="data-table" id="my-orders-table">
+    <thead>
+        <tr>
+            <th><?php echo $this->__('Order #') ?></th>
+            <th><?php echo $this->__('Date') ?></th>
+            <th><?php echo $this->__('Ship To') ?></th>
+            <th class="a-center"><?php echo $this->__('Total') ?></th>
+            <th class="a-right"><?php echo $this->__('Status') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $_odd = ''; ?>
+        <?php foreach ($_orders as $_order): ?>
+        <tr>
+            <td><?php echo $_order->getRealOrderId() ?></td>
+            <td class="a-center"><span class="nobr"><?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></span></td>
+            <td><?php echo $_order->getShippingAddress() ? $this->htmlEscape($_order->getShippingAddress()->getName()) : '&nbsp;' ?></td>
+            <td class="a-center"><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></td>
+            <td class="a-right"><em><?php echo $_order->getStatusLabel() ?></em></td>
+        </tr>
+        <tr>
+        	<td class="order-menu" colspan="5">
+                <span class="nobr"><a href="<?php echo $this->getViewUrl($_order) ?>" class="button small-button"><?php echo $this->__('View Order') ?></a>
+                    <?php /*<span class="separator">|</span><a href="<?php echo $this->getTrackUrl($_order) ?>"><?php echo $this->__('Track Order') ?></a>&nbsp;*/ ?>
+                    <?php if ($this->helper('sales/reorder')->canReorder($_order)) : ?>
+                    	&nbsp;<a href="<?php echo $this->getReorderUrl($_order) ?>" class="link-reorder button small-button low-button"><?php echo $this->__('Reorder') ?></a>
+                	<?php endif ?>
+                </span>
+        	</td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<?php if(strlen(trim($this->getPagerHtml()))): ?>
+	<div class="toolbar clearfix">
+    	<?php echo $this->getPagerHtml() ?>
+	</div>
+<?php endif; ?>
+
+<?php else: ?>
+    <p><?php echo $this->__('You have placed no orders.'); ?></p>
+<?php endif ?>

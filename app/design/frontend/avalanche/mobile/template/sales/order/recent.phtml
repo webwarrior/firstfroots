@@ -1,0 +1,63 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div class="box-account box-recent">
+<?php $_orders = $this->getOrders(); ?>
+    <div class="box-head">
+        <h2><?php echo $this->__('Recent Orders') ?></h2>
+    </div>
+<?php if( sizeof($_orders->getItems()) > 0 ): ?>
+    <table class="data-table" id="my-orders-table">
+        <thead>
+            <tr>
+                <th class="a-left"><?php echo $this->__('Date') ?></th>
+                <th class="a-left"><?php echo $this->__('Ship To') ?></th>
+                <th class="a-left"><?php echo $this->__('Total') ?></th>
+                <th class="a-left"><?php echo $this->__('Status') ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($_orders as $_order): ?>
+                <tr>
+                    <td class="a-left"><span class="nobr"><?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></span></td>
+                    <td class="a-left"><?php echo $_order->getShippingAddress() ? $this->htmlEscape($_order->getShippingAddress()->getName()) : '&nbsp;' ?></td>
+                    <td class="a-left"><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></td>
+                    <td class="a-left"><em><?php echo $_order->getStatusLabel() ?></em></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <span class="nobr">
+                        <a href="<?php echo $this->getViewUrl($_order) ?>"><?php echo $this->__('View Order') ?></a>
+                        <?php if ($this->helper('sales/reorder')->canReorder($_order)) : ?>
+                            <span class="separator">|</span> <a href="<?php echo $this->getReorderUrl($_order) ?>" class="link-reorder"><?php echo $this->__('Reorder') ?></a>
+                        <?php endif ?>
+                        </span>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <script type="text/javascript">decorateTable('my-orders-table')</script>
+<?php else: ?>
+    <p><?php echo $this->__('You have placed no orders.'); ?></p>
+<?php endif; ?>
+
+	<div class="box-action">
+		<?php if( sizeof($_orders->getItems()) > 0 ): ?><a href="<?php echo $this->getUrl('sales/order/history') ?>"><?php echo $this->__('&raquo; View Order History') ?></a><?php endif; ?>
+	</div>
+</div>

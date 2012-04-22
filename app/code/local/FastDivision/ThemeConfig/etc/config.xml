@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<config>
+    <modules>
+        <FastDivision_ThemeConfig>
+            <version>1.3.0</version>
+        </FastDivision_ThemeConfig>
+    </modules>
+	<global>
+		<helpers>
+	        <themeconfig>
+	            <class>FastDivision_ThemeConfig_Helper</class>
+	        </themeconfig>
+	    </helpers>
+        <models>
+            <themeconfig>
+                <class>FastDivision_ThemeConfig_Model</class>
+            </themeconfig>   
+        </models>
+    </global>
+    <adminhtml>
+		<layout>
+			<updates>
+				<themeconfig>
+		        	<file>avalanche.xml</file>
+		      	</themeconfig>
+	    	</updates>
+	  	</layout>
+	  	<events>
+			<admin_system_config_changed_section_avalanche_config>
+                <observers>
+                    <themeconfig>
+                    	<type>singleton</type>
+                        <class>themeconfig/observer</class>
+                        <method>saveConfig</method>
+                    </themeconfig>
+                </observers>
+			</admin_system_config_changed_section_avalanche_config>
+	  	</events>
+	  	<menu>
+		  	<themeconfig translate="title">
+		  		<title><![CDATA[<span class="avalanche-main-menu">Avalanche</span>]]></title>
+		  		<sort_order>75</sort_order>
+		  		<action>adminhtml/system_config/edit/section/avalanche_config</action>
+		  		<children>
+		  			<themeconfig translate="title">
+		  				<title>Desktop</title>
+		  				<sort_order>20</sort_order>
+		  				<action>adminhtml/system_config/edit/section/avalanche_config</action>
+		  			</themeconfig>
+		  			<mobileconfig translate="title">
+		  				<title>Mobile</title>
+		  				<sort_order>30</sort_order>
+		  				<action>adminhtml/system_config/edit/section/avalanche_mobile</action>		  				
+		  			</mobileconfig>
+		  		</children>
+		  	</themeconfig>
+	  	</menu>
+	</adminhtml>
+	<default>
+		<avalanche_config>
+			<avalanche_design>
+				<avalanche_headerfont>Ubuntu</avalanche_headerfont>
+				<avalanche_bodyfont>Ubuntu</avalanche_bodyfont>
+				<avalanche_primarycolor>#cd1f0b</avalanche_primarycolor>
+				<avalanche_secondarycolor>#0066cc</avalanche_secondarycolor>
+				<avalanche_starcolor>#3DB1FF</avalanche_starcolor>
+				<avalanche_borderradius>4</avalanche_borderradius>
+				<avalanche_boxshadows>0</avalanche_boxshadows>
+			</avalanche_design>
+			<avalanche_header>
+				<avalanche_searchautocomplete>1</avalanche_searchautocomplete>
+				<avalanche_toplinks><![CDATA[<li><a href="/customer-service/">Customer Service</a></li>
+<li><a href="#">Live Chat</a></li>]]></avalanche_toplinks>
+			</avalanche_header>
+			<avalanche_homepage_slider>
+				<autoplay_interval>5</autoplay_interval>
+				<slider_effect>slide</slider_effect>
+			</avalanche_homepage_slider>
+			<avalanche_product_listings>
+				<avalanche_quick_view>1</avalanche_quick_view>
+				<avalanche_grid_hover>1</avalanche_grid_hover>
+				<avalanche_ajax_catalog>1</avalanche_ajax_catalog>
+				<avalanche_ajax_pager>1</avalanche_ajax_pager>
+			</avalanche_product_listings>
+			<avalanche_product_details>
+				<avalanche_detailsbreadcrumbs>1</avalanche_detailsbreadcrumbs>
+				<show_quantity>1</show_quantity>
+				<avalanche_cloud_zoom>1</avalanche_cloud_zoom>
+				<avalanche_primaryphotowidth>400</avalanche_primaryphotowidth>
+				<avalanche_thumbnailphotowidth>66</avalanche_thumbnailphotowidth>
+				<avalanche_duplicate_image>1</avalanche_duplicate_image>
+				<avalanche_latestreviewcount>3</avalanche_latestreviewcount>
+				<avalanche_shopwithconfidence><![CDATA[<p><strong>Shopping on Avalanche is safe and secure, guaranteed.</strong></p>
+				<p>All information is encrypted and transmitted without risk using a Secure Sockets Layer (SSL) protocol.</p>]]></avalanche_shopwithconfidence>
+				<avalanche_showtags>0</avalanche_showtags>
+			</avalanche_product_details>
+			<avalanche_social>
+				<facebook_likes>1</facebook_likes>
+			</avalanche_social>
+			<avalanche_footer>
+				<avalanche_subscriptionsignup><![CDATA[Sign up to get Avalanche news, sales and deals:]]></avalanche_subscriptionsignup>
+				<avalanche_copyright><![CDATA[&copy;]]> [[year]] Avalanche. All Rights Reserved.</avalanche_copyright>
+				<avalanche_fd_credit>1</avalanche_fd_credit>
+			</avalanche_footer>
+		</avalanche_config>
+	</default>
+</config>

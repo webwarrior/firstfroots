@@ -1,0 +1,47 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php
+$_helper = $this->helper('catalog/product_compare');
+$_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
+?>
+<?php if($_helper->getItemCount() > 0): ?>
+<div id="compare-button"><span>Compare</span></div>
+<div id="compare-products-pane">
+	<ul id="compare-items" class="clearfix">
+   	 	<?php 
+			foreach($_items as $_index => $_item):
+				$_product = Mage::getModel('catalog/product')->load($_item->getId());
+		?>
+	        <li class="item">
+	            <input type="hidden" class="compare-item-id" value="<?php echo $_item->getId() ?>" />
+	            <a href="<?php echo $_helper->getRemoveUrl($_item) ?>" title="<?php echo $this->__('Remove This Item') ?>" class="compare-remove-item ir" onclick="return confirm('<?php echo $this->__('Are you sure you would like to remove this item from the compare products?') ?>');"><?php echo $this->__('Remove This Item') ?></a>
+	            <a href="<?php echo $this->getProductUrl($_item) ?>" title="<?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name') ?>">
+					<?php
+						$_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(80).'" alt="'.$this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name').'" title="'.$this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name').'" width="80" height="80" />';
+				        echo $this->helper('catalog/output')->productAttribute($_product, $_img, 'image');
+					?></a>      
+	        </li>
+	    <?php endforeach; ?>
+    </ul>
+    <div class="actions">
+        <button type="button" title="<?php echo $this->__('Compare') ?>" class="action-button" onclick="popWin('<?php echo $_helper->getListUrl() ?>','compare','top:0,left:0,width=820,height=600,resizable=yes,scrollbars=yes')"><span><?php echo $this->__('Compare') ?></span></button><br>
+        <a href="<?php echo $_helper->getClearListUrl() ?>" onclick="return confirm('<?php echo $this->__('Are you sure you would like to remove all products from your comparison?') ?>');"><?php echo $this->__('Clear All') ?></a>
+    </div>
+</div>
+<?php endif; ?>

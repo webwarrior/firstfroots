@@ -1,0 +1,40 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div id="banner" class="slideshow grid_12 clearfix" data-autoplay="<?php echo Mage::getStoreConfig('avalanche_config/avalanche_homepage_slider/autoplay_interval') ?>" data-effect="<?php echo Mage::getStoreConfig('avalanche_config/avalanche_homepage_slider/slider_effect') ?>">
+	<div class="slides_container">
+		<div><a href="<?php echo Mage::getStoreConfig('avalanche_config/avalanche_homepage_slider/avalanche_banner1_link') ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>media/banners/<?php echo Mage::getStoreConfig('avalanche_config/avalanche_homepage_slider/avalanche_banner1') ?>" alt="" /></a></div>
+		<div><a href="<?php echo Mage::getStoreConfig('avalanche_config/avalanche_homepage_slider/avalanche_banner2_link') ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>media/banners/<?php echo Mage::getStoreConfig('avalanche_config/avalanche_homepage_slider/avalanche_banner2') ?>" alt="" /></a></div>
+		<div><a href="<?php echo Mage::getStoreConfig('avalanche_config/avalanche_homepage_slider/avalanche_banner3_link') ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>media/banners/<?php echo Mage::getStoreConfig('avalanche_config/avalanche_homepage_slider/avalanche_banner3') ?>" alt="" /></a></div>
+		<div><a href="<?php echo Mage::getStoreConfig('avalanche_config/avalanche_homepage_slider/avalanche_banner4_link') ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>media/banners/<?php echo Mage::getStoreConfig('avalanche_config/avalanche_homepage_slider/avalanche_banner4') ?>" alt="" /></a></div>
+	</div>
+</div>
+<div id="overlay-features" class="features clearfix">
+	<div class="feature">
+		<a href="<?php echo Mage::getStoreConfig('avalanche_config/avalanche_featured_products/avalanche_feature1_link') ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>media/features/<?php echo Mage::getStoreConfig('avalanche_config/avalanche_featured_products/avalanche_feature1') ?>" alt="" /></a>
+		<div class="feature-overlay"><div class="feature-overlay-text"><?php echo Mage::getStoreConfig('avalanche_config/avalanche_featured_products/avalanche_feature1_text') ?></div></div>
+	</div>
+	<div class="feature">
+		<a href="<?php echo Mage::getStoreConfig('avalanche_config/avalanche_featured_products/avalanche_feature2_link') ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>media/features/<?php echo Mage::getStoreConfig('avalanche_config/avalanche_featured_products/avalanche_feature2') ?>" alt="" /></a>
+		<div class="feature-overlay"><div class="feature-overlay-text"><?php echo Mage::getStoreConfig('avalanche_config/avalanche_featured_products/avalanche_feature2_text') ?></div></div>
+	</div>
+	<div class="feature">
+		<a href="<?php echo Mage::getStoreConfig('avalanche_config/avalanche_featured_products/avalanche_feature3_link') ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>media/features/<?php echo Mage::getStoreConfig('avalanche_config/avalanche_featured_products/avalanche_feature3') ?>" alt="" /></a>
+		<div class="feature-overlay"><div class="feature-overlay-text"><?php echo Mage::getStoreConfig('avalanche_config/avalanche_featured_products/avalanche_feature3_text') ?></div></div>
+	</div>
+</div>

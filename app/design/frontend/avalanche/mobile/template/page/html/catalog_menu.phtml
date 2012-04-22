@@ -1,0 +1,34 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div id="category-list" class="side-area side-area-left hide-side-area">
+  <div class="side-nav">
+  	<div id="side-nav-back" class="ios-arrow-left">Back</div>
+    <div class="side-nav-title">
+  	   <a href="<?php echo $this->getUrl() ?>" class="home"><?php echo $this->__('Browse Store') ?></a>
+    </div>
+    <a href="#" id="side-area-close">✕</a>
+  </div>
+  <div class="side-content">
+      <ul>
+        <?php echo $this->getChildHtml('topMenu') ?>
+      </ul>
+  </div>
+  <div id="category-nav-overlay"></div>
+  <div id="category-overlay2"></div>
+</div>

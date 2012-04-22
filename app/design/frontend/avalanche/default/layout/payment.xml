@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<layout version="0.1.0">
+    <catalog_product_view>
+        <reference name="product.info.tabs">
+            <action method="addTab" translate="title" module="payment"><alias>product.info.additional.recurring.schedule</alias><title>Recurring Profile</title><block>payment/catalog_product_view_profile</block><template>payment/catalog/product/view/profile/schedule.phtml</template></action>
+        </reference>
+        <reference name="product.info.options.wrapper">
+            <block type="payment/catalog_product_view_profile" name="product.info.options.recurring" as="recurring_options" template="payment/catalog/product/view/profile/options.phtml"/>
+        </reference>
+    </catalog_product_view>
+</layout>

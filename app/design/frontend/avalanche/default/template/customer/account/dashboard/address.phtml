@@ -1,0 +1,40 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div class="col2-set">
+    <div class="box">
+        <div class="box-title">
+            <h3><?php echo $this->__('Address Book') ?><a href="<?php echo $this->getAddressBookUrl() ?>" class="edit-link"><?php echo $this->__('Manage Addresses') ?></a></h3>
+        </div>
+        <div class="box-content">
+			<table style="width: 100%"><tr><td>
+                <h4><?php echo $this->__('Default Billing Address') ?></h4>
+                <address>
+                    <?php echo $this->getPrimaryBillingAddressHtml() ?><br />
+                    <a href="<?php echo $this->getPrimaryBillingAddressEditUrl() ?>"><?php echo $this->__('Edit Address') ?></a>
+                </address>
+            </td><td>
+                <h4><?php echo $this->__('Default Shipping Address') ?></h4>
+                <address>
+                    <?php echo $this->getPrimaryShippingAddressHtml() ?><br />
+                    <a href="<?php echo $this->getPrimaryShippingAddressEditUrl() ?>"><?php echo $this->__('Edit Address') ?></a>
+                </address>
+            </td></tr></table>
+        </div>
+    </div>
+</div>

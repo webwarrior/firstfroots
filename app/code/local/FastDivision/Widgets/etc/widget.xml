@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<widgets>
+    <widgets_catalog_bestseller type="widgets/catalog_bestseller" translate="name description">
+        <name>Avalanche: Best Sellers Widget</name>
+        <description type="desc"><![CDATA[Add a grid or list of the best selling products to your CMS page.]]></description>
+        <parameters>
+            <template translate="label description">
+                <label>Frontend Template</label>
+                <description>Choose how you want to showcase your best selling products.</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <grid translate="label">
+                        <label>Product Grid</label>
+                        <value>widgets/catalog/grid.phtml</value>
+                    </grid>
+                    <!--<list translate="label">
+                        <label>Product List</label>
+                        <value>widgets/catalog/bestseller_list.phtml</value>
+                    </list>-->
+                </values>
+            </template>
+            <title translate="label description">
+                <label>Title</label>
+                <description>Specify the widget's header title (optional). Defaults to "Best Sellers".</description>
+                <visible>1</visible>
+                <required>0</required>
+                <type>text</type>
+            </title>
+            <display_count translate="label description">
+                <label>Display Count</label>
+                <description>Limit the number of products displayed (optional). Defaults to 5.</description>
+                <visible>1</visible>
+                <required>0</required>
+                <type>text</type>
+            </display_count>
+            <category_id translate="label description">
+                <label>Category ID</label>
+                <description>Only show best sellers for a specified category ID (optional).</description>
+                <visible>1</visible>
+                <required>0</required>
+                <type>text</type>               
+            </category_id>
+        </parameters>
+    </widgets_catalog_bestseller>
+    <widgets_catalog_latest type="widgets/catalog_latest" translate="name description">
+        <name>Avalanche: Latest Products Widget</name>
+        <description type="desc"><![CDATA[Add a grid or list of the latest products to your CMS page. To use this widget your products must have "Set Product as New from Date" and "Set Product as New to Date" set within an active date range.]]></description>
+        <parameters>
+            <template translate="label description">
+                <label>Frontend Template</label>
+                <description>Choose how you want to showcase your latest products.</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <grid translate="label">
+                        <label>Product Grid</label>
+                        <value>widgets/catalog/grid.phtml</value>
+                    </grid>
+                    <!--<list translate="label">
+                        <label>Product List</label>
+                        <value>widgets/catalog/bestseller_list.phtml</value>
+                    </list>-->
+                </values>
+            </template>
+            <title translate="label description">
+                <label>Title</label>
+                <description>Specify the widget's header title (optional). Defaults to "Latest Products".</description>
+                <visible>1</visible>
+                <required>0</required>
+                <type>text</type>
+            </title>
+            <display_count translate="label description">
+                <label>Display Count</label>
+                <description>Limit the number of products displayed (optional). Defaults to 5.</description>
+                <visible>1</visible>
+                <required>0</required>
+                <type>text</type>
+            </display_count>
+            <category_id translate="label description">
+                <label>Category ID</label>
+                <description>Only show latest products for a specified category ID (optional).</description>
+                <visible>1</visible>
+                <required>0</required>
+                <type>text</type>               
+            </category_id>
+        </parameters>
+    </widgets_catalog_latest>
+    <widgets_catalog_justadded type="widgets/catalog_justadded" translate="name description">
+        <name>Avalanche: Just Added Widget</name>
+        <description type="desc"><![CDATA[Add a grid or list of your just added products to your CMS page. This is an automated version of Latest Products that doesn't require the "Set Product as New" settings.]]></description>
+        <parameters>
+            <template translate="label description">
+                <label>Frontend Template</label>
+                <description>Choose how you want to showcase your latest products.</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <grid translate="label">
+                        <label>Product Grid</label>
+                        <value>widgets/catalog/grid.phtml</value>
+                    </grid>
+                    <!--<list translate="label">
+                        <label>Product List</label>
+                        <value>widgets/catalog/bestseller_list.phtml</value>
+                    </list>-->
+                </values>
+            </template>
+            <title translate="label description">
+                <label>Title</label>
+                <description>Specify the widget's header title (optional). Defaults to "Just Added".</description>
+                <visible>1</visible>
+                <required>0</required>
+                <type>text</type>
+            </title>
+            <display_count translate="label description">
+                <label>Display Count</label>
+                <description>Limit the number of products displayed (optional). Defaults to 5.</description>
+                <visible>1</visible>
+                <required>0</required>
+                <type>text</type>
+            </display_count>
+            <category_id translate="label description">
+                <label>Category ID</label>
+                <description>Only show just added products for a specified category ID (optional).</description>
+                <visible>1</visible>
+                <required>0</required>
+                <type>text</type>               
+            </category_id>
+        </parameters>
+    </widgets_catalog_justadded>
+    <widgets_catalog_featured type="widgets/catalog_featured" translate="name description">
+        <name>Avalanche: Featured Products Widget</name>
+        <description type="desc"><![CDATA[Add a grid or list of featured products to your CMS page.]]></description>
+        <parameters>
+            <template translate="label description">
+                <label>Frontend Template</label>
+                <description>Choose how you want to showcase your latest products.</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <grid translate="label">
+                        <label>Product Grid Carousel</label>
+                        <value>widgets/catalog/grid.phtml</value>
+                    </grid>
+                    <grid_expanded translate="label">
+                        <label>Product Grid Expanded</label>
+                        <value>widgets/catalog/grid_expanded.phtml</value>
+                    </grid_expanded>
+                    <!--<list translate="label">
+                        <label>Product List</label>
+                        <value>widgets/catalog/bestseller_list.phtml</value>
+                    </list>-->
+                </values>
+            </template>
+            <category_id translate="label description">
+                <label>Category ID</label>
+                <description>Only show latest products for a specified category ID.</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>               
+            </category_id>
+            <title translate="label description">
+                <label>Title</label>
+                <description>Specify the widget's header title (optional). Defaults to "Featured Products".</description>
+                <visible>1</visible>
+                <required>0</required>
+                <type>text</type>
+            </title>
+            <display_count translate="label description">
+                <label>Display Count</label>
+                <description>Limit the number of products displayed (optional). Defaults to 5.</description>
+                <visible>1</visible>
+                <required>0</required>
+                <type>text</type>
+            </display_count>
+        </parameters>
+    </widgets_catalog_featured>
+    <widgets_catalog_menu type="widgets/catalog_menu" translate="name description">
+        <name>Avalanche: Catalog Menu Widget</name>
+        <description type="desc"><![CDATA[Add a vertical catalog menu to any CMS page.]]></description>
+        <parameters>
+            <template translate="label description">
+                <label>Frontend Template</label>
+                <description>Choose how you want to display your catalog menu.</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <vertical translate="label">
+                        <label>Vertical</label>
+                        <value>widgets/catalog/menu_vertical.phtml</value>
+                    </vertical>
+                    <!--<vertical_tree translate="label">
+                        <label>Vertical Tree</label>
+                        <value>widgets/catalog/menu_vertical_tree.phtml</value>
+                    </vertical_tree>-->
+                </values>
+            </template>
+            <!--<categories translate="label description">
+                <label>Categories</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>multiselect</type>
+                <source_model>widgets/categories</source_model>           
+            </categories>-->
+        </parameters>
+    </widgets_catalog_menu>
+</widgets>

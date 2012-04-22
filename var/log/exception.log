@@ -1,0 +1,239 @@
+2012-04-17T07:48:27+00:00 DEBUG (7): Exception message: Warning: file_put_contents(/var/www/vhosts/firstfruits/skin/frontend/avalanche/default/css/style.css): failed to open stream: Permission denied  in /var/www/vhosts/firstfruits/app/code/local/FastDivision/ThemeConfig/Model/Observer.php on line 82
+Trace: #0 [internal function]: mageCoreErrorHandler(2, 'file_put_conten...', '/var/www/vhosts...', 82, Array)
+#1 /var/www/vhosts/firstfruits/app/code/local/FastDivision/ThemeConfig/Model/Observer.php(82): file_put_contents('/var/www/vhosts...', 'html, body, div...')
+#2 /var/www/vhosts/firstfruits/app/code/local/FastDivision/ThemeConfig/Model/Observer.php(26): FastDivision_ThemeConfig_Model_Observer->_getStyle(Array)
+#3 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(1303): FastDivision_ThemeConfig_Model_Observer->saveConfig(Object(Varien_Event_Observer))
+#4 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(1284): Mage_Core_Model_App->_callObserverMethod(Object(FastDivision_ThemeConfig_Model_Observer), 'saveConfig', Object(Varien_Event_Observer))
+#5 /var/www/vhosts/firstfruits/app/Mage.php(416): Mage_Core_Model_App->dispatchEvent('admin_system_co...', Array)
+#6 /var/www/vhosts/firstfruits/app/code/core/Mage/Adminhtml/controllers/System/ConfigController.php(169): Mage::dispatchEvent('admin_system_co...', Array)
+#7 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Action.php(420): Mage_Adminhtml_System_ConfigController->saveAction()
+#8 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('save')
+#9 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Front.php(176): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#10 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(349): Mage_Core_Controller_Varien_Front->dispatch()
+#11 /var/www/vhosts/firstfruits/app/Mage.php(640): Mage_Core_Model_App->run(Array)
+#12 /var/www/vhosts/firstfruits/index.php(80): Mage::run('', 'store')
+#13 {main}
+2012-04-17T07:48:27+00:00 DEBUG (7): Exception message: Warning: fopen(/var/www/vhosts/firstfruits/skin/frontend/avalanche/default/images/sprite.png): failed to open stream: Permission denied  in /var/www/vhosts/firstfruits/app/code/local/FastDivision/ThemeConfig/Model/Observer.php on line 94
+Trace: #0 [internal function]: mageCoreErrorHandler(2, 'fopen(/var/www/...', '/var/www/vhosts...', 94, Array)
+#1 /var/www/vhosts/firstfruits/app/code/local/FastDivision/ThemeConfig/Model/Observer.php(94): fopen('/var/www/vhosts...', 'wb')
+#2 /var/www/vhosts/firstfruits/app/code/local/FastDivision/ThemeConfig/Model/Observer.php(27): FastDivision_ThemeConfig_Model_Observer->_getSprite('cd1f0b')
+#3 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(1303): FastDivision_ThemeConfig_Model_Observer->saveConfig(Object(Varien_Event_Observer))
+#4 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(1284): Mage_Core_Model_App->_callObserverMethod(Object(FastDivision_ThemeConfig_Model_Observer), 'saveConfig', Object(Varien_Event_Observer))
+#5 /var/www/vhosts/firstfruits/app/Mage.php(416): Mage_Core_Model_App->dispatchEvent('admin_system_co...', Array)
+#6 /var/www/vhosts/firstfruits/app/code/core/Mage/Adminhtml/controllers/System/ConfigController.php(169): Mage::dispatchEvent('admin_system_co...', Array)
+#7 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Action.php(420): Mage_Adminhtml_System_ConfigController->saveAction()
+#8 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('save')
+#9 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Front.php(176): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#10 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(349): Mage_Core_Controller_Varien_Front->dispatch()
+#11 /var/www/vhosts/firstfruits/app/Mage.php(640): Mage_Core_Model_App->run(Array)
+#12 /var/www/vhosts/firstfruits/index.php(80): Mage::run('', 'store')
+#13 {main}
+2012-04-17T07:48:27+00:00 DEBUG (7): Exception message: Warning: fopen(/var/www/vhosts/firstfruits/skin/frontend/avalanche/default/images/stars.png): failed to open stream: Permission denied  in /var/www/vhosts/firstfruits/app/code/local/FastDivision/ThemeConfig/Model/Observer.php on line 111
+Trace: #0 [internal function]: mageCoreErrorHandler(2, 'fopen(/var/www/...', '/var/www/vhosts...', 111, Array)
+#1 /var/www/vhosts/firstfruits/app/code/local/FastDivision/ThemeConfig/Model/Observer.php(111): fopen('/var/www/vhosts...', 'wb')
+#2 /var/www/vhosts/firstfruits/app/code/local/FastDivision/ThemeConfig/Model/Observer.php(28): FastDivision_ThemeConfig_Model_Observer->_getStars('3DB1FF')
+#3 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(1303): FastDivision_ThemeConfig_Model_Observer->saveConfig(Object(Varien_Event_Observer))
+#4 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(1284): Mage_Core_Model_App->_callObserverMethod(Object(FastDivision_ThemeConfig_Model_Observer), 'saveConfig', Object(Varien_Event_Observer))
+#5 /var/www/vhosts/firstfruits/app/Mage.php(416): Mage_Core_Model_App->dispatchEvent('admin_system_co...', Array)
+#6 /var/www/vhosts/firstfruits/app/code/core/Mage/Adminhtml/controllers/System/ConfigController.php(169): Mage::dispatchEvent('admin_system_co...', Array)
+#7 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Action.php(420): Mage_Adminhtml_System_ConfigController->saveAction()
+#8 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('save')
+#9 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Front.php(176): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#10 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(349): Mage_Core_Controller_Varien_Front->dispatch()
+#11 /var/www/vhosts/firstfruits/app/Mage.php(640): Mage_Core_Model_App->run(Array)
+#12 /var/www/vhosts/firstfruits/index.php(80): Mage::run('', 'store')
+#13 {main}
+2012-04-17T11:59:11+00:00 ERR (3): 
+exception 'Zend_Mail_Transport_Exception' with message 'Unable to send mail. ' in /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Sendmail.php:137
+Stack trace:
+#0 /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Sendmail->_sendMail()
+#1 /var/www/vhosts/firstfruits/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(409): Zend_Mail->send()
+#3 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(462): Mage_Core_Model_Email_Template->send(Array, Array, Array)
+#4 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template/Mailer.php(79): Mage_Core_Model_Email_Template->sendTransactional('customer_create...', 'general', Array, Array, Array, '1')
+#5 /var/www/vhosts/firstfruits/app/code/core/Mage/Customer/Model/Customer.php(646): Mage_Core_Model_Email_Template_Mailer->send()
+#6 /var/www/vhosts/firstfruits/app/code/core/Mage/Customer/Model/Customer.php(573): Mage_Customer_Model_Customer->_sendEmailTemplate('customer/create...', 'customer/create...', Array, '1')
+#7 /var/www/vhosts/firstfruits/app/code/core/Mage/Checkout/Model/Type/Onepage.php(738): Mage_Customer_Model_Customer->sendNewAccountEmail('registered', '', '1')
+#8 /var/www/vhosts/firstfruits/app/code/core/Mage/Checkout/Model/Type/Onepage.php(771): Mage_Checkout_Model_Type_Onepage->_involveNewCustomer()
+#9 /var/www/vhosts/firstfruits/app/code/core/Mage/Checkout/controllers/OnepageController.php(501): Mage_Checkout_Model_Type_Onepage->saveOrder()
+#10 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Action.php(420): Mage_Checkout_OnepageController->saveOrderAction()
+#11 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('saveOrder')
+#12 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Front.php(176): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#13 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(349): Mage_Core_Controller_Varien_Front->dispatch()
+#14 /var/www/vhosts/firstfruits/app/Mage.php(640): Mage_Core_Model_App->run(Array)
+#15 /var/www/vhosts/firstfruits/index.php(80): Mage::run('', 'store')
+#16 {main}
+2012-04-17T11:59:12+00:00 ERR (3): 
+exception 'Zend_Mail_Transport_Exception' with message 'Unable to send mail. ' in /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Sendmail.php:137
+Stack trace:
+#0 /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Sendmail->_sendMail()
+#1 /var/www/vhosts/firstfruits/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(409): Zend_Mail->send()
+#3 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(462): Mage_Core_Model_Email_Template->send(Array, Array, Array)
+#4 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template/Mailer.php(79): Mage_Core_Model_Email_Template->sendTransactional('sales_email_ord...', 'sales', Array, Array, Array, '1')
+#5 /var/www/vhosts/firstfruits/app/code/core/Mage/Sales/Model/Order.php(1300): Mage_Core_Model_Email_Template_Mailer->send()
+#6 /var/www/vhosts/firstfruits/app/code/core/Mage/Checkout/Model/Type/Onepage.php(796): Mage_Sales_Model_Order->sendNewOrderEmail()
+#7 /var/www/vhosts/firstfruits/app/code/core/Mage/Checkout/controllers/OnepageController.php(501): Mage_Checkout_Model_Type_Onepage->saveOrder()
+#8 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Action.php(420): Mage_Checkout_OnepageController->saveOrderAction()
+#9 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('saveOrder')
+#10 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Front.php(176): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#11 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(349): Mage_Core_Controller_Varien_Front->dispatch()
+#12 /var/www/vhosts/firstfruits/app/Mage.php(640): Mage_Core_Model_App->run(Array)
+#13 /var/www/vhosts/firstfruits/index.php(80): Mage::run('', 'store')
+#14 {main}
+2012-04-18T05:54:21+00:00 ERR (3): 
+exception 'Zend_Mail_Transport_Exception' with message 'Unable to send mail. ' in /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Sendmail.php:137
+Stack trace:
+#0 /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Sendmail->_sendMail()
+#1 /var/www/vhosts/firstfruits/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(409): Zend_Mail->send()
+#3 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(462): Mage_Core_Model_Email_Template->send('peter@firstfroo...', NULL, Array)
+#4 /var/www/vhosts/firstfruits/app/code/core/Mage/Newsletter/Model/Subscriber.php(558): Mage_Core_Model_Email_Template->sendTransactional('newsletter_subs...', 'general', 'peter@firstfroo...', NULL, Array)
+#5 /var/www/vhosts/firstfruits/app/code/core/Mage/Newsletter/Model/Subscriber.php(457): Mage_Newsletter_Model_Subscriber->sendConfirmationSuccessEmail()
+#6 /var/www/vhosts/firstfruits/app/code/core/Mage/Newsletter/Model/Observer.php(38): Mage_Newsletter_Model_Subscriber->subscribeCustomer(Object(Mage_Customer_Model_Customer))
+#7 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(1303): Mage_Newsletter_Model_Observer->subscribeCustomer(Object(Varien_Event_Observer))
+#8 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(1284): Mage_Core_Model_App->_callObserverMethod(Object(Mage_Newsletter_Model_Observer), 'subscribeCustom...', Object(Varien_Event_Observer))
+#9 /var/www/vhosts/firstfruits/app/Mage.php(416): Mage_Core_Model_App->dispatchEvent('customer_save_a...', Array)
+#10 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Abstract.php(466): Mage::dispatchEvent('customer_save_a...', Array)
+#11 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Abstract.php(319): Mage_Core_Model_Abstract->_afterSave()
+#12 /var/www/vhosts/firstfruits/app/code/core/Mage/Customer/controllers/AccountController.php(332): Mage_Core_Model_Abstract->save()
+#13 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Action.php(420): Mage_Customer_AccountController->createPostAction()
+#14 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('createpost')
+#15 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Front.php(176): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(349): Mage_Core_Controller_Varien_Front->dispatch()
+#17 /var/www/vhosts/firstfruits/app/Mage.php(640): Mage_Core_Model_App->run(Array)
+#18 /var/www/vhosts/firstfruits/index.php(80): Mage::run('', 'store')
+#19 {main}
+2012-04-18T05:54:22+00:00 ERR (3): 
+exception 'Zend_Mail_Transport_Exception' with message 'Unable to send mail. ' in /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Sendmail.php:137
+Stack trace:
+#0 /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Sendmail->_sendMail()
+#1 /var/www/vhosts/firstfruits/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(409): Zend_Mail->send()
+#3 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(462): Mage_Core_Model_Email_Template->send(Array, Array, Array)
+#4 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template/Mailer.php(79): Mage_Core_Model_Email_Template->sendTransactional('customer_create...', 'general', Array, Array, Array, '1')
+#5 /var/www/vhosts/firstfruits/app/code/core/Mage/Customer/Model/Customer.php(646): Mage_Core_Model_Email_Template_Mailer->send()
+#6 /var/www/vhosts/firstfruits/app/code/core/Mage/Customer/Model/Customer.php(573): Mage_Customer_Model_Customer->_sendEmailTemplate('customer/create...', 'customer/create...', Array, '1')
+#7 /var/www/vhosts/firstfruits/app/code/core/Mage/Customer/controllers/AccountController.php(400): Mage_Customer_Model_Customer->sendNewAccountEmail('registered', '', '1')
+#8 /var/www/vhosts/firstfruits/app/code/core/Mage/Customer/controllers/AccountController.php(349): Mage_Customer_AccountController->_welcomeCustomer(Object(Mage_Customer_Model_Customer))
+#9 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Action.php(420): Mage_Customer_AccountController->createPostAction()
+#10 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('createpost')
+#11 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Front.php(176): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#12 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(349): Mage_Core_Controller_Varien_Front->dispatch()
+#13 /var/www/vhosts/firstfruits/app/Mage.php(640): Mage_Core_Model_App->run(Array)
+#14 /var/www/vhosts/firstfruits/index.php(80): Mage::run('', 'store')
+#15 {main}
+2012-04-18T05:55:15+00:00 ERR (3): 
+exception 'Zend_Mail_Transport_Exception' with message 'Unable to send mail. ' in /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Sendmail.php:137
+Stack trace:
+#0 /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Sendmail->_sendMail()
+#1 /var/www/vhosts/firstfruits/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(409): Zend_Mail->send()
+#3 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(462): Mage_Core_Model_Email_Template->send('lesley@firstfro...', 'Lesley Muller', Array)
+#4 /var/www/vhosts/firstfruits/app/code/core/Mage/Sendfriend/Model/Sendfriend.php(156): Mage_Core_Model_Email_Template->sendTransactional('sendfriend_emai...', Array, 'lesley@firstfro...', 'Lesley Muller', Array)
+#5 /var/www/vhosts/firstfruits/app/code/core/Mage/Sendfriend/controllers/ProductController.php(178): Mage_Sendfriend_Model_Sendfriend->send()
+#6 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Action.php(420): Mage_Sendfriend_ProductController->sendmailAction()
+#7 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('sendmail')
+#8 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Front.php(176): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#9 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(349): Mage_Core_Controller_Varien_Front->dispatch()
+#10 /var/www/vhosts/firstfruits/app/Mage.php(640): Mage_Core_Model_App->run(Array)
+#11 /var/www/vhosts/firstfruits/index.php(80): Mage::run('', 'store')
+#12 {main}
+2012-04-21T03:44:35+00:00 DEBUG (7): Exception message: This email address is already assigned to another user.
+Trace: #0 /var/www/vhosts/firstfruits/app/code/core/Mage/Newsletter/controllers/SubscriberController.php(61): Mage::throwException('This email addr...')
+#1 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Action.php(420): Mage_Newsletter_SubscriberController->newAction()
+#2 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('new')
+#3 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Front.php(176): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(349): Mage_Core_Controller_Varien_Front->dispatch()
+#5 /var/www/vhosts/firstfruits/app/Mage.php(640): Mage_Core_Model_App->run(Array)
+#6 /var/www/vhosts/firstfruits/index.php(80): Mage::run('', 'store')
+#7 {main}
+2012-04-21T12:11:54+00:00 ERR (3): 
+exception 'Zend_Mail_Transport_Exception' with message 'Unable to send mail. ' in /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Sendmail.php:137
+Stack trace:
+#0 /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Sendmail->_sendMail()
+#1 /var/www/vhosts/firstfruits/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(409): Zend_Mail->send()
+#3 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(462): Mage_Core_Model_Email_Template->send(Array, Array, Array)
+#4 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template/Mailer.php(79): Mage_Core_Model_Email_Template->sendTransactional('customer_create...', 'general', Array, Array, Array, '1')
+#5 /var/www/vhosts/firstfruits/app/code/core/Mage/Customer/Model/Customer.php(646): Mage_Core_Model_Email_Template_Mailer->send()
+#6 /var/www/vhosts/firstfruits/app/code/core/Mage/Customer/Model/Customer.php(573): Mage_Customer_Model_Customer->_sendEmailTemplate('customer/create...', 'customer/create...', Array, '1')
+#7 /var/www/vhosts/firstfruits/app/code/core/Mage/Checkout/Model/Type/Onepage.php(738): Mage_Customer_Model_Customer->sendNewAccountEmail('registered', '', '1')
+#8 /var/www/vhosts/firstfruits/app/code/core/Mage/Checkout/Model/Type/Onepage.php(771): Mage_Checkout_Model_Type_Onepage->_involveNewCustomer()
+#9 /var/www/vhosts/firstfruits/app/code/core/Mage/Checkout/controllers/OnepageController.php(501): Mage_Checkout_Model_Type_Onepage->saveOrder()
+#10 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Action.php(420): Mage_Checkout_OnepageController->saveOrderAction()
+#11 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('saveOrder')
+#12 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Front.php(176): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#13 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(349): Mage_Core_Controller_Varien_Front->dispatch()
+#14 /var/www/vhosts/firstfruits/app/Mage.php(640): Mage_Core_Model_App->run(Array)
+#15 /var/www/vhosts/firstfruits/index.php(80): Mage::run('', 'store')
+#16 {main}
+2012-04-21T12:11:55+00:00 ERR (3): 
+exception 'Zend_Mail_Transport_Exception' with message 'Unable to send mail. ' in /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Sendmail.php:137
+Stack trace:
+#0 /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Sendmail->_sendMail()
+#1 /var/www/vhosts/firstfruits/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(409): Zend_Mail->send()
+#3 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(462): Mage_Core_Model_Email_Template->send(Array, Array, Array)
+#4 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template/Mailer.php(79): Mage_Core_Model_Email_Template->sendTransactional('sales_email_ord...', 'sales', Array, Array, Array, '1')
+#5 /var/www/vhosts/firstfruits/app/code/core/Mage/Sales/Model/Order.php(1300): Mage_Core_Model_Email_Template_Mailer->send()
+#6 /var/www/vhosts/firstfruits/app/code/core/Mage/Checkout/Model/Type/Onepage.php(796): Mage_Sales_Model_Order->sendNewOrderEmail()
+#7 /var/www/vhosts/firstfruits/app/code/core/Mage/Checkout/controllers/OnepageController.php(501): Mage_Checkout_Model_Type_Onepage->saveOrder()
+#8 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Action.php(420): Mage_Checkout_OnepageController->saveOrderAction()
+#9 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('saveOrder')
+#10 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Front.php(176): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#11 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(349): Mage_Core_Controller_Varien_Front->dispatch()
+#12 /var/www/vhosts/firstfruits/app/Mage.php(640): Mage_Core_Model_App->run(Array)
+#13 /var/www/vhosts/firstfruits/index.php(80): Mage::run('', 'store')
+#14 {main}
+2012-04-21T12:19:52+00:00 ERR (3): 
+exception 'Zend_Mail_Transport_Exception' with message 'Unable to send mail. ' in /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Sendmail.php:137
+Stack trace:
+#0 /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Sendmail->_sendMail()
+#1 /var/www/vhosts/firstfruits/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(409): Zend_Mail->send()
+#3 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(462): Mage_Core_Model_Email_Template->send(Array, Array, Array)
+#4 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template/Mailer.php(79): Mage_Core_Model_Email_Template->sendTransactional('sales_email_inv...', 'sales', Array, Array, Array, '1')
+#5 /var/www/vhosts/firstfruits/app/code/core/Mage/Sales/Model/Order/Invoice.php(810): Mage_Core_Model_Email_Template_Mailer->send()
+#6 /var/www/vhosts/firstfruits/app/code/core/Mage/Adminhtml/controllers/Sales/Order/InvoiceController.php(288): Mage_Sales_Model_Order_Invoice->sendEmail(true, '')
+#7 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Action.php(420): Mage_Adminhtml_Sales_Order_InvoiceController->saveAction()
+#8 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('save')
+#9 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Front.php(176): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#10 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(349): Mage_Core_Controller_Varien_Front->dispatch()
+#11 /var/www/vhosts/firstfruits/app/Mage.php(640): Mage_Core_Model_App->run(Array)
+#12 /var/www/vhosts/firstfruits/index.php(80): Mage::run('', 'store')
+#13 {main}
+2012-04-21T12:19:52+00:00 ERR (3): 
+exception 'Zend_Mail_Transport_Exception' with message 'Unable to send mail. ' in /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Sendmail.php:137
+Stack trace:
+#0 /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Sendmail->_sendMail()
+#1 /var/www/vhosts/firstfruits/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(409): Zend_Mail->send()
+#3 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(462): Mage_Core_Model_Email_Template->send(Array, Array, Array)
+#4 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template/Mailer.php(79): Mage_Core_Model_Email_Template->sendTransactional('sales_email_shi...', 'sales', Array, Array, Array, '1')
+#5 /var/www/vhosts/firstfruits/app/code/core/Mage/Sales/Model/Order/Shipment.php(462): Mage_Core_Model_Email_Template_Mailer->send()
+#6 /var/www/vhosts/firstfruits/app/code/core/Mage/Adminhtml/controllers/Sales/Order/InvoiceController.php(295): Mage_Sales_Model_Order_Shipment->sendEmail(true)
+#7 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Action.php(420): Mage_Adminhtml_Sales_Order_InvoiceController->saveAction()
+#8 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('save')
+#9 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Front.php(176): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#10 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(349): Mage_Core_Controller_Varien_Front->dispatch()
+#11 /var/www/vhosts/firstfruits/app/Mage.php(640): Mage_Core_Model_App->run(Array)
+#12 /var/www/vhosts/firstfruits/index.php(80): Mage::run('', 'store')
+#13 {main}
+2012-04-21T12:20:40+00:00 ERR (3): 
+exception 'Zend_Mail_Transport_Exception' with message 'Unable to send mail. ' in /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Sendmail.php:137
+Stack trace:
+#0 /var/www/vhosts/firstfruits/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Sendmail->_sendMail()
+#1 /var/www/vhosts/firstfruits/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(409): Zend_Mail->send()
+#3 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template.php(462): Mage_Core_Model_Email_Template->send(Array, Array, Array)
+#4 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/Email/Template/Mailer.php(79): Mage_Core_Model_Email_Template->sendTransactional('sales_email_shi...', 'sales', Array, Array, Array, '1')
+#5 /var/www/vhosts/firstfruits/app/code/core/Mage/Sales/Model/Order/Shipment.php(462): Mage_Core_Model_Email_Template_Mailer->send()
+#6 /var/www/vhosts/firstfruits/app/code/core/Mage/Adminhtml/controllers/Sales/Order/ShipmentController.php(226): Mage_Sales_Model_Order_Shipment->sendEmail(true, '')
+#7 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Action.php(420): Mage_Adminhtml_Sales_Order_ShipmentController->saveAction()
+#8 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('save')
+#9 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Controller/Varien/Front.php(176): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#10 /var/www/vhosts/firstfruits/app/code/core/Mage/Core/Model/App.php(349): Mage_Core_Controller_Varien_Front->dispatch()
+#11 /var/www/vhosts/firstfruits/app/Mage.php(640): Mage_Core_Model_App->run(Array)
+#12 /var/www/vhosts/firstfruits/index.php(80): Mage::run('', 'store')
+#13 {main}

@@ -1,0 +1,104 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php
+	$_product = $this->getProduct();
+	$_items = $this->getReviewsCollection()->getItems();
+	$reviewCount = 0;
+	$latestReviewLimit = Mage::getStoreConfig('avalanche_config/avalanche_product_details/avalanche_latestreviewcount');
+?>
+<div id="product-reviews" class="white-box">
+	<h2><?php echo $this->__('Latest Reviews') ?></h2>
+	<?php echo $this->getChildHtml('details_return') ?>
+
+	<?php echo $this->getChildHtml('hreview_aggregate') ?>
+	
+	<?php if(count($_items)): ?>
+		<?php foreach ($_items as $_review):?>
+			<?php
+				// Only show X reviews max on product details page
+				if($reviewCount == $latestReviewLimit) {
+					continue;
+				}
+			?>
+			<div class="review hreview clearfix">
+				<span class="item">
+	                <span class="fn">
+	                    <span class="value-title" title="<?php echo $this->helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name') ?>"></span>
+	                </span> 
+	            </span>
+				<?php
+                    if(Mage::getStoreConfigFlag('avalanche_wall/reviewphotos_general/reviewphotos_enabled')) {
+                        if($_review->getPhotoUrl()) {
+                ?>
+                    <a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>media/reviews/<?php echo $_review->getPhotoUrl(); ?>" class="review-photo" rel="lightbox[reviewphoto]" title="<?php echo $_review->getPhotoDescription(); ?>"><img src="<?php echo Mage::helper('reviewphotos/resizer')->resizeImage($_review->getPhotoUrl(), Mage::getStoreConfig('avalanche_wall/reviewphotos_general/reviewphotos_thumbnail_x'), Mage::getStoreConfig('avalanche_wall/reviewphotos_general/reviewphotos_thumbnail_y'), 'reviews'); ?>" alt="<?php echo $_review->getPhotoTitle(); ?>"/></a>
+                <?php
+                        }
+                    }
+                ?>
+				<div class="review-header">
+					<span class="review-title summary"><?php echo $this->htmlEscape($_review->getTitle()) ?></span>
+					<?php
+						// Get the average of all the votes for the final rating
+						$_votes = $_review->getRatingVotes();
+						$_avgVote = 0;
+						if(count($_votes)) {
+							foreach($_votes as $_vote) {
+								$_avgVote += $_vote->getPercent();
+							}
+							$_avgVote = round($_avgVote / count($_votes));
+						}
+					?>
+					<table class="rating-table"><tr><td>
+						<div class="rating"><span class="value-title review-rating stars rating<?php echo round($_avgVote / 20) ?>" title="<?php echo round($_avgVote / 20) ?>"></span></div>
+						<span class="dtreviewed">
+							<span class="value-title" title="<?php echo date('c', strtotime($this->formatDate($_review->getCreatedAt()))) ?>"></span>
+						</span>
+					</td><td>
+						<span class="review-author"><?php echo $this->__('by %s on', "<span class='reviewer'>" . $this->htmlEscape($_review->getNickname()) . "</span>") ?> <?php echo date('F j, Y', strtotime($this->formatDate($_review->getCreatedAt()))) ?></span>
+					</td></tr></table>
+				</div>
+				<div class="review-content description"><?php echo nl2br($this->htmlEscape($_review->getDetail())) ?></div>
+			</div>
+			<?php $reviewCount++; ?>
+		<?php endforeach; ?>
+	<?php else: ?>
+		<div class="white-box-inner">
+			<p class="no-reviews"><?php echo $this->__('There are no reviews for this product. You could be the first to review!') ?></p>
+		</div>
+	<?php endif; ?>
+	
+	<div class="box-action">
+		<?php if($this->getReviewsCollection()->getSize() > $latestReviewLimit): ?>
+			<a href="<?php echo Mage::getUrl('review/product/list', array('id' => $_product->getId(), 'category' => $_product->getCategoryId())) ?>">&raquo; <?php echo $this->__('<strong>Read More Reviews</strong> for %s', $this->getProduct()->getName()) ?></a><br>
+		<?php endif; ?>
+		<a href="#review-form" id="write-review-link">&raquo; <?php echo $this->__('<strong>Write A Review</strong> for %s', $this->getProduct()->getName()) ?></a>
+	</div>
+</div>
+
+<?php if(Mage::getStoreConfigFlag('avalanche_wall/reviewphotos_general/reviewphotos_enabled')) { ?>
+<script type="text/javascript">
+    document.observe('dom:loaded', function() {
+        LightboxOptions.fileLoadingImage = '<?php echo $this->getSkinUrl("images/reviewphotos/loading.gif"); ?>';
+        LightboxOptions.fileBottomNavCloseImage = '<?php echo $this->getSkinUrl("images/reviewphotos/closelabel.gif"); ?>';
+        new Lightbox(); 
+    });
+</script>
+<?php } ?>
+
+<?php echo $this->getChildHtml('review_form') ?>

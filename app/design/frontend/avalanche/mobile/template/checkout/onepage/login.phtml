@@ -1,0 +1,89 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div>
+    <?php echo $this->getChildHtml('login_before')?>
+    <div>
+        <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+            <p><?php echo $this->__('Register with us for future convenience:') ?></p>
+        <?php endif; ?>
+        <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+            <ul class="form-list">
+                <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+                <li class="control">
+                    <input type="radio" name="checkout_method" id="login:guest" value="guest"<?php if($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_GUEST): ?> checked="checked"<?php endif; ?> class="radio" onclick="$jQ('#checkout-method-continue-button').html('<?php echo $this->__('Checkout as Guest &raquo;') ?>')" /><label for="login:guest"><?php echo $this->__('Checkout as Guest') ?></label>
+                </li>
+                <?php endif; ?>
+                <li class="control">
+                    <input type="radio" name="checkout_method" id="login:register" value="register"<?php if($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_REGISTER || !$this->getQuote()->isAllowedGuestCheckout()): ?> checked="checked"<?php endif ?> class="radio" onclick="$jQ('#checkout-method-continue-button').html('<?php echo $this->__('Register Now &raquo;') ?>')" /><label for="login:register"><?php echo $this->__('Register') ?></label>
+                </li>
+            </ul>
+        <?php else: ?>
+            <input type="hidden" name="checkout_method" id="login:register" value="register" checked="checked" />
+        <?php endif; ?>
+        <div class="buttons-set">
+            <button id="checkout-method-continue-button" type="button" class="button" onclick="checkout.setMethod();"><?php echo ($this->getQuote()->isAllowedGuestCheckout() ? $this->__('Checkout as Guest &raquo;') : $this->__('Register Now &raquo;')) ?></button>
+        </div>
+    </div>
+    <div>
+        <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+        <form id="login-form" class="site-form" action="<?php echo $this->getPostAction() ?>" method="post">
+        <fieldset>
+            <h4><strong><?php echo $this->__('Already registered?') ?></strong></h4>
+            <ul class="form-list">
+                <li class="field">
+                    <label for="login-email" class="required"><?php echo $this->__('Email') ?><em>*</em></label>
+                    <div class="input-box">
+                        <input type="text" class="input-text required-entry validate-email" id="login-email" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" />
+                    </div>
+                </li>
+                <li class="field">
+                    <label for="login-password" class="required"><?php echo $this->__('Password') ?><em>*</em></label>
+                    <div class="input-box">
+                        <input type="password" class="input-text required-entry" id="login-password" name="login[password]" />
+                    </div>
+                </li>
+            </ul>
+        </fieldset>
+        <div class="buttons-set">
+			<button type="submit" class="button" onclick="onepageLogin(this)"><?php echo $this->__('Log In') ?></button>
+            &nbsp;&nbsp;<a href="<?php echo $this->getUrl('customer/account/forgotpassword') ?>" class="small"><?php echo $this->__('Forgot your password?') ?></a>
+        </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+    var loginForm = new VarienForm('login-form', true);
+    $('login-email').observe('keypress', bindLoginPost);
+    $('login-password').observe('keypress', bindLoginPost);
+    function bindLoginPost(evt){
+        if (evt.keyCode == Event.KEY_RETURN) {
+            loginForm.submit();
+        }
+    }
+    function onepageLogin(button)
+    {
+        if(loginForm.validator && loginForm.validator.validate()){
+            button.disabled = true;
+            loginForm.submit();
+        }
+    }
+//]]>
+</script>

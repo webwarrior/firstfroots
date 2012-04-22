@@ -1,0 +1,28 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php $_filters = $this->getActiveFilters() ?>
+<?php if(!empty($_filters)): ?>
+<ul>
+<?php foreach ($_filters as $_filter): ?>
+    <li>
+		<a href="<?php echo $_filter->getRemoveUrl() ?>" title="<?php echo $this->__('Remove This Item') ?>" class="remove-filter"><span class="label"><?php echo $this->__($_filter->getName()) ?>:</span> <strong><?php echo $this->stripTags($_filter->getLabel()) ?></strong></a>
+    </li>
+<?php endforeach; ?>
+</ul>
+<?php endif; ?>

@@ -1,0 +1,47 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<h1><?php echo $this->__('Newsletter Subscription') ?></h1>
+<div class="white-box-inner">
+	<div class="page-messages">
+		<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+	</div>
+	<?php echo $this->getChildHtml('form_before')?>
+	<form action="<?php echo $this->getAction() ?>" method="post" id="form-validate">
+	    <div class="fieldset">
+	        <?php echo $this->getBlockHtml('formkey')?>
+	        <ul class="form-list">
+	            <li class="control">
+					<table class="checkbox-field"><tr><td>
+						<input type="checkbox" name="is_subscribed" id="subscription" value="1" title="<?php echo $this->__('General Subscription') ?>"<?php if($this->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
+					</td><td>
+						<label for="subscription"><?php echo $this->__('General Subscription') ?></label>
+					</td></tr></table>
+				</li>
+	        </ul>
+	    </div>
+	    <div class="buttons-set">
+	        <button type="submit" title="<?php echo $this->__('Save') ?>" class="button"><span><span><?php echo $this->__('Save Subscription(s)') ?></span></span></button>
+	    </div>
+	</form>
+	<script type="text/javascript">
+	//<![CDATA[
+	    var dataForm = new VarienForm('form-validate', true);
+	//]]>
+	</script>
+</div>

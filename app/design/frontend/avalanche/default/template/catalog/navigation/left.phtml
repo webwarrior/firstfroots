@@ -1,0 +1,42 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+
+/**
+ * Category left navigation
+ *
+ * @see Mage_Catalog_Block_Navigation
+ */
+?>
+<?php if (!Mage::registry('current_category')) return; ?>
+<?php $_categories=$this->getCurrentChildCategories() ?>
+<?php $_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
+	
+<?php if($_count): ?>
+	<div class="black-box">
+		<h2><?php echo $this->__('Category') ?></h2>
+		<ul>
+			<?php foreach ($_categories as $_category): ?>
+				<?php if($_category->getIsActive()): ?>
+					<li>
+						<a href="<?php echo $this->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; ?>><?php echo $this->htmlEscape($_category->getName()) ?></a> <?/*(<?php echo $_category->getProductCount() ?>)*/?>
+					</li>
+				<?php endif; ?>
+			<?php endforeach ?>
+		</ul>
+	</div><br>
+<?php endif; ?>

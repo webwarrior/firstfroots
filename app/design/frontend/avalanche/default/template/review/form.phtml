@@ -1,0 +1,171 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div id="write-review" class="white-box white-lightbox">
+    <h2 style="margin:0"><?php echo $this->__('Write Your Own Review') ?></h2>
+
+    <?php if ($this->getAllowWriteReviewFlag()): ?>
+    <h3><?php echo $this->htmlEscape($this->getProductInfo()->getName()) ?></h3>
+    
+    <div id="review-form-container">
+        <div id="review-image">
+            <img src="<?php echo $this->getSkinUrl('images/catalog/product/placeholder/small_image.jpg') ?>" alt="<?php echo $this->htmlEscape($this->getProductInfo()->getName()) ?>" width="200" height="200">
+        </div>
+        <form action="<?php echo $this->getAction() ?>" method="post" id="review-form" enctype="multipart/form-data">
+            <fieldset>
+                <div class="white-box-inner">
+                <?php echo $this->getChildHtml('form_fields_before')?>
+                    <ul class="form-list">
+                        <li>
+                            <label for="nickname_field" class="required"><?php echo $this->__('Name') ?><em>*</em></label>
+                            <div class="input-box">
+                                <input type="text" name="nickname" id="nickname_field" class="input-text required-entry" value="<?php echo $this->htmlEscape($data->getNickname()) ?>" />
+                            </div>
+                        </li>
+                        <?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
+                            <?php foreach ($this->getRatings() as $_rating): ?>
+                                <li>
+                                    <label><?php echo $this->escapeHtml($_rating->getRatingCode()) ?><em>*</em></label>
+                                    <div class="rating-selector clearfix">
+                                        <?php 
+                                            $x = 1;
+                                            foreach ($_rating->getOptions() as $_option) {
+                                        ?>
+                                            <input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="rating-star">
+                                        <?php
+                                                $x++;
+                                            }
+                                        ?>
+                                    </div>
+                                    <span class="instructions"><?php echo $this->__('Click a star to set your rating.') ?></span>
+                                </li>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        <li>
+                            <label for="summary_field" class="required"><?php echo $this->__('Title') ?><em>*</em></label>
+                            <div class="input-box">
+                                <input type="text" name="title" id="summary_field" class="input-text required-entry" value="<?php echo $this->htmlEscape($data->getTitle()) ?>" />
+                            </div>
+                        </li>
+                        <li>
+                            <label for="review_field" class="required"><?php echo $this->__('Review') ?><em>*</em></label>
+                            <div class="input-box">
+                                <textarea name="detail" id="review_field" cols="36" rows="5" class="required-entry"><?php echo $this->htmlEscape($data->getDetail()) ?></textarea>
+                            </div>
+                        </li>
+                        <?php if(Mage::getStoreConfigFlag('avalanche_wall/reviewphotos_general/reviewphotos_enabled')) { ?>
+                        <li>
+                            <a href="#" id="upload-photo-link"><strong>Got a photo?</strong> Click here to upload a photo for this product! &raquo;</a>
+                        </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+
+                <?php
+                    // Check to see if review photos enabled
+                    if(Mage::getStoreConfigFlag('avalanche_wall/reviewphotos_general/reviewphotos_enabled')) {
+                ?>
+                <div id="upload-photo-container">
+                <h3><?php echo $this->__('Upload Your Product Photo') ?></h3>
+                <div class="white-box-inner">
+                    <div id="upload-photo-form">
+                        
+                        <?php if(Mage::getStoreConfig('avalanche_wall/reviewphotos_general/reviewphotos_terms') != ''): ?>
+                        <p><?php echo Mage::getStoreConfig('avalanche_wall/reviewphotos_general/reviewphotos_terms'); ?></p>
+                        <?php endif; ?>
+                        <ul class="form-list">
+                            <li>
+                                <label for="photo_url"><?php echo $this->__('Choose File') ?></label>
+                                <div class="input-box">
+                                    <input type="file" id="photo_url" name="photo"/>
+                                </div>
+                            </li>
+                            <?php if(Mage::getStoreConfigFlag('avalanche_wall/reviewphotos_general/reviewphotos_show_title')): ?>
+                            <li>
+                                <label for="title_field"><?php echo $this->__('Photo Title') ?></label>
+                                <div class="input-box">
+                                    <input type="text" name="photo_title" id="title_field" class="input-text" />
+                                </div>
+                            </li>
+                            <?php endif; ?>
+                            <?php if(Mage::getStoreConfigFlag('avalanche_wall/reviewphotos_general/reviewphotos_show_description')): ?>
+                            <li>
+                                <label for="description_field"><?php echo $this->__('Description') ?></label>
+                                <div class="input-box">
+                                    <textarea type="text" name="photo_description" id="description_field" cols="36" rows="5"></textarea>
+                                </div>
+                            </li>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+                <?php
+                    }
+                ?>
+                    <div class="white-box-inner">
+                        <div class="buttons-set">
+                            <button type="submit" title="<?php echo $this->__('Submit Review') ?>" class="action-button"><span><?php echo $this->__('Submit Review') ?></span></button>
+                        </div>
+                    </div>
+                </fieldset>
+        </form>
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('review-form');
+        Validation.addAllThese(
+        [
+               ['validate-rating', '<?php echo $this->__('Please select one of each of the ratings above') ?>', function(v) {
+                    var trs = $('product-review-table').select('tr');
+                    var inputs;
+                    var error = 1;
+
+                    for( var j=0; j < trs.length; j++ ) {
+                        var tr = trs[j];
+                        if( j > 0 ) {
+                            inputs = tr.select('input');
+
+                            for( i in inputs ) {
+                                if( inputs[i].checked == true ) {
+                                    error = 0;
+                                }
+                            }
+
+                            if( error == 1 ) {
+                                return false;
+                            } else {
+                                error = 1;
+                            }
+                        }
+                    }
+                    return true;
+                }]
+        ]
+        );
+    //]]>
+    </script>
+        <?php else: ?>
+    <div class="white-box-inner">
+        <p class="review-nologged" id="review-form">
+            <?php echo $this->__('Only registered users can write reviews. Please, <a href="%s">log in</a> or <a href="%s">register</a>', $this->getLoginLink(), Mage::helper('customer')->getRegisterUrl()) ?>
+        </p>
+    </div>
+        <?php endif ?>
+    <a id="close_x" class="close" href="#"><?php echo $this->__('Close') ?></a> 
+</div>

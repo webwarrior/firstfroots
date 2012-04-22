@@ -1,0 +1,65 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+	$cloudZoom = (Mage::getStoreConfig('avalanche_config/avalanche_product_details/avalanche_cloud_zoom') == 1) ? 'cloud-zoom' : '';
+	$primaryPhotoDuplicate = (Mage::getStoreConfig('avalanche_config/avalanche_product_details/avalanche_duplicate_image') == 1) ? true : false;
+	$primaryPhotoWidth = Mage::getStoreConfig('avalanche_config/avalanche_product_details/avalanche_primaryphotowidth');
+	$thumbnailPhotoWidth = Mage::getStoreConfig('avalanche_config/avalanche_product_details/avalanche_thumbnailphotowidth');
+?>
+<div id="product-image-browser" class="white-box <?php if(!$_product->isSaleable()) { echo "faded"; } ?>">
+	<?php $microformat_img = $this->helper('catalog/image')->init($_product, 'image'); ?>
+	<span class="image" style="display: none"><?php echo $_helper->productAttribute($_product, $microformat_img, 'image'); ?></span>
+	<div id="product-image">
+		<?php if ($_product->getImage() != 'no_selection' && $_product->getImage() && !empty($cloudZoom)): ?>
+		    <?php
+				// If zoom image
+				$_smallImg = '<img src="'.$this->helper('catalog/image')->init($_product, 'image').'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" width="' . $primaryPhotoWidth . '"/>';
+		        $_img = '<a href="'.$this->helper('catalog/image')->init($_product, 'image').'" class="photo ' . $cloudZoom . '" title="'.$this->htmlEscape($this->getImageLabel()).'">' . $_smallImg . '</a>';
+		        echo $_helper->productAttribute($_product, $_img, 'image');
+		    ?>
+		<?php else: ?>
+		    <?php
+		        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($primaryPhotoWidth).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" class="photo" width="' . $primaryPhotoWidth . '"/>';
+		        echo $_helper->productAttribute($_product, $_img, 'image');
+		    ?>
+		<?php endif; ?>
+	</div>
+	<?php if (count($this->getGalleryImages()) > 0): ?>
+	<div id="product-image-strip" class="clearfix">
+		<ul class="menu clearfix">
+			<?php if($primaryPhotoDuplicate): ?>
+			<li>
+			    <?php
+					// Add main image to product image strip
+			        $_img = '<a href="' . $this->helper('catalog/image')->init($_product, 'image') . '" class="product-image-thumbnail" data-img="{img:\'' . $this->helper('catalog/image')->init($_product, 'image') . '\'}" title="' . $this->htmlEscape($this->getImageLabel()) . '"><img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($thumbnailPhotoWidth).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" width="'.$thumbnailPhotoWidth.'" height="'.$thumbnailPhotoWidth.'" /></a>';
+			        echo $_helper->productAttribute($_product, $_img, 'image');
+			    ?>
+			</li>
+			<?php endif; ?>
+		    <?php foreach ($this->getGalleryImages() as $_image): ?>
+		        <li>
+		            <a href="<?php echo $this->getGalleryUrl($_image) ?>" class="product-image-thumbnail" data-img="{img:'<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()); ?>'}" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($thumbnailPhotoWidth); ?>" width="<?php echo $thumbnailPhotoWidth; ?>" height="<?php echo $thumbnailPhotoWidth; ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"></a>
+		        </li>
+		    <?php endforeach; ?>
+		</ul>
+	</div>
+	<?php endif; ?>
+</div>

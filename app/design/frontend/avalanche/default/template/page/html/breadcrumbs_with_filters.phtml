@@ -1,0 +1,70 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php 
+	$current_url = $this->helper('core/url')->getCurrentUrl();
+	$link_pass = strpos($current_url, '?'); 
+?>
+<div class="breadcrumbs">
+    <ul>
+		<li><a href="<?php echo Mage::getBaseUrl() ?>">Home</a><span class="crumb-divider">&nbsp; / &nbsp;</span></li>
+		<?php
+			$path = Mage::helper('catalog')->getBreadcrumbPath();
+			$_filters = $this->getActiveFilters();
+
+			$crumbTotal = count($path) + count($_filters);
+			$crumbCount = 1;
+
+			foreach ($path as $_crumbName => $_crumbInfo):
+		?>
+			<li class="<?php if($crumbCount == $crumbTotal) { echo "breadcrumb-last"; } ?>">
+	            <?php if($_crumbInfo['link']): ?>
+	                <a href="<?php echo $_crumbInfo['link'] ?>"><?php echo $this->htmlEscape($_crumbInfo['label']) ?></a>
+				<?php elseif($link_pass): ?>
+					<a href="<?php echo preg_replace('/\?.*/', '', $current_url) ?>"><?php echo $this->htmlEscape($_crumbInfo['label']) ?></a>
+	            <?php else: ?>
+	                <?php echo $this->htmlEscape($_crumbInfo['label']) ?>
+	            <?php endif; ?>
+	            <?php if($crumbCount != $crumbTotal): ?>
+	                <span class="crumb-divider">&nbsp; / &nbsp;</span>
+	            <?php endif; ?>
+            </li>
+            <?php $crumbCount++; ?>
+		<?php endforeach; ?>
+
+		<?php if(!empty($_filters)): ?>
+		    <?php foreach ($_filters as $i => $_filter): ?>
+				<?php if($i != (count($_filters)-1)): ?>
+					<?php
+						$filterAppend = '?';
+						for($x=$i; $x >= 0; $x--) {
+							if($filterAppend != '?') {
+								$filterAppend .= '&';
+							}
+							$filterAppend .= $_filters[$x]->getFilter()->getRequestVar() . '=' . $_filters[$x]->getValueString();
+						}
+					?>
+					<li class="<?php if($crumbCount == $crumbTotal) { echo "breadcrumb-last"; } ?>"><a href="<?php echo preg_replace('/\?.*/', '', $current_url) . $filterAppend ?>"><?php echo $this->stripTags($_filter->getLabel()) ?></a><?php if($crumbCount != $crumbTotal): ?><span class="crumb-divider">&nbsp; / &nbsp;</span><?php endif; ?></li>
+				<?php else: ?>
+					<li class="<?php if($crumbCount == $crumbTotal) { echo "breadcrumb-last"; } ?>"><?php echo $this->stripTags($_filter->getLabel()) ?><?php if($crumbCount != $crumbTotal): ?><span class="crumb-divider">&nbsp; / &nbsp;</span><?php endif; ?></li>
+				<?php endif; ?>
+				<?php $crumbCount++; ?>
+		    <?php endforeach; ?>
+		<?php endif; ?>
+    </ul>
+</div>

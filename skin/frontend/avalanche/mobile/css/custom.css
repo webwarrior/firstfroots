@@ -1,0 +1,17 @@
+/*
+Avalanche Mobile Custom CSS File
+
+How to Use:
+
+Enable the custom stylesheet option in the Avalanche configuration panel. The <body>
+tag will be appended with the "custom" class so you can override CSS declarations
+in the style.css file.
+
+Example:
+
+.custom a, .custom a:visited { color: #090; }
+.custom a:hover { color: #00f; }
+*/
+
+
+

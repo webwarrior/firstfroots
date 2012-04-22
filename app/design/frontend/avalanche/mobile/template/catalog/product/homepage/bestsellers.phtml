@@ -1,0 +1,49 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+<?php $_collectionSize = count($_products->getItems()) ?>
+
+<div class="white-box">
+	<h3><?php echo $this->__('Best Sellers') ?></h3>
+	<div class="carousel-top">
+		<span class="carousel-photos-title"></span>
+	</div>
+	<div class="carousel-container">
+		<div class="carousel">
+			<ul class="carousel-photos clearfix">
+				<?php foreach($_products->getItems() as $_product): ?>
+				<li data-name="<?php echo $this->htmlEscape($_product->getName()) ?>" data-price="<?php echo number_format($_product->getFinalPrice(), 2) ?>"><a href="<?php echo $_product->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(118) ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>"></a></li>
+				<?php endforeach; ?>
+				<li class="fill"></li>
+				<li class="fill"></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<?php else: ?>
+
+<div class="white-box">
+	<h3><?php echo $this->__('Best Sellers') ?></h3>
+	<div class="white-box-inner">
+		<p><?php echo $this->__('No best sellers were found. Clear your cache, reindex and make sure you\'ve sold some products!') ?></p>
+	</div>
+</div>
+
+<?php endif; ?>

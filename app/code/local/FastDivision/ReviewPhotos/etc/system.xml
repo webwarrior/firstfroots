@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<config>
+    <sections>
+        <avalanche_wall translate="label">
+            <groups>
+                <reviewphotos_general translate="label">
+					<label>Review Photos</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>			
+					<fields>
+						<reviewphotos_enabled translate="label">
+							<label>Use Review Photos</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>0</sort_order>
+						    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</reviewphotos_enabled>
+						<reviewphotos_show_title translate="label">
+							<label>Show Photo Title</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>1</sort_order>
+						    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>						    
+						</reviewphotos_show_title>
+						<reviewphotos_show_description translate="label">
+							<label>Show Photo Description</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>2</sort_order>
+						    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>						    
+						</reviewphotos_show_description>
+						<reviewphotos_thumbnail_x translate="label comment">
+							<label>Thumbnail Width</label>
+							<comment><![CDATA[Width of your photo thumbnails (in px).]]></comment>
+						    <frontend_type>text</frontend_type>                         
+						    <sort_order>4</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+						</reviewphotos_thumbnail_x>
+						<reviewphotos_thumbnail_y translate="label comment">
+							<label>Thumbnail Height</label>
+							<comment><![CDATA[Height of your photo thumbnails (in px).]]></comment>
+						    <frontend_type>text</frontend_type>                         
+						    <sort_order>5</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+						</reviewphotos_thumbnail_y>
+						<reviewphotos_terms translate="label comment">
+						    <label>Terms &amp; Conditions</label>
+							<comment><![CDATA[This paragraph is shown before the photo submission form. You can leave this blank if you'd like.]]></comment>
+						    <frontend_type>textarea</frontend_type>                         
+						    <sort_order>6</sort_order>
+						    <show_in_default>1</show_in_default>
+						    <show_in_website>1</show_in_website>
+						    <show_in_store>1</show_in_store>
+						</reviewphotos_terms>
+					</fields>
+				</reviewphotos_general>
+            </groups>
+		</avalanche_wall>
+    </sections>
+</config>

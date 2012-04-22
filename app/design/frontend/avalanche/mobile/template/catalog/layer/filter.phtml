@@ -1,0 +1,29 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<select class="filter-dropdown" onchange="setLocation(this.value)">
+<option selected="selected"><?php echo $this->getName() ?></option>
+<?php foreach ($this->getItems() as $_item): ?>
+    <option value="<?php echo $this->urlEscape($_item->getUrl()) ?>">
+        <?php if ($_item->getCount() > 0): ?>
+        <?php echo $_item->getLabel() ?>
+        <?php endif; ?>
+        (<?php echo $_item->getCount() ?>)
+    </option>
+<?php endforeach ?>
+</select>

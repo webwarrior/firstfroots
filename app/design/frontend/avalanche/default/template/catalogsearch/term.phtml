@@ -1,0 +1,31 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div class="white-box">
+	<h3><?php echo $this->__('Popular Searches') ?></h3>
+	
+	<?php if( sizeof($this->getTerms()) > 0 ): ?>
+	    <ul class="tags-list">
+	        <?php foreach ($this->getTerms() as $_term): ?>
+	            <li><a href="<?php echo $this->getSearchUrl($_term) ?>" style="font-size:<?php echo $_term->getRatio()*70+75 ?>%;"><?php echo $this->htmlEscape($_term->getName()) ?></a></li>
+	        <?php endforeach; ?>
+	    </ul>
+	<?php else: ?>
+	    <p class="note-msg"><?php echo $this->__('There are no search terms available.'); ?></p>
+	<?php endif; ?>	
+</div>

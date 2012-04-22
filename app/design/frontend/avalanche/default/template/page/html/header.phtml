@@ -1,0 +1,68 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<header class="clearfix">
+	<div id="logo" class="grid_3">
+		<a href="<?php echo $this->getUrl('') ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>media/logos/<?php echo Mage::getStoreConfig('avalanche_config/avalanche_design/avalanche_logo') ?>" alt=""></a>
+	</div>
+	<div id="cart-and-search" class="grid_8 alpha omega white-box">	
+		<ul id="cart-menu" class="menu clearfix">
+			<?php echo $this->getChildHtml('store_language') ?>
+			<?php echo $this->getChildHtml('store_currency') ?>
+			<?php echo Mage::getStoreConfig('avalanche_config/avalanche_header/avalanche_toplinks') ?>
+			<?php echo $this->getChildHtml('topLinks') ?>
+			<?php echo $this->getChildHtml('quickcart') ?>
+		</ul>
+		<div id="search">
+			<?php echo $this->getChildHtml('topSearch') ?>
+		</div>
+	</div>
+	<?php
+		$multiRow = Mage::getStoreConfig('avalanche_config/avalanche_header/avalanche_multirow');
+		if($multiRow) {
+			$multiRow = 'dropdown-multirow';
+		} else {
+			$multiRow = '';
+		}
+	?>
+	<div id="main-menu" class="grid_12 white-box <?php echo $multiRow ?>">
+		<?php
+			$dropdownStyle = Mage::getStoreConfig('avalanche_config/avalanche_header/avalanche_dropdownstyle');
+			switch($dropdownStyle) {
+				case 1:
+					$dropdownStyle = 'mega-dropdowns';
+					break;
+				case 2:
+					$dropdownStyle = 'simple-dropdowns';
+					break;
+				case 3:
+					$dropdownStyle = 'no-dropdowns';
+					break;
+				case 4:
+					$dropdownStyle = 'suckerfish-dropdowns';
+					break;
+				default:
+					$dropdownStyle = 'mega-dropdowns';
+			}
+		?>
+		<ul class="menu <?php echo $dropdownStyle ?>">
+			<li class="home"><a href="<?php echo $this->getUrl('') ?>" class="ir"><?php echo $this->__('Home') ?></a></li>
+			<?php echo $this->getChildHtml('topMenu') ?>
+		</ul>
+	</div>
+</header>

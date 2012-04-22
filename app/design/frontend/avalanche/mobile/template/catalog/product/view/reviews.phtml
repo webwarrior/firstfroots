@@ -1,0 +1,84 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php
+	$_product = $this->getProduct();
+	$_items = $this->getReviewsCollection()->getItems();
+	$reviewCount = 0;
+	$latestReviewLimit = 50;
+?>
+<div id="product-reviews" class="white-box">
+	<h2><?php echo $this->__('Product Reviews') ?></h2>
+
+	<div class="white-box-inner">
+		<?php echo $this->getChildHtml('details_return') ?>
+		<?php echo $this->getChildHtml('hreview_aggregate') ?>
+		
+		<?php if(count($_items)): ?>
+			<?php foreach ($_items as $_review):?>
+				<?php
+					// Only show X reviews max on product details page
+					if($reviewCount == $latestReviewLimit) {
+						continue;
+					}
+				?>
+				<div class="review hreview clearfix">
+					<span class="item">
+		                <span class="fn">
+		                    <span class="value-title" title="<?php echo $this->helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name') ?>"></span>
+		                </span> 
+		            </span>
+					<div class="review-header">
+						<span class="review-title summary"><?php echo $this->htmlEscape($_review->getTitle()) ?></span>
+						<?php
+							// Get the average of all the votes for the final rating
+							$_votes = $_review->getRatingVotes();
+							$_avgVote = 0;
+							if(count($_votes)) {
+								foreach($_votes as $_vote) {
+									$_avgVote += $_vote->getPercent();
+								}
+								$_avgVote = round($_avgVote / count($_votes));
+							}
+						?>
+						<table class="rating-table"><tr><td>
+							<div class="rating"><div class="value-title stars" title="<?php echo round($_avgVote / 20) ?>"><?php for($x = 1; $x <= 5; $x++) { ?><span<?php if($x <= round($_avgVote / 20)) { echo ' class="active"'; } ?>>&#9733;</span><?php } ?></div></div>
+							<span class="dtreviewed">
+								<span class="value-title" title="<?php echo date('c', strtotime($this->formatDate($_review->getCreatedAt()))) ?>"></span>
+							</span>
+						</td><td>
+							<span class="review-author"><?php echo $this->__('by %s on', "<span class='reviewer'>" . $this->htmlEscape($_review->getNickname()) . "</span>") ?> <?php echo date('F j, Y', strtotime($this->formatDate($_review->getCreatedAt()))) ?></span>
+						</td></tr></table>
+					</div>
+					<div class="review-content description"><?php echo nl2br($this->htmlEscape($_review->getDetail())) ?></div>
+				</div>
+				<?php $reviewCount++; ?>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<p class="no-reviews"><?php echo $this->__('There are no reviews for this product. You could be the first to review!') ?></p>
+		<?php endif; ?>
+		
+		<?php /*<div class="action">
+			<?php if($this->getReviewsCollection()->getSize() > $latestReviewLimit): ?>
+				<a href="<?php echo Mage::getUrl('review/product/list', array('id' => $_product->getId(), 'category' => $_product->getCategoryId())) ?>">&raquo; <?php echo $this->__('<strong>Read More Reviews</strong> for %s', $this->getProduct()->getName()) ?></a><br>
+			<?php endif; ?>
+		</div>*/ ?>
+	</div>
+</div>
+
+<?php echo $this->getChildHtml('review_form') ?>

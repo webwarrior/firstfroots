@@ -1,0 +1,45 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php if(count($this->getItems()) > 0): ?>
+<div id="related-products" class="white-box">
+	<h3><?php echo $this->__('Related Products') ?></h3>
+	<div class="white-box-inner">
+		<ul class="related-product-list clearfix">
+			<?php foreach($this->getItems() as $_item): ?>
+				<li class="clearfix">
+					<div class="r-product">
+						<div class="r-image">
+							<a class="product-image" href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(64) ?>" width="64" height="64" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a>	
+						</div>
+						<div class="r-details">
+							<a class="product-name" href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a>
+							<div class="r-rating">
+								<?php echo $this->getReviewsSummaryHtml($_item) ?>
+							</div>
+							<div class="r-price">
+								<?php echo $this->getPriceHtml($_item, true, '-related') ?>
+							</div>
+						</div>
+					</div>
+				</li>
+			<?php endforeach ?>
+		</ul>
+	</div>
+</div>
+<?php endif; ?>

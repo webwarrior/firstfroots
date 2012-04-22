@@ -1,0 +1,44 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php
+/**
+ * Cart cross sell items template
+ *
+ * @see Mage_Checkout_Block_Cart_Crosssell
+ */
+?>
+<?php if($this->getItemCount()): ?>
+<div class="crosssell">
+    <h3 style="margin:0"><?php echo $this->__('We Recommended') ?></h3>
+    <ul id="crosssell-products-list" class="product-grid">
+    <?php foreach ($this->getItems() as $_item): ?>
+        <li>
+            <div class="grid-image"><a href="<?php echo $_item->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'small_image')->resize(118) ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>"></a>
+                <div class="grid-quick-view">
+                    <a href="#" data-url="<?php echo Mage::getBaseUrl(), 'catalog/ajax_product/view/?id=', $_item->getId() ?>/"><?php echo $this->__('Quick View') ?></a>
+                </div>  
+            </div>
+            <div class="grid-rating"><?php echo $this->getReviewsSummaryHtml($_item) ?></div>
+            <div class="grid-title"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a></div>
+            <div class="grid-price"><?php echo $this->getPriceHtml($_item, false, '-new') ?></div>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>

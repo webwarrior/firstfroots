@@ -1,0 +1,43 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<!doctype html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--><html class="no-js"><!--<![endif]-->
+<head>
+  <?php echo $this->getChildHtml('head') ?>
+</head>
+<body ontouchstart="" <?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?> data-baseurl="<?php echo Mage::getBaseUrl() ?>">
+  <div id="viewport">
+    <?php echo $this->getChildHtml('catalog_menu') ?>
+    <?php echo $this->getChildHtml('cart_preview') ?>
+    <div id="container">
+      <?php echo $this->getChildHtml('header') ?>
+      <div id="main" role="main">
+        <div class="global-messages">
+          <?php echo $this->getChildHtml('global_messages') ?>
+        </div>
+        <?php echo $this->getChildHtml('content') ?>
+      </div>
+      <?php echo $this->getChildHtml('footer') ?>
+    </div>
+  </div>
+  <?php echo $this->getChildHtml('before_body_end') ?>
+  <?php echo $this->getChildHtml('footer_js'); ?>
+</body>
+</html>

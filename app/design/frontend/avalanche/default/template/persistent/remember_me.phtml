@@ -1,0 +1,34 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div class="field">
+  <table class="checkbox-field">
+    <tr>
+      <td>
+          <?php $rememberMeId = 'remember_me' . Mage::helper('core')->getRandomString(10); ?>
+          <input type="checkbox" name="persistent_remember_me" class="input-checkbox input-radio" id="<?php echo $rememberMeId; ?>"<?php if ($this->isRememberMeChecked()): ?> checked="checked"<?php endif; ?> title="<?php echo $this->__('Keep me logged in') ?>" />
+      </td>
+      <td>
+        <div id="remember-me-box" class="input-box remember-me">
+          <label for="<?php echo $rememberMeId; ?>" style="width: 140px">&nbsp;&nbsp;<?php echo $this->__('Keep me logged in') ?></label>
+          <a href="#"><?php echo $this->__('What\'s this?') ?></a>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

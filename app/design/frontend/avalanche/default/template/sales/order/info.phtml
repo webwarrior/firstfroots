@@ -1,0 +1,61 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php  $_order = $this->getOrder() ?>
+
+<div class="page-messages">
+	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+</div>
+
+<h1><?php echo $this->__('Order #%s - %s', $_order->getRealOrderId(), $_order->getStatusLabel()) ?></h1>
+
+<div class="white-box-inner">
+	<table style="width: 100%"><tr><td style="width: 78%">
+		<p class="order-date"><?php echo $this->__('Order Date: <strong>%s</strong>', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?></p>
+	</td><td>
+		<a href="<?php echo $this->getPrintUrl($_order) ?>" class="link-print action-button" onclick="this.target='_blank';"><span><?php echo $this->__('Print Order') ?></span></a>
+	</td></tr></table>
+</div>
+
+<table style="width: 100%"><tr><td>
+	<?php if (!$_order->getIsVirtual()): ?>
+	<h3><?php echo $this->__('Shipping Address') ?></h3>
+	<div class="white-box-inner">
+		<address><?php echo $_order->getShippingAddress()->format('html') ?></address>
+	</div>	
+</td><td>
+	<h3><?php echo $this->__('Billing Address') ?></h3>
+	<div class="white-box-inner">
+		<address><?php echo $_order->getBillingAddress()->format('html') ?></address>
+	</div>
+</td></tr><tr><td>
+	<h3><?php echo $this->__('Payment Method') ?></h3>
+	<div class="white-box-inner">
+		<?php echo $this->getPaymentInfoHtml() ?><br><br>
+	</div>
+</td><td>
+	<h3><?php echo $this->__('Shipping Method') ?><?php /* | <a href="#"><?php echo $this->__('Track Order') ?></a>*/ ?></h3>
+	<div class="white-box-inner">
+		<?php if ($_order->getShippingDescription()): ?>
+		    <?php echo $_order->getShippingDescription() ?>
+		<?php else: ?>
+		    <p><?php echo $this->helper('sales')->__('No shipping information available'); ?></p>
+		<?php endif; ?><br><br>
+	</div>
+	<?php endif; ?>	
+</td></tr></table>

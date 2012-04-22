@@ -1,0 +1,43 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div class="box">
+    <h3><?php echo $this->__('My Recent Tags') ?><a href="<?php echo $this->getAllTagsUrl() ?>" class="edit-link"><?php echo $this->__('View All Tags') ?></a></h3>
+
+	<div class="box-content">
+    	<ol id="my_recent_tags">
+	        <?php $iterator = 0; ?>
+	        <?php foreach( $this->getCollection()->getItems() as $_item ): ?>
+	            <li class="item">
+	                <div class="details">
+	                    <h4 class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a></h4>
+	                    <div class="tags">
+	                        <strong><?php echo $this->__('Tags:') ?></strong>
+	                        <?php $_i = 0; ?>
+	                        <ul>
+	                        <?php foreach( $_item->getProductTags() as $_tag ): ?>
+	                            <li><a href="<?php echo $_tag->getViewTagUrl() ?>"><?php echo $this->htmlEscape($_tag->getName()) ?></a><?php if(++$_i != sizeof($_item->getProductTags()->getItems())): ?><?php endif; ?></li>
+	                        <?php endforeach; ?>
+	                        </ul>
+	                    </div>
+	                </div>
+	            </li>
+	        <?php endforeach; ?>
+	    </ol>
+	</div>
+</div>

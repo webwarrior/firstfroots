@@ -1,0 +1,33 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<h1><?php echo $this->__('My Tags') ?></h1>
+
+<div class="white-box-inner">
+	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+	<?php if($this->getTags()): ?>
+	    <p><?php echo $this->__('Click on a tag to view your corresponding products.') ?></p>
+	    <ul class="tags-list">
+	        <?php foreach ($this->getTags() as $_tag): ?>
+	            <li><a href="<?php echo $this->getUrl('tag/customer/view', array('tagId' => $_tag->getTagId())) ?>" style="font-size:<?php echo $_tag->getRatio()*70+75 ?>%;"><?php echo $this->htmlEscape($_tag->getName()) ?></a></li>
+	        <?php endforeach; ?>
+	    </ul>
+	<?php else: ?>
+	    <p><?php echo $this->__('You have not tagged any products yet.') ?></p>
+	<?php endif; ?>
+</div>

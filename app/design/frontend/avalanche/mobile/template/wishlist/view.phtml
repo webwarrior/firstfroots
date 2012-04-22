@@ -1,0 +1,106 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div class="my-wishlist">
+	<h1><?php echo $this->__('My Wishlist') ?></h1>
+
+	<div class="white-box-inner">
+		<div class="page-messages">
+  	  		<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+		</div>
+	    <?php if ($this->hasWishlistItems()): ?>
+	    <form id="wishlist-view-form" action="<?php echo $this->getUrl('*/*/update') ?>" method="post">
+	        <fieldset>
+	            <?php echo $this->getBlockHtml('formkey')?>
+	            <table id="wishlist-table" width="100%">
+	                <tbody>
+	                <?php foreach ($this->getWishlistItems() as $item): ?>
+	                    <?php
+	                        $product = $item->getProduct();
+	                        $isVisibleProduct = $product->isVisibleInSiteVisibility();
+	                    ?>
+	                    <tr>
+							<td>
+								<a class="product-image" href="<?php echo $this->getProductUrl($item) ?>" title="<?php echo $this->htmlEscape($product->getName()) ?>"><img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(80)->setQuality(Mage::getStoreConfig('avalanche_mobile/design/jpeg_compression')); ?>" width="80" height="80" alt="<?php echo $this->htmlEscape($product->getName()) ?>" /></a>
+							</td>
+	                        <td class="list-title">
+	                            <a href="<?php echo $this->getProductUrl($item) ?>"><?php echo $this->htmlEscape($product->getName()) ?></a>
+	                            <span class="list-price"><?php echo $this->getPriceHtml($product) ?></span>
+		                        <?php if ($product->isSaleable()): ?>
+		                        	<table cellpadding="0" cellspacing="0"><tr>
+		                            <?php if ($isVisibleProduct): ?>
+		                            	<td><button type="button" title="<?php echo $this->__('Add to Cart') ?>" onclick="addWItemToCart(<?php echo $item->getId(); ?>)" class="action-button small-button btn-cart"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></td>
+		                            <?php endif ?>
+										<td><a href="<?php echo $this->getItemRemoveUrl($item) ?>" title="<?php echo $this->__('Remove') ?>" onclick="return confirmRemoveWishlistItem();" class="button small-button low-button remove-link"><?php echo $this->__('Remove')?></a></td>
+									</tr></table>
+		                        <?php else: ?>
+		                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+		                        <?php endif; ?>
+	                        </td>
+	                    </tr>
+	                <?php endforeach ?>
+	                </tbody>
+	            </table>
+	        </fieldset>
+	    </form>
+	    <?php else: ?>
+	        <p><?php echo $this->__('You have no items in your wishlist.') ?></p>
+	    <?php endif ?>
+	</div>
+    <script type="text/javascript">
+    //<![CDATA[
+    function confirmRemoveWishlistItem() {
+        return confirm('<?php echo $this->__('Are you sure you want to remove this product from your wishlist?') ?>');
+    }
+
+    function focusComment(obj) {
+        if( obj.value == '<?php echo $this->helper('wishlist')->defaultCommentString() ?>' ) {
+            obj.value = '';
+        } else if( obj.value == '' ) {
+            obj.value = '<?php echo $this->helper('wishlist')->defaultCommentString() ?>';
+        }
+    }
+
+    function addWItemToCart(itemId) {
+        var url = '<?php echo $this->getItemAddToCartUrl('%item%') ?>';
+        url = url.gsub('%item%', itemId);
+        var form = $('wishlist-view-form');
+        if (form) {
+            var input = form['qty[' + itemId + ']'];
+            if (input) {
+                var separator = (url.indexOf('?') >= 0) ? '&' : '?';
+                url += separator + input.name + '=' + encodeURIComponent(input.value);
+            }
+        }
+        setLocation(url);
+    }
+
+    function addAllWItemsToCart() {
+        var url = '<?php echo $this->getUrl('*/*/allcart') ?>';
+        var separator = (url.indexOf('?') >= 0) ? '&' : '?';
+        $$('#wishlist-view-form .qty').each(
+            function (input, index) {
+                url += separator + input.name + '=' + encodeURIComponent(input.value);
+                separator = '&';
+            }
+        );
+        setLocation(url);
+    }
+    //]]>
+    </script>
+</div>

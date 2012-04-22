@@ -1,0 +1,69 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div class="page-messages">
+	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+</div>
+
+<h1><?php echo $this->__('Product Reviews') ?></h1>
+
+<div class="white-box-inner">
+<?php if( $this->getCollection() && $this->count()): ?>
+    <?php if(strlen(trim($this->getToolbarHtml()))): ?>
+    	<div class="toolbar clearfix">
+        	<?php echo $this->getToolbarHtml() ?>
+    	</div>
+    <?php endif; ?>
+        <table class="data-table" id="my-reviews-table">
+            <tbody>
+                <?php foreach ($this->getCollection() as $_review): ?>
+                <tr>
+					<td>
+						<?php
+							$_product = Mage::getModel('catalog/product')->load($_review->getId());
+							$_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(80).'" alt="'.$this->htmlEscape($_review->getName()).'" title="'.$this->htmlEscape($_review->getName()).'" width="80" height="80" />';
+						    echo $this->helper('catalog/output')->productAttribute($_product, $_img, 'image');
+						?>
+					</td>
+                    <td>
+                        <div class="list-title">
+						  <a href="<?php echo $this->getProductLink() ?>id/<?php echo $_review->getEntityPkValue() ?>"><?php echo $this->htmlEscape($_review->getName()) ?></a>
+                        </div>
+						<p class="list-desc"><em><?php echo $this->helper('review')->getDetailHtml($_review->getDetail()) ?></em></p>
+                        <a href="<?php echo $this->getReviewLink() ?>id/<?php echo $_review->getReviewId() ?>" class="button small-button"><?php echo $this->__('View Details') ?></a>
+					</td>
+                    <td>
+                    <?php if($_review->getSum()): ?>
+                        <div class="rating-box">
+                            <div class="rating" style="width:<?php echo ( $_review->getSum() / $_review->getCount() ) ?>%;"></div>
+                        </div>
+                    <?php endif; ?>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php if(strlen(trim($this->getToolbarHtml()))): ?>
+        <div class="toolbar clearfix">
+            <?php echo $this->getToolbarHtml() ?>
+        </div>
+    <?php endif; ?>
+<?php else: ?>
+    <p><?php echo $this->__('You have submitted no reviews.') ?></p>
+<?php endif; ?>
+</div><br>

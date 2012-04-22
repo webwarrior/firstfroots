@@ -1,0 +1,56 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+    <div class="discount" data="{ post: '<?php echo $this->getUrl('checkout/cart/couponPost') ?>' }">
+        <div class="discount-form">
+			<table>
+				<tr>
+					<td>
+            			<label for="coupon_code"><?php echo $this->__('Discount Code:') ?></label>
+			            <input type="hidden" name="remove" id="remove-coupone" value="0" />
+					</td>
+					<td>
+			            <div class="input-box">
+			                <input class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $this->htmlEscape($this->getCouponCode()) ?>" /><br><br>
+			            </div>
+					</td>
+					<td>
+		                <button id="apply-discount-button" type="button" title="<?php echo $this->__('Apply Discount') ?>" class="light-button button-small" onclick="discountForm.submit(false)" value="<?php echo $this->__('Apply Discount') ?>"><?php echo $this->__('Apply Discount') ?></button>
+		                <?php if(strlen($this->getCouponCode())): ?>
+		                    &nbsp; <button id="cancel-discount-button" type="button" title="<?php echo $this->__('Cancel Discount') ?>" class="light-button button-small" onclick="discountForm.submit(true)" value="<?php echo $this->__('Cancel Discount') ?>"><?php echo $this->__('Cancel Discount') ?></button>
+		                <?php endif;?>
+					</td>
+				</tr>
+			</table>
+        </div>
+    </div>
+<script type="text/javascript">
+//<![CDATA[
+var discountForm = new VarienForm('shopping-cart-form');
+discountForm.submit = function (isRemove) {
+    if (isRemove) {
+        $('coupon_code').removeClassName('required-entry');
+        $('remove-coupone').value = "1";
+    } else {
+        $('coupon_code').addClassName('required-entry');
+        $('remove-coupone').value = "0";
+    }
+    return VarienForm.prototype.submit.bind(discountForm)();
+}
+//]]>
+</script>

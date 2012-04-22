@@ -1,0 +1,41 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+  <meta charset="utf-8">
+  <title><?php echo $this->getTitle() ?></title>
+  <meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . 'media/touch_icons/' . Mage::getStoreConfig('avalanche_mobile/design/touch_icon') ?>">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo Mage::helper('avalanche_mobile')->getResizedImageName(Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . 'media/touch_icons/' . Mage::getStoreConfig('avalanche_mobile/design/touch_icon'), '72x72') ?>">
+  <link rel="apple-touch-icon-precomposed" href="<?php echo Mage::helper('avalanche_mobile')->getResizedImageName(Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . 'media/touch_icons/' . Mage::getStoreConfig('avalanche_mobile/design/touch_icon'), '57x57') ?>">
+  <link rel="shortcut icon" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . 'media/touch_icons/' . Mage::getStoreConfig('avalanche_mobile/design/touch_icon') ?>">
+
+  <link rel="apple-touch-startup-image" media="screen and (max-device-width: 320px)" href="<?php echo Mage::helper('avalanche_mobile')->getResizedImageName(Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . 'media/splash_screens/' . Mage::getStoreConfig('avalanche_mobile/design/splash_screen'), '320x460') ?>">
+  <link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . 'media/splash_screens/' . Mage::getStoreConfig('avalanche_mobile/design/splash_screen') ?>">
+
+  <meta http-equiv="cleartype" content="on">
+  <link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/style.css') ?>">
+  <script src="//ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js"></script>
+  <?php echo $this->getCssJsHtml() ?>
+
+  <script src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS) ?>avalanche/mobile/modernizr-custom.js"></script>
+  <script>Modernizr.mq('(min-width:0)') || document.write('<script src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS) ?>avalanche/mobile/respond.min.js">\x3C/script>')</script>

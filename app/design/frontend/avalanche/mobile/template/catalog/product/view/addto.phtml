@@ -1,0 +1,43 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+
+<?php $_product = $this->getProduct(); ?>
+<?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+
+<div id="add-to-links" class="flex-menu">
+	<a href="#" id="share-button" class="button"><?php echo $this->__('Share') ?></a>
+	<a href="<?php echo $_wishlistSubmitUrl ?>" id="wishlist-button" class="button"><?php echo $this->__('Wishlist') ?></a>
+</div>
+
+<div id="share-container">
+	<div id="share-menu" class="lb-overlay">
+		<div class="lb-menu">
+			<h1><?php echo $this->__('Share') ?> <a href="#" class="close-button">&#10006;</a></h1>
+			<div class="block block-layered-nav">
+			    <div class="block-content">
+			    	<ul id="share-button-list">
+			    		<li><a href="http://m.facebook.com/sharer.php?u=<?php echo urlencode($this->helper('core/url')->getCurrentUrl()) ?>t=<?php echo urlencode($this->getLayout()->getBlock('head')->getTitle()) ?>" class="button"><?php echo $this->__('Share on Facebook') ?></a></li>
+			    		<li><a href="http://twitter.com/share?url=<?php echo urlencode($this->helper('core/url')->getCurrentUrl()) ?>" class="button"><?php echo $this->__('Share on Twitter') ?></a></li>
+			    		<li><a href="mailto:?subject=<?php echo $this->getLayout()->getBlock('head')->getTitle() ?>&amp;body=<?php echo $this->helper('core/url')->getCurrentUrl() ?>" class="button"><?php echo $this->__('Email A Friend') ?></a></li>
+			    	</ul>  
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>

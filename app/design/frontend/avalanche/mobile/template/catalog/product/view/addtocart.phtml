@@ -1,0 +1,49 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+<?php if($_product->isSaleable()): ?>
+    <div id="add-to-cart">
+        <?php if(!$_product->isGrouped()): ?>
+        	<?php $showQuantityField = Mage::getStoreConfigFlag('avalanche_mobile/catalog/show_quantity'); ?>
+			<div class="form-field<?php if(!$showQuantityField) { ?> hidden<?php } ?>">
+				<?php $defaultQty = $this->getProductDefaultQty() * 1; ?>
+				<select name="qty" id="quantity" style="width: 100%">
+					<?php for($x = 1; $x <= Mage::getStoreConfig('avalanche_mobile/catalog/max_quantity'); $x++) {
+						if($x == $defaultQty) {
+							echo "<option value='{$x}' selected='selected'>Quantity: {$x}</option>";
+						} else {
+							echo "<option value='{$x}'>Quantity: {$x}</option>";
+						}
+					} ?>
+				</select>
+				<?php /*<table id="add-to-cart-row"><tr><td>
+					<label for="quantity"><?php echo $this->__('Quantity:') ?> &nbsp;</label>
+				</td><td>
+					<input type="number" title="<?php echo $this->__('Quantity') ?>" min="1" name="qty" id="quantity" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>">
+				</td></tr></table>*/ ?>
+			</div>
+        <?php endif; ?>
+		<div id="form-submit">
+			<button type="submit" title="<?php echo $buttonTitle ?>" id="add-to-cart-button" class="action-button action-button-large" onclick="productAddToCartForm.submit(this)"><span><?php echo $buttonTitle ?></span></button>
+		</div>
+        <?php echo $this->getChildHtml('', true, true) ?>
+    </div>
+<?php endif; ?>

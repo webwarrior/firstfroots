@@ -1,0 +1,44 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php if( $this->getCollection() && $this->count()): ?>
+<h2><?php echo $this->__('Recent Reviews') ?></h2>
+<div class="box-account box-reviews">
+    <ul id="my_recent_reviews" class="site-list-no-style">
+    <?php $iterator = 0 ?>
+    <?php foreach ($this->getCollection() as $_review): ?>
+        <li class="item">
+            <div class="details">
+                <a href="<?php echo $this->getReviewUrl($_review->getReviewId()) ?>"><?php echo $this->htmlEscape($_review->getName()) ?></a>
+                <?php if($_review->getSum()): ?>
+                    <div class="ratings">
+                        <div class="rating-box">
+                            <span class="stars rating<?php echo (($_review->getSum() / $_review->getCount()) / 20) ?>" title="<?php echo (($_review->getSum() / $_review->getCount()) / 20) ?>"></span>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+</div>
+
+<div class="box-action">
+	<a href="<?php echo $this->getAllReviewsUrl() ?>"><?php echo $this->__('&raquo; View All Reviews') ?></a>
+</div>
+<?php endif; ?>

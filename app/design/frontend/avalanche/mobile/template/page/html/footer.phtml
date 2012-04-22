@@ -1,0 +1,32 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<footer>
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_footer')->toHtml() ?>
+	<?php if(Mage::getStoreConfigFlag('avalanche_mobile/footer/store_switcher')): ?>
+	<div id="language-currency">
+		<?php echo $this->getChildHtml('store_language') ?>
+		<?php echo $this->getChildHtml('store_currency') ?>
+	</div>
+	<?php endif; ?>
+	<?php if(Mage::getStoreConfigFlag('avalanche_mobile/footer/switcher')): ?>
+	<p id="switch-desktop">
+		<a href="<?php echo Mage::getUrl('mobile/switch/desktop') ?>">Switch to Desktop Version</a>
+	</p>
+	<?php endif; ?>
+</footer>

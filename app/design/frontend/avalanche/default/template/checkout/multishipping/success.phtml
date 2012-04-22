@@ -1,0 +1,43 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div class="multiple-checkout grid_12 white-box">
+	<h1 style="margin: 0"><?php echo $this->__('Order Success') ?></h1>
+    <h3 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h3>
+
+    <div class="white-box-inner">
+	    <p><?php echo $this->__('We are processing your order and you will soon receive an email with details of the order. Once the order has shipped you will receive another email with a link to track its progress.') ?></p>
+	    <?php if($_orderIds = $this->getOrderIds()): ?>
+	    <p>
+	        <?php $flag = false ?>
+	        <?php echo $this->__('Your order number is ') ?>
+	        <?php foreach ($_orderIds as $orderId=>$incrementId): ?>
+	            <?php if ($flag): ?>
+	                <?php echo ', ' ?>
+	            <?php endif; ?>
+	            <?php $flag = true ?>
+	            <a href="<?php echo $this->getViewOrderUrl($orderId) ?>"><?php echo $incrementId ?></a>
+	        <?php endforeach; ?>
+	    </p>
+	    <?php endif; ?>
+	    <?php echo $this->getChildHtml() ?>
+	    <div class="buttons-set">
+	        <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="action-button" onclick="setLocation('<?php echo $this->getContinueUrl() ?>')"><span><?php echo $this->__('Continue Shopping') ?></span></button>
+	    </div>
+	</div>
+</div>

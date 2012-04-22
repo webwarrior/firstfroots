@@ -1,0 +1,38 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php $_product = $this->getProduct() ?>
+
+<?php if($_product->isSaleable()): ?>
+<script type="text/javascript">
+//<![CDATA[
+    var bundle = new Product.Bundle(<?php echo $this->getJsonConfig() ?>);
+//]]>
+</script>
+<?php endif; ?>
+<div class="no-display">
+	<?php if ($_product->isAvailable()): ?>
+	    <p class="availability in-stock"><?php echo $this->helper('catalog')->__('Availability:') ?> <strong><?php echo $this->helper('catalog')->__('In stock') ?></strong></p>
+	<?php else: ?>
+	    <p class="availability out-of-stock"><?php echo $this->helper('catalog')->__('Availability:') ?> <strong><?php echo $this->helper('catalog')->__('Out of stock') ?></strong></p>
+	<?php endif; ?>
+	<div class="price-box-bundle">
+	    <?php echo $this->getPriceHtml($_product) ?>
+	</div>
+	<?php echo $this->getChildHtml('bundle_prices') ?>
+</div>

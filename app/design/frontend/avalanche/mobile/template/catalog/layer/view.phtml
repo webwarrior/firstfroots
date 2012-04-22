@@ -1,0 +1,39 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php if($this->canShowBlock()): ?>
+<div id="filter-container">
+	<div id="filter-menu" class="lb-overlay">
+		<div class="lb-menu">
+			<h1>Filter <a href="#" class="close-button">&#10006;</a></h1>
+			<div class="block block-layered-nav">
+			    <div class="block-content">
+			        <?php if($this->canShowOptions()): ?>
+		                <?php $_filters = $this->getFilters() ?>
+		                <?php foreach ($_filters as $_filter): ?>
+		                <?php if($_filter->getItemsCount()): ?>
+		                    <?php echo $_filter->getHtml() ?>
+		                <?php endif; ?>
+		                <?php endforeach; ?>
+			        <?php endif; ?>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
+<?php endif; ?>

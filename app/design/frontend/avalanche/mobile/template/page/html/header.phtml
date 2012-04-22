@@ -1,0 +1,47 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<header>
+	<div id="masthead" class="clearfix">
+		<div id="logo">
+			<a href="<?php echo $this->getUrl('') ?>">Avalanche</a>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="<?php echo Mage::getUrl('customer/account') ?>" id="menu-account"><?php echo $this->__('Account') ?></a></li>
+				<li><a href="<?php echo Mage::getUrl('wishlist') ?>" id="menu-wishlist"><?php echo $this->__('Wishlist') ?></a></li>
+				<?php echo $this->getChildHtml('quickcart') ?>
+			</ul>
+		</nav>
+	</div>
+	<div id="search" class="clearfix">
+		<div class="box">
+			<a href="#" id="category-menu"><?php echo $this->__('Browse Categories') ?></a>
+		</div>
+		<div class="box">
+			<form id="search-form" action="<?php echo $this->helper('catalogsearch')->getResultUrl() ?>" method="get">
+				<div id="search-box">
+					<input type="text" name="<?php echo $this->helper('catalogsearch')->getQueryParamName() ?>" placeholder="<?php echo $this->__('Find It Fast...') ?>" value="<?php echo $this->helper('catalogsearch')->getEscapedQueryText() ?>">
+				</div>
+			</form>
+		</div>
+		<div class="box">
+			<button id="search-submit" type="submit"><span><?php echo $this->__('Search') ?></span></button>
+		</div>
+	</div>
+</header>

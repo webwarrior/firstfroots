@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+-->
+<layout version="0.1.0">
+
+<!--
+Category default layout
+-->
+    <default>
+        <reference name="head">
+            <block type="core/template" name="optional_zip_countries" as="optional_zip_countries" template="directory/js/optional_zip_countries.phtml" />
+        </reference>
+    </default>
+
+    <catalog_category_default>
+        <reference name="left">
+            <!--<block type="directory/currency" name="currency" before="catalog.leftnav" template="directory/currency.phtml"/>-->
+        </reference>
+    </catalog_category_default>
+
+<!--
+Category layered navigation layout
+-->
+
+    <catalog_category_layered>
+        <reference name="left">
+            <!--<block type="directory/currency" name="currency" before="catalog.leftnav" template="directory/currency.phtml"/>-->
+        </reference>
+    </catalog_category_layered>
+
+<!--
+Catalog Search layout
+-->
+
+    <catalogsearch_advanced_index>
+        <reference name="left">
+            <!--<block type="directory/currency" name="right_currency" before="-" template="directory/currency.phtml"/>-->
+        </reference>
+    </catalogsearch_advanced_index>
+
+    <catalogsearch_result_index>
+        <reference name="left">
+            <!--<block type="directory/currency" name="currency" before="-" template="directory/currency.phtml"/>-->
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalogsearch_advanced_result>
+        <reference name="right">
+            <!--<block type="directory/currency" name="right_currency" before="-" template="directory/currency.phtml"/>-->
+        </reference>
+    </catalogsearch_advanced_result>
+
+</layout>

@@ -1,0 +1,42 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div class="mini-cart">
+	<table style="width: 100%">
+        <thead>
+            <tr>
+                <th class="left-align" colspan="2">
+                    <?php echo $this->__('Items In Your Cart'); ?>
+                </th>
+				<th>
+                    <?php echo $this->__('Qty.'); ?>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+			<?php foreach($this->getItems() as $_item): ?>
+	            <?php echo $this->getItemHtml($_item)?>
+	        <?php endforeach ?>
+        </tbody>
+    </table>
+	<div id="mini-cart-total">
+		<table>
+			<?php echo $this->getChildHtml('totals'); ?>
+        </table>
+	</div>
+</div>

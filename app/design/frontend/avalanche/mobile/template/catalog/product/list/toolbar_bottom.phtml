@@ -1,0 +1,39 @@
+<?php
+/**
+ * Avalanche Mobile for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.0.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<?php if($this->getCollection()->getSize()): ?>
+	<?php
+        $pagerBlock = $this->getLayout()->createBlock('page/html_pager')->setTemplate('page/html/pager_bottom.phtml');
+
+        if ($pagerBlock instanceof Varien_Object) {
+            $pagerBlock->setAvailableLimit($this->getAvailableLimit());
+
+            $pagerBlock->setUseContainer(false)
+                ->setShowPerPage(false)
+                ->setShowAmounts(false)
+                ->setLimitVarName($this->getLimitVarName())
+                ->setPageVarName($this->getPageVarName())
+                ->setLimit($this->getLimit())
+                ->setFrameLength(Mage::getStoreConfig('design/pagination/pagination_frame'))
+                ->setJump(Mage::getStoreConfig('design/pagination/pagination_frame_skip'))
+                ->setCollection($this->getCollection());
+
+            echo $pagerBlock->toHtml();
+        }
+	?>
+<?php endif ?>

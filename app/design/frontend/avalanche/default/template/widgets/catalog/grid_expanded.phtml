@@ -1,0 +1,56 @@
+<?php
+/**
+ * Avalanche for Magento 1.6+
+ * Designed by Fast Division (http://fastdivision.com)
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file license.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://fastdivision.com/legal/license.txt
+ *
+ * @author     Fast Division
+ * @version    1.3.0
+ * @copyright  Copyright 2012 Fast Division
+ * @license    http://fastdivision.com/legal/license.txt
+ */
+?>
+<div class="grid_12 white-box clearfix bestsellers">
+	<?php if(($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+		<?php $_collectionSize = count($_products->getItems()) ?>
+
+		<?php 
+			$gridClasses = '';
+			if(Mage::getStoreConfig('avalanche_config/avalanche_product_listings/avalanche_quick_view') == 1)
+				$gridClasses .= 'quick-view-enabled ';
+			if(Mage::getStoreConfig('avalanche_config/avalanche_product_listings/avalanche_grid_hover') == 1)
+				$gridClasses .= 'grid-hover-enabled ';
+		?>
+		<h2 style="margin: 0"><?php echo $this->getData('title') ?></h2>
+
+		<div class="<?php echo $gridClasses ?>">
+			<ul class="product-grid product-grid-homepage carousel clearfix">
+				<?php foreach ($_products->getItems() as $_product): ?>
+				<li>
+					<div class="grid-image"><a href="<?php echo $_product->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(118) ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>"></a>
+						<div class="grid-quick-view">
+							<a href="#" data-url="<?php echo Mage::getBaseUrl(), 'catalog/ajax_product/view/?id=', $_product->getId() ?>/"><?php echo $this->__('Quick View') ?></a>
+						</div>	
+					</div>
+					<div class="grid-rating"><?php echo $this->getReviewsSummaryHtml($_product) ?></div>
+					<div class="grid-title"><a href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></div>
+					<div class="grid-price"><?php echo $this->getPriceHtml($_product, false, '-new') ?></div>
+				</li>	
+				<?php endforeach; ?>
+			</ul>
+		</div>
+
+	<?php else: ?>
+		<h2><?php echo $this->getData('title') ?></h2>
+		
+		<div class="white-box-inner">
+			<p><?php echo $this->__('No ' . strtolower($this->getData('title')) . ' were found.') ?></p>
+		</div>
+	<?php endif; ?>
+</div>
